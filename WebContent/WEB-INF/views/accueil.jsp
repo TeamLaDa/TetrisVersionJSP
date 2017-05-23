@@ -4,11 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Bienvenue</title>
 </head>
 <body>
 
 	<h2>Bienvenue, ${ username }</h2>
-
+	
+	<form method="POST" action="logout">
+		<input type="submit" value="Déconnexion" />
+	</form>
 </body>
 </html>

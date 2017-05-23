@@ -49,7 +49,7 @@ public class LoginServlet extends HttpServlet {
 		request.getSession().setAttribute("password",myPassword);
 		
 		// redirection vers la page accueil
-		response.sendRedirect("accueil");
+		response.sendRedirect("home");
 	}
 
 }

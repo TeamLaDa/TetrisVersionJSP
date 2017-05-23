@@ -4,9 +4,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Tetriminos/title>
+<title>Tetriminos</title>
 </head>
 <body>
+
+	<h2>Voici la liste des Tetriminos créés :</h2>
+	<ul>
+	<!-- 
+		<c:forEach var="i" begin="0" end="7" step="1">
+			<li></li>
+		</c:forEach>
+	 -->
+	 	<li>Toto</li>
+	</ul>
 
 </body>
 </html>

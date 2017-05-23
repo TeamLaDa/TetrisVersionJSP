@@ -8,27 +8,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class homeServlet
+ * Servlet implementation class erreurServlet
  */
-@WebServlet("/home")
-public class homeServlet extends HttpServlet {
+@WebServlet("/erreur")
+public class ErreurServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public homeServlet() {
-        super();
-        // TODO Auto-generated constructor stub
+    public ErreurServlet() {
+
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		this.getServletContext().getRequestDispatcher("/WEB-INF/home.jsp").forward(request, response);
-
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		this.getServletContext().getRequestDispatcher("/WEB-INF/views/erreur.jsp").forward(request, response);
 
 	}
 
@@ -36,14 +36,7 @@ public class homeServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		response.setContentType("text/html; charset=UTF-8");
-		
-		String myUserName = request.getParameter("nom_utilisateur");
-		String myPassword = request.getParameter("motDePasse");
-		request.getSession().setAttribute("username",myUserName);
-		request.getSession().setAttribute("password",myPassword);
-		
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

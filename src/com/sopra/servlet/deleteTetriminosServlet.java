@@ -38,10 +38,14 @@ public class deleteTetriminosServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String id = request.getParameter("id");
+		//On recupere l'id du tetrimino a supprimer
+		String id = request.getParameter("id_supprimer");
+		
+		//On envoie l'id a la méthode suppression du DAO
 		TetriminoApplicationDAO.delete(TetriminoApplicationDAO.find(id));
 		
-		doGet(request, response);
+		//redirection vers la page teriminos
+		response.sendRedirect("tetriminos");
 	}
 
 }

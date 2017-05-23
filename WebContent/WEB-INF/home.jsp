@@ -17,8 +17,10 @@
 </head>
 <body>
 
-	<form action="">
-	
+	<form method="POST" action="">
+		<p>Nom d'utilisateur : <input type="text" name="nom_utilisateur"/><p>
+		<p>Mot de Passe : <input type="text" name="motDePasse"/><p>
+		<input type="submit" value="s'identifier" />
 	</form>
 
 

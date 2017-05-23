@@ -30,7 +30,7 @@ public class AppListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent arg0)  { 
     	// Affiche dans la console la création du contexte
     	System.out.println("CREATION DU CONTEXTE");
-				
+    	
 		Tetrimino tetrimino1 = new Tetrimino("A", "#FE0000");
 		Tetrimino tetrimino2 = new Tetrimino("B", "#0800FE");
 		Tetrimino tetrimino3 = new Tetrimino("C", "#08F900");
@@ -38,9 +38,6 @@ public class AppListener implements ServletContextListener {
 		TetriminoApplicationDAO.tetriminos.put(tetrimino1.getId(), tetrimino1);
 		TetriminoApplicationDAO.tetriminos.put(tetrimino2.getId(), tetrimino2);
 		TetriminoApplicationDAO.tetriminos.put(tetrimino3.getId(), tetrimino3);
-		
-		
-		arg0.getServletContext().setAttribute("Tetriminos", TetriminoApplicationDAO.findAll());
 	}
 
     

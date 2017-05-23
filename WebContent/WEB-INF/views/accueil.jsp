@@ -13,5 +13,11 @@
 	<form method="POST" action="logout">
 		<input type="submit" value="Déconnexion" />
 	</form>
+	
+	<br/>
+	
+	<form method="POST" action="tetriminos">
+		<input type="submit" value="Jouer !!!!" />
+	</form>
 </body>
 </html>

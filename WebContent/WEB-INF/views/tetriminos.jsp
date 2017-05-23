@@ -17,10 +17,12 @@
 			<li>Nom du tetrimino : ${ tetrimino.nom }, avec sa couleur
 				associée : ${ tetrimino.couleur }
 				<form method="POST" action="editTetrimino">
-					<button type="submit" name="id_editer" value="${ tetrimino.id }">Editer</button>
+					<input type ="hidden" name="id_editer" value="${ tetrimino.id }" >
+					<input type="submit" value="Editer" >
 				</form>
 				<form method="POST" action="deleteTetrimino">
-					<button type="submit" name="id_supprimer" value="${ tetrimino.id }">Supprimer</button>
+					<input type ="hidden" name="id_supprimer" value="${ tetrimino.id }" >
+					<input type="submit" value="Supprimer" >
 				</form>
 			</li>
 		</c:forEach>

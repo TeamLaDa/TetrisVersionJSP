@@ -4,14 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Bienvenue</title>
+<title>Page d'erreur</title>
 </head>
 <body>
 
-	<h2>Bienvenue, ${ username }</h2>
+	<h2>Vous n'êtes pas connecté pour accéder à la ressource demandée !</h2>
 	
-	<form method="POST" action="logout">
-		<input type="submit" value="Déconnexion" />
-	</form>
+	<p>Pour vous reconnecter, suivez le <a href="login">lien</a></p>
+
 </body>
 </html>

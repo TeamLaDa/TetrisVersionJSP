@@ -2,7 +2,9 @@ package com.sopra.model;
 
 import java.util.UUID;
 
-public class Tetromino {
+import com.sopra.dao.TetriminoApplicationDAO;
+
+public class Tetrimino {
 	
 	private String id;
 	private String nom;
@@ -15,17 +17,20 @@ public class Tetromino {
 	 * @param nom
 	 * @param couleur
 	 */
-	public Tetromino(String nom, String couleur) {
+	public Tetrimino(String nom, String couleur) {
 		this.nom = nom;
 		this.couleur = couleur;
 		this.id = UUID.randomUUID().toString();
+		
+		//On ajoute le tetromino a la liste des tetrominos
+		TetriminoApplicationDAO.tetriminos.put(this.nom, this);
 	}
 	
 	/**
-	 * @return Un tetromino nommé default de couleur noire
+	 * @return Un tetrimino nommé default de couleur noire
 	 */
-	public Tetromino() {
-		this("default", "#000000");
+	public Tetrimino() {
+		
 	}
 
 	/**

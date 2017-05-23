@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sopra.dao.TetriminoApplicationDAO;
+
 /**
  * Servlet implementation class deleteTetriminosServlet
  */
@@ -27,6 +29,7 @@ public class deleteTetriminosServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		this.getServletContext().getRequestDispatcher("/WEB-INF/views/tetriminos.jsp").forward(request, response);
 
 	}
 
@@ -35,6 +38,8 @@ public class deleteTetriminosServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		String id = request.getParameter("id");
+		TetriminoApplicationDAO.delete(TetriminoApplicationDAO.find(id));
 		
 		doGet(request, response);
 	}

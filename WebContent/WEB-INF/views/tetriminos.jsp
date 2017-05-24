@@ -5,7 +5,7 @@
 
 <h2>Voici la liste des Tetriminos créés :</h2>
 <ul>
-	<c:forEach items="${ Tetriminos }" var="tetrimino">
+	<c:forEach items="${ tetriminos }" var="tetrimino">
 		<li>Nom du tetrimino : ${ tetrimino.nom }, avec sa couleur
 			associée : ${ tetrimino.couleur }
 			<form method="POST" action="editTetrimino">

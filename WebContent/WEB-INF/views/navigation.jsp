@@ -7,11 +7,14 @@
 <div>
 	${ pageTitle }
 	
-	<form method="POST" action="home">
-		<input type="submit" value="Accueil" />
-	</form>
+	<c:if test="${ username != null}">
+		<form method="POST" action="home">
+			<input type="submit" value="Accueil" />
+		</form>
+	
+		<form method="POST" action="tetriminos">
+			<input type="submit" value="Tetriminos" />
+		</form>
+	</c:if>
 
-	<form method="POST" action="tetriminos">
-		<input type="submit" value="Tetriminos" />
-	</form>
 </div>

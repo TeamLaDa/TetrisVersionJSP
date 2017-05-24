@@ -76,7 +76,7 @@ public class editTetriminosServlet extends HttpServlet {
 				
 			}
 			
-			//Cas où on a modifé/créé le tetrimino
+			//Cas où on a modifié/créé le tetrimino
 			if(request.getParameter("tetrimino_new_id") != null){
 				//On recupere l'id, le nom et la couleur du tetrimino a modifier
 				String id_new = request.getParameter("tetrimino_new_id");

@@ -24,7 +24,7 @@ public class ConnexionFilter implements Filter {
      * Default constructor. 
      */
     public ConnexionFilter() {
-        // TODO Auto-generated constructor stub
+
     }
 
 	/**

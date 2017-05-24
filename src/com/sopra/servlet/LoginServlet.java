@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sopra.model.Rendu;
+
 /**
  * Servlet implementation class homeServlet
  */
@@ -27,8 +29,8 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		
-		this.getServletContext().getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
+		Rendu.pageLogin(this.getServletContext(), request, response);
+		//this.getServletContext().getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
 
 
 	}
@@ -38,18 +40,27 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		response.setContentType("text/html; charset=UTF-8");
-		
 		// Récupère les paramètres du formulaire de connexion
 		String myUserName = request.getParameter("nom_utilisateur");
 		String myPassword = request.getParameter("motDePasse");
 		
-		// Attribut à la session les paramètres
-		request.getSession().setAttribute("username",myUserName);
-		request.getSession().setAttribute("password",myPassword);
 		
-		// redirection vers la page accueil
-		response.sendRedirect("home");
+		if ((myUserName == "") && (myPassword == "")) {
+			Rendu.pageLogin(this.getServletContext(), request, response);
+
+		} else {
+			// Attribut à la session les paramètres
+			request.getSession().setAttribute("username",myUserName);
+			request.getSession().setAttribute("password",myPassword);
+			
+			// redirection vers la page accueil
+			//response.sendRedirect("home");
+			Rendu.pageHome(this.getServletContext(), request, response);
+		}
+		
+
+		
+
 	}
 
 }

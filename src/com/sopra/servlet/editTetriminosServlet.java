@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sopra.dao.TetriminoApplicationDAO;
+import com.sopra.model.Rendu;
 import com.sopra.model.Tetrimino;
 
 /**
@@ -76,6 +77,7 @@ public class editTetriminosServlet extends HttpServlet {
 				
 			}
 			
+			
 			//Cas où on a modifié/créé le tetrimino
 			if(request.getParameter("tetrimino_new_id") != null){
 				//On recupere l'id, le nom et la couleur du tetrimino a modifier
@@ -88,7 +90,8 @@ public class editTetriminosServlet extends HttpServlet {
 				TetriminoApplicationDAO.find(id_new).setCouleur(couleur_new);
 				
 				//On redirige vers la page tetriminos
-				response.sendRedirect("tetriminos");
+				// response.sendRedirect("tetriminos");
+				Rendu.listeTetriminos("Liste des Tetriminos", TetriminoApplicationDAO.findAll(), true, this.getServletContext(), request, response);
 			}
 		}
 

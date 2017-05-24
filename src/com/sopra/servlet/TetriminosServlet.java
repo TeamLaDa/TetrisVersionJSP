@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sopra.dao.TetriminoApplicationDAO;
+import com.sopra.model.Rendu;
 import com.sopra.model.Tetrimino;
 
 /**
@@ -31,8 +32,9 @@ public class TetriminosServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		this.getServletContext().setAttribute("Tetriminos", TetriminoApplicationDAO.findAll());
-		this.getServletContext().getRequestDispatcher("/WEB-INF/views/tetriminos.jsp").forward(request, response);
-
+		
+		// this.getServletContext().getRequestDispatcher("/WEB-INF/views/tetriminos.jsp").forward(request, response);
+		Rendu.listeTetriminos("Liste des Tetriminos", TetriminoApplicationDAO.findAll(), true, this.getServletContext(), request, response);
 	}
 
 	/**

@@ -45,7 +45,7 @@ public class LoginServlet extends HttpServlet {
 		String myPassword = request.getParameter("motDePasse");
 		
 		
-		if (myUserName == "") {
+		if ((myUserName == "") && (myPassword == "")) {
 			Rendu.pageLogin(this.getServletContext(), request, response);
 
 		} else {

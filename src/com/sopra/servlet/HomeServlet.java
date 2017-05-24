@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sopra.model.Rendu;
+
 /**
  * Servlet implementation class accueil
  */
@@ -27,7 +29,8 @@ public class HomeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		this.getServletContext().getRequestDispatcher("/WEB-INF/views/accueil.jsp").forward(request, response);
+		// this.getServletContext().getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request, response);
+		Rendu.pageHome(this.getServletContext(), request, response);
 	}
 
 	/**

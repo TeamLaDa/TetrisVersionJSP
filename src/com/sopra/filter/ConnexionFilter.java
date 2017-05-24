@@ -84,6 +84,7 @@ public class ConnexionFilter implements Filter {
 			
 			else {
 				myAcceptedURIs.add("/accueil");
+				myAcceptedURIs.add("/tetriminos");
 			}
 		}
 

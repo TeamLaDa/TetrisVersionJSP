@@ -9,11 +9,13 @@
 	<p>Nom du tetrimino : 			
 		<input type="text" 
 		name="tetrimino_new_nom"
+		value="${tetrimino_old.nom }"
 		placeholder="Entrez un nom"/>
 	</p>
 	<p>Couleur du tetrimino : 
 		<input type="text" 
 		name="tetrimino_new_couleur"
+		value="${tetrimino_old.couleur }"
 		placeholder="Entrez une couleur"/><p>
 		<input type="submit" value="Modifier">
 	</p>

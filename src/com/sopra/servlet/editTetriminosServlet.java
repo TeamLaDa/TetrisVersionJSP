@@ -55,7 +55,7 @@ public class editTetriminosServlet extends HttpServlet {
 					 * On le rajoute ensuite a la liste des tetriminos dejà existants
 					 */
 					
-					Tetrimino tetrimino = new Tetrimino("","");
+					Tetrimino tetrimino = new Tetrimino("Pas de nom","000");
 					TetriminoApplicationDAO.save(tetrimino);
 					
 					//On recupere l'id du tetrimino

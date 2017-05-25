@@ -7,13 +7,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sopra.dao.TetriminoApplicationDAO;
+import com.sopra.Constantes;
+import com.sopra.dao.IDAO;
+import com.sopra.dao.application.TetriminoApplicationDAO;
+import com.sun.xml.internal.bind.CycleRecoverable.Context;
 
 /**
  * Servlet implementation class deleteTetriminosServlet
  */
 @WebServlet("/deleteTetrimino")
-public class deleteTetriminosServlet extends HttpServlet {
+public class deleteTetriminosServlet extends DataAccessServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -42,7 +45,7 @@ public class deleteTetriminosServlet extends HttpServlet {
 		String id = request.getParameter("id_supprimer");
 		
 		//On envoie l'id a la méthode suppression du DAO
-		TetriminoApplicationDAO.delete(TetriminoApplicationDAO.find(id));
+		this.getTetriminoDAO().delete(this.getTetriminoDAO().find(id));
 		
 		//redirection vers la page teriminos
 		response.sendRedirect("tetriminos");

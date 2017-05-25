@@ -16,7 +16,7 @@ import com.sun.xml.internal.bind.CycleRecoverable.Context;
  * Servlet implementation class deleteTetriminosServlet
  */
 @WebServlet("/deleteTetrimino")
-public class deleteTetriminosServlet extends HttpServlet {
+public class deleteTetriminosServlet extends DataAccessServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -45,8 +45,7 @@ public class deleteTetriminosServlet extends HttpServlet {
 		String id = request.getParameter("id_supprimer");
 		
 		//On envoie l'id a la méthode suppression du DAO
-		IDAO tetriminoDAO = (IDAO) this.getServletContext().getAttribute(Constantes.tetriminoDAO);
-		tetriminoDAO.delete(tetriminoDAO.find(id));
+		this.getTetriminoDAO().delete(this.getTetriminoDAO().find(id));
 		
 		//redirection vers la page teriminos
 		response.sendRedirect("tetriminos");

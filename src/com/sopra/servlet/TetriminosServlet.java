@@ -17,7 +17,7 @@ import com.sopra.model.Tetrimino;
  * Servlet implementation class TetriminosServlet
  */
 @WebServlet("/tetriminos")
-public class TetriminosServlet extends HttpServlet {
+public class TetriminosServlet extends DataAccessServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -33,12 +33,10 @@ public class TetriminosServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//On récupère le dao
-		IDAO tetriminoDAO= (IDAO) this.getServletContext().getAttribute(Constantes.tetriminoDAO);
+
+		this.getServletContext().setAttribute(Constantes.tetriminos, this.getTetriminoDAO().findAll());
 		
-		this.getServletContext().setAttribute(Constantes.tetriminos, tetriminoDAO.findAll());
-		
-		Rendu.listeTetriminos("Liste des Tetriminos", tetriminoDAO.findAll(), true, this.getServletContext(), request, response);
+		Rendu.listeTetriminos("Liste des Tetriminos", this.getTetriminoDAO().findAll(), true, this.getServletContext(), request, response);
 	}
 
 	/**

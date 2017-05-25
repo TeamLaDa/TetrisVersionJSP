@@ -17,7 +17,7 @@ import com.sopra.model.Tetrimino;
  * Servlet implementation class editTetriminosServlet
  */
 @WebServlet("/editTetrimino")
-public class editTetriminosServlet extends HttpServlet {
+public class editTetriminosServlet extends DataAccessServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -40,8 +40,6 @@ public class editTetriminosServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			//On recupère le DAO d'application
-			IDAO tetriminoDAO = (IDAO) this.getServletContext().getAttribute(Constantes.tetriminoDAO);	
 			
 			//Cas où on a pas encore créé/modifié le tetrimino
 			if(request.getParameter("tetrimino_new_id") == null){
@@ -60,7 +58,7 @@ public class editTetriminosServlet extends HttpServlet {
 					 */
 					
 					Tetrimino tetrimino = new Tetrimino("Pas de nom","000");
-					tetriminoDAO.save(tetrimino);
+					this.getTetriminoDAO().save(tetrimino);
 					
 					//On recupere l'id du tetrimino
 					id = tetrimino.getId();
@@ -74,7 +72,7 @@ public class editTetriminosServlet extends HttpServlet {
 
 				
 				//On crée un attribut au scope request qui représente le tetrimino a modifier
-				request.setAttribute("tetrimino_old", tetriminoDAO.find(id));
+				request.setAttribute("tetrimino_old", this.getTetriminoDAO().find(id));
 				
 				//On alimente la vue JSP du formulaire d'édition avec l'instance de tetrimino
 				this.getServletContext().getRequestDispatcher("/WEB-INF/views/editTetrimino.jsp").forward(request, response);
@@ -90,12 +88,12 @@ public class editTetriminosServlet extends HttpServlet {
 				String couleur_new = request.getParameter("tetrimino_new_couleur");
 				
 				//On applique les changements à l'objet
-				tetriminoDAO.find(id_new).setNom(nom_new);
-				tetriminoDAO.find(id_new).setCouleur(couleur_new);
+				this.getTetriminoDAO().find(id_new).setNom(nom_new);
+				this.getTetriminoDAO().find(id_new).setCouleur(couleur_new);
 				
 				//On redirige vers la page tetriminos
 				// response.sendRedirect("tetriminos");
-				Rendu.listeTetriminos("Liste des Tetriminos", tetriminoDAO.findAll(), true, this.getServletContext(), request, response);
+				Rendu.listeTetriminos("Liste des Tetriminos", this.getTetriminoDAO().findAll(), true, this.getServletContext(), request, response);
 			}
 		}
 

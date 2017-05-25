@@ -14,6 +14,8 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sopra.Constantes;
+
 /**
  * Servlet Filter implementation class connexionFilter
  */
@@ -75,7 +77,7 @@ public class ConnexionFilter implements Filter {
 			
 		if (needSecurityCheck) {
 			// On regarde l'obet associé à la clé "username" dans la session de l'utilisateur
-			if (request.getSession().getAttribute("username") == null) {
+			if (request.getSession().getAttribute(Constantes.username) == null) {
 									
 				// accès non autorisé !
 				response.sendRedirect("erreur");

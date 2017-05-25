@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sopra.Constantes;
 import com.sopra.model.Rendu;
 
 /**
@@ -50,8 +51,8 @@ public class LoginServlet extends HttpServlet {
 
 		} else {
 			// Attribut à la session les paramètres
-			request.getSession().setAttribute("username",myUserName);
-			request.getSession().setAttribute("password",myPassword);
+			request.getSession().setAttribute(Constantes.username,myUserName);
+			request.getSession().setAttribute(Constantes.password,myPassword);
 			
 			// redirection vers la page accueil
 			//response.sendRedirect("home");

@@ -16,5 +16,5 @@ public abstract class DataAccessServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@EJB
-	protected ITetriminosDao tetriminoDaoSql;
+	protected ITetriminosDao tetriminosDao;
 }

@@ -43,7 +43,7 @@ public class TetriminosServlet extends DataAccessServlet {
 
 		this.getServletContext().setAttribute(Constantes.tetriminos, this.tetriminoDAO.findAll());
 		
-		Rendu.listeTetriminos("Liste des Tetriminos", this.tetriminoDaoSql.findAll(), true, this.getServletContext(), request, response);
+		Rendu.listeTetriminos("Liste des Tetriminos", this.tetriminosDao.findAll(), true, this.getServletContext(), request, response);
 	}
 
 	/**

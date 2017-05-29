@@ -13,13 +13,13 @@ import com.sopra.servlet.DataAccessServlet;
  * Servlet implementation class deleteTetriminosServlet
  */
 @WebServlet("/deleteTetrimino")
-public class deleteTetriminosServlet extends DataAccessServlet {
+public class DeleteTetriminosServlet extends DataAccessServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public deleteTetriminosServlet() {
+    public DeleteTetriminosServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -44,7 +44,7 @@ public class deleteTetriminosServlet extends DataAccessServlet {
 			String id = request.getParameter("id_supprimer");
 			
 			//On envoie l'id a la méthode suppression du DAO
-			this.tetriminoDaoSql.delete(this.tetriminoDaoSql.find(id));
+			this.tetriminosDao.delete(this.tetriminosDao.find(id));
 			
 		} catch (Exception e) {
 			// TODO: handle exception

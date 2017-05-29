@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sopra.Constantes;
+import com.sopra.model.Rendu;
+import com.sopra.servlet.action.ErreurServlet;
 
 /**
  * Servlet Filter implementation class connexionFilter
@@ -84,7 +86,7 @@ public class ConnexionFilter implements Filter {
 			if (request.getSession().getAttribute(Constantes.username) == null) {
 									
 				// accès non autorisé !
-				response.sendRedirect("erreur");
+				Rendu.pageErreur(request.getServletContext(), request, response);
 				return;
 			}
 			

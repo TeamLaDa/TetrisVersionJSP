@@ -10,7 +10,7 @@
 
 	<p>Vous n'êtes pas connecté pour accéder à la ressource demandée !</p>
 	
-	<form method="POST" action="login">
+	<form method="GET" action="login">
 	    <button class="btn waves-effect waves-light" type="submit" name="action">Se Connecter
     		<i class="material-icons right">send</i>
   		</button>

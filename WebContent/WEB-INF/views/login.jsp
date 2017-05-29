@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
   
-<div class="row">    
+   <br>
 	<form class="col s12" method="POST" action="">
 	
 	    <div class="row">
@@ -23,4 +23,3 @@
     		<i class="material-icons right">send</i>
   		</button>
 	</form>
-</div>

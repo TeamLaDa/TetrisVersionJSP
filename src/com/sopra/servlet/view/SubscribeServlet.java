@@ -1,4 +1,4 @@
-package com.sopra.servlet;
+package com.sopra.servlet.view;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -10,18 +10,17 @@ import javax.servlet.http.HttpServletResponse;
 import com.sopra.model.Rendu;
 
 /**
- * Servlet implementation class accueil
+ * Servlet implementation class SubscribeServlet
  */
-@WebServlet("/home")
-public class HomeServlet extends HttpServlet {
+@WebServlet("/subscribe")
+public class SubscribeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HomeServlet() {
+    public SubscribeServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -29,15 +28,13 @@ public class HomeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		// this.getServletContext().getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request, response);
-		Rendu.pageHome(this.getServletContext(), request, response);
+		Rendu.pageSubscribe(this.getServletContext(), request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

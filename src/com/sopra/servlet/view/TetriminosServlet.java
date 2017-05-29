@@ -1,4 +1,4 @@
-package com.sopra.servlet;
+package com.sopra.servlet.view;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,34 +7,45 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sopra.Constantes;
+import com.sopra.dao.IDao;
+import com.sopra.dao.application.TetriminosDaoApplication;
 import com.sopra.model.Rendu;
+import com.sopra.model.Tetrimino;
+import com.sopra.servlet.DataAccessServlet;
 
 /**
- * Servlet implementation class SubscribeServlet
+ * Servlet implementation class TetriminosServlet
  */
-@WebServlet("/subscribe")
-public class SubscribeServlet extends HttpServlet {
+@WebServlet("/tetriminos")
+public class TetriminosServlet extends DataAccessServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SubscribeServlet() {
+    public TetriminosServlet() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 
-		Rendu.pageSubscribe(this.getServletContext(), request, response);
+		this.getServletContext().setAttribute(Constantes.tetriminos, this.getTetriminoDAO().findAll());
+		
+		Rendu.listeTetriminos("Liste des Tetriminos", this.getTetriminoDAO().findAll(), true, this.getServletContext(), request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		
 		doGet(request, response);
 	}
 

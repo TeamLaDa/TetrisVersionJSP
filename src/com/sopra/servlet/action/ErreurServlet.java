@@ -1,4 +1,4 @@
-package com.sopra.servlet;
+package com.sopra.servlet.action;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,44 +7,36 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sopra.Constantes;
-import com.sopra.dao.IDao;
-import com.sopra.dao.application.TetriminosDaoApplication;
-import com.sopra.model.Rendu;
-import com.sopra.model.Tetrimino;
-
 /**
- * Servlet implementation class TetriminosServlet
+ * Servlet implementation class erreurServlet
  */
-@WebServlet("/tetriminos")
-public class TetriminosServlet extends DataAccessServlet {
+@WebServlet("/erreur")
+public class ErreurServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public TetriminosServlet() {
-        super();
-        // TODO Auto-generated constructor stub
+    public ErreurServlet() {
+
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
+		this.getServletContext().getRequestDispatcher("/WEB-INF/views/erreur.jsp").forward(request, response);
 
-		this.getServletContext().setAttribute(Constantes.tetriminos, this.getTetriminoDAO().findAll());
-		
-		Rendu.listeTetriminos("Liste des Tetriminos", this.getTetriminoDAO().findAll(), true, this.getServletContext(), request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

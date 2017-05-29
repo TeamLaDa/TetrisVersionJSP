@@ -1,4 +1,4 @@
-package com.sopra.servlet;
+package com.sopra.servlet.view;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,29 +7,30 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sopra.model.Rendu;
+
 /**
- * Servlet implementation class erreurServlet
+ * Servlet implementation class accueil
  */
-@WebServlet("/erreur")
-public class ErreurServlet extends HttpServlet {
+@WebServlet("/home")
+public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ErreurServlet() {
-
+    public HomeServlet() {
+        super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
-		this.getServletContext().getRequestDispatcher("/WEB-INF/views/erreur.jsp").forward(request, response);
 
+		// this.getServletContext().getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request, response);
+		Rendu.pageHome(this.getServletContext(), request, response);
 	}
 
 	/**

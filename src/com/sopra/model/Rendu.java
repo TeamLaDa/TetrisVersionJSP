@@ -71,10 +71,12 @@ public class Rendu {
 	
 	
 	// Affiche la page Edition des Tetriminos
-	public static void editionTetriminos(String titrePage, List<Tetrimino> tetriminos, boolean montrerActions,
+	public static void editionTetriminos(String titrePage, Tetrimino tetrimino_modif, boolean montrerActions,
 			ServletContext context, HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
+		req.setAttribute("tetrimino_old", tetrimino_modif);
+		req.setAttribute("montrerActions", montrerActions);	
 
 		// Appel la fonction pagePrincipale
 		pagePrincipale(titrePage, "/WEB-INF/views/editTetrimino.jsp", context, req, resp);

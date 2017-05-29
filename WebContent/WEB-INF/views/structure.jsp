@@ -13,24 +13,18 @@
 <link type="text/css" rel="stylesheet" href="Materialize/css/materialize.min.css"
 	media="screen,projection" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
 <title>${ pageTitle }</title>
 </head>
 <body>
 
 	<jsp:include page="navigation.jsp" />
+	
 	<div class="container">
 		<jsp:include page="${ contentJsp }" />
 	</div>
 	
-	
-	
-	
-	
-	
-	<script type="text/javascript" src="js/materialize.min.js"></script>
-		
+  <script type="text/javascript" src="Materialize/js/materialize.min.js"></script>		
 </body>
 </html>

@@ -55,8 +55,7 @@ public class LoginServlet extends HttpServlet {
 			request.getSession().setAttribute(Constantes.password,myPassword);
 			
 			// redirection vers la page accueil
-			//response.sendRedirect("home");
-			Rendu.pageHome(this.getServletContext(), request, response);
+			response.sendRedirect("home");
 		}
 		
 

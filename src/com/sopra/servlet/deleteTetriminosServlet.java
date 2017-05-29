@@ -7,11 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sopra.Constantes;
-import com.sopra.dao.IDAO;
-import com.sopra.dao.application.TetriminoApplicationDAO;
-import com.sun.xml.internal.bind.CycleRecoverable.Context;
-
 /**
  * Servlet implementation class deleteTetriminosServlet
  */

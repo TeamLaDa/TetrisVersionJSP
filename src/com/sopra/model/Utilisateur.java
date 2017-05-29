@@ -1,14 +1,42 @@
 package com.sopra.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
+@Table(name="utilisateur")
 public class Utilisateur {
 	
 	/*
 	 * Tous les attributs de la classe
 	 */
-	private int id;
+	@Id
+	@GeneratedValue(generator="system-uuid")
+	@GenericGenerator(name="system-uuid", strategy="uuid")
+	@Column(name="UTI_ID")
+	private String id;
+	
+	@Column(name="UTI_NOM")
+	@NotNull
 	private String nom;
+	
+	@Column(name="UTI_PRENOM")
+	@NotNull
 	private String prenom;
+	
+	@Column(name="UTI_USERNAME")
+	@NotNull
 	private String username;
+	
+	@Column(name="UTI_PASSWORD")
+	@NotNull
 	private String password;
 
 	
@@ -33,8 +61,7 @@ public class Utilisateur {
 	 * @param username
 	 * @param password
 	 */
-	public Utilisateur(int id, String nom, String prenom, String username, String password) {
-		this.id = id;
+	public Utilisateur(String nom, String prenom, String username, String password) {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.username = username;
@@ -52,7 +79,7 @@ public class Utilisateur {
 	/**
 	 * @return the id
 	 */
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 

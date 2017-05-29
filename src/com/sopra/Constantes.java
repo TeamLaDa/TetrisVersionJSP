@@ -17,9 +17,12 @@ public interface Constantes {
 	/*
 	 * 2- Attributs d'application
 	 */
-	
-	// Le DAO d'application
+
+	// Le DAO tetrimino de scope "application"
 	public static final String tetriminoDAO = "tetriminoDAO";
+	
+	// Le DAO utilisateur de scope "application"
+	public static final String utilisateurDAO = "utilisateurDAO";
 	
 	// La liste des tetriminos
 	public static final String tetriminos = "Tetriminos";

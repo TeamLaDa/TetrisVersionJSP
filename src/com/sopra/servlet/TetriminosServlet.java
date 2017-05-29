@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sopra.Constantes;
-import com.sopra.dao.IDAO;
-import com.sopra.dao.application.TetriminoApplicationDAO;
+import com.sopra.dao.IDao;
+import com.sopra.dao.application.TetriminosDaoApplication;
 import com.sopra.model.Rendu;
 import com.sopra.model.Tetrimino;
 

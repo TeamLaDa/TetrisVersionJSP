@@ -13,6 +13,12 @@ public interface Constantes {
 	// Le mot de passe
 	public static final String password = "password";
 	
+	// Le nom d'utilisateur
+	public static final String monNom = "monNom";
+	
+	// Le mot de passe
+	public static final String monPrenom = "monPrenom";
+	
 
 	/*
 	 * 2- Attributs d'application

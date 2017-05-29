@@ -21,13 +21,13 @@ import com.sopra.servlet.DataAccessServlet;
  * Servlet implementation class editTetriminosServlet
  */
 @WebServlet("/editTetrimino")
-public class editTetriminosServlet extends DataAccessServlet {
+public class EditTetriminosServlet extends DataAccessServlet {
 	private static final long serialVersionUID = 1L;
 	
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public editTetriminosServlet() {
+    public EditTetriminosServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -62,7 +62,7 @@ public class editTetriminosServlet extends DataAccessServlet {
 					 */
 					
 					Tetrimino tetrimino = new Tetrimino("Pas de nom","000");
-					tetrimino = this.tetriminoDaoSql.save(tetrimino);
+					tetrimino = this.tetriminosDao.save(tetrimino);
 					
 					//On recupere l'id du tetrimino
 					id = tetrimino.getId();
@@ -75,7 +75,7 @@ public class editTetriminosServlet extends DataAccessServlet {
 				}
 
 				//On alimente la vue JSP du formulaire d'édition avec l'instance de tetrimino à modifier
-				Rendu.editionTetriminos("Edition Tetrimino", this.tetriminoDaoSql.find(id), true, this.getServletContext(), request, response);
+				Rendu.editionTetriminos("Edition Tetrimino", this.tetriminosDao.find(id), true, this.getServletContext(), request, response);
 			}
 			
 			
@@ -86,9 +86,15 @@ public class editTetriminosServlet extends DataAccessServlet {
 				String nom_new = request.getParameter("tetrimino_new_nom");			
 				String couleur_new = request.getParameter("tetrimino_new_couleur");
 				
+				Tetrimino tetrimino_new = this.tetriminosDao.find(id_new);
+				
 				//On applique les changements à l'objet
-				this.tetriminoDaoSql.find(id_new).setNom(nom_new);
-				this.tetriminoDaoSql.find(id_new).setCouleur(couleur_new);
+				tetrimino_new.setNom(nom_new);
+				tetrimino_new.setCouleur(couleur_new);
+				
+				//On sauvegarde le nouvel objet créé
+				
+				tetrimino_new = this.tetriminosDao.save(tetrimino_new);
 				
 				//On redirige vers la page tetriminos
 				response.sendRedirect("tetriminos");

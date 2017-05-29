@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebListener;
 import com.sopra.Constantes;
 import com.sopra.dao.ITetriminosDao;
 import com.sopra.dao.application.TetriminosDaoApplication;
+import com.sopra.dao.sql.TetriminosDaoSql;
 import com.sopra.model.Tetrimino;
 
 /**
@@ -29,20 +30,7 @@ public class AppListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent arg0)  { 
     	// Affiche dans la console la création du contexte
     	System.out.println("CREATION DU CONTEXTE");
-    	
-    	ITetriminosDao tetriminoDAO = new TetriminosDaoApplication();
-    	
-		Tetrimino tetrimino1 = new Tetrimino("A", "#FE0000");
-		Tetrimino tetrimino2 = new Tetrimino("B", "#0800FE");
-		Tetrimino tetrimino3 = new Tetrimino("C", "#08F900");
-		Tetrimino tetrimino4 = new Tetrimino("D", "#08F000");
-		
-		tetriminoDAO.save(tetrimino1);
-		tetriminoDAO.save(tetrimino2);
-		tetriminoDAO.save(tetrimino3);
-		tetriminoDAO.save(tetrimino4);
-		
-		arg0.getServletContext().setAttribute(Constantes.tetriminoDAO, tetriminoDAO);
+    	    	
 	}
 
     

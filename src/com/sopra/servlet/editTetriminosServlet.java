@@ -70,13 +70,8 @@ public class editTetriminosServlet extends DataAccessServlet {
 					id = request.getParameter("id_editer");
 				}
 
-				
-				//On crée un attribut au scope request qui représente le tetrimino a modifier
-				request.setAttribute("tetrimino_old", this.getTetriminoDAO().find(id));
-				
-				//On alimente la vue JSP du formulaire d'édition avec l'instance de tetrimino
-				this.getServletContext().getRequestDispatcher("/WEB-INF/views/editTetrimino.jsp").forward(request, response);
-				
+				//On alimente la vue JSP du formulaire d'édition avec l'instance de tetrimino à modifier
+				Rendu.editionTetriminos("Edition Tetrimino", this.getTetriminoDAO().find(id), true, this.getServletContext(), request, response);
 			}
 			
 			
@@ -92,8 +87,7 @@ public class editTetriminosServlet extends DataAccessServlet {
 				this.getTetriminoDAO().find(id_new).setCouleur(couleur_new);
 				
 				//On redirige vers la page tetriminos
-				// response.sendRedirect("tetriminos");
-				Rendu.listeTetriminos("Liste des Tetriminos", this.getTetriminoDAO().findAll(), true, this.getServletContext(), request, response);
+				response.sendRedirect("tetriminos");
 			}
 		}
 

@@ -38,11 +38,19 @@ public class deleteTetriminosServlet extends DataAccessServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		//On recupere l'id du tetrimino a supprimer
-		String id = request.getParameter("id_supprimer");
-		
-		//On envoie l'id a la méthode suppression du DAO
-		this.getTetriminoDAO().delete(this.getTetriminoDAO().find(id));
+		try {
+			
+			//On recupere l'id du tetrimino a supprimer
+			String id = request.getParameter("id_supprimer");
+			
+			//On envoie l'id a la méthode suppression du DAO
+			this.tetriminoDaoSql.delete(this.tetriminoDaoSql.find(id));
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+
 		
 		//redirection vers la page teriminos
 		response.sendRedirect("tetriminos");

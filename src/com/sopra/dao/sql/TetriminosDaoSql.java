@@ -18,7 +18,7 @@ public class TetriminosDaoSql implements ITetriminosDao{
 	
 	@Override
 	public List<Tetrimino> findAll() {
-		return (List<Tetrimino>) em.createQuery("from Tetrimino t").getResultList();
+		return (List<Tetrimino>) em.createQuery("from Tetrimino t", Tetrimino.class).getResultList();
 	}
 
 	@Override

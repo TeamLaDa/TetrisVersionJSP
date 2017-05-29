@@ -18,6 +18,13 @@
      	    <input placeholder="Mot de Passe" id="password" type="password" class="validate" name="motDePasse">
 	      </div>
 	    </div>
+		
+	     <div class="row">
+	      <div class="input-field col s6">
+	      	<i class="material-icons prefix">vpn_key</i>
+     	    <input placeholder="Vérification du Mot de Passe" id="password" type="password" class="validate" name="motDePasseValidation">
+	      </div>
+	    </div>
 	
 	     <div class="row">
 	      <div class="input-field col s6">

@@ -1,6 +1,9 @@
 package com.sopra.servlet.action;
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sopra.Constantes;
+import com.sopra.dao.IUtilisateurDao;
 import com.sopra.model.Rendu;
+import com.sopra.model.Utilisateur;
 
 /**
  * Servlet implementation class homeServlet
@@ -17,6 +22,10 @@ import com.sopra.model.Rendu;
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	@EJB
+	private IUtilisateurDao utilisateurDao;
+	
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -46,7 +55,30 @@ public class LoginServlet extends HttpServlet {
 		String myPassword = request.getParameter("motDePasse");
 		
 		
-		if ((myUserName == "") && (myPassword == "")) {
+		
+		// récupérer tous les utilisateurs de la base de données
+		Utilisateur utilisateurAVerifier = utilisateurDao.findByUsername(myUserName);
+		
+		// Condition permettant de savoir si l'utilisateur est déjà enregistré
+		if (utilisateurAVerifier == null) {
+			response.sendRedirect("subscribe");
+
+		} else {
+			if ((myUserName.equals(utilisateurAVerifier.getUsername())) && (myPassword.equals(utilisateurAVerifier.getPassword()))) {
+				request.getSession().setAttribute(Constantes.username,myUserName);
+				request.getSession().setAttribute(Constantes.password,myPassword);
+				
+				response.sendRedirect("home");
+
+			} else {
+				response.sendRedirect("login");
+			}
+		}
+		
+
+		
+		/*
+		if ((myUserName == "") || (myPassword == "")) {
 			Rendu.pageLogin(this.getServletContext(), request, response);
 
 		} else {
@@ -57,7 +89,7 @@ public class LoginServlet extends HttpServlet {
 			// redirection vers la page accueil
 			response.sendRedirect("home");
 		}
-		
+		*/
 
 		
 

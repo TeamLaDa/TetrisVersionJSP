@@ -8,6 +8,7 @@ public interface IUtilisateurDao extends IDao<Utilisateur>{
 
 	public List<Utilisateur> findAll();
 	public Utilisateur find(String id);
-	public boolean delete(Utilisateur object);
-	public Utilisateur save(Utilisateur object);
+	public boolean delete(Utilisateur utilisateur);
+	public Utilisateur save(Utilisateur utilisateur);
+	Utilisateur findByUsername(String username);
 }

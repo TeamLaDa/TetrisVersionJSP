@@ -1,4 +1,4 @@
-package com.sopra.servlet;
+package com.sopra.servlet.view;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -12,6 +12,7 @@ import com.sopra.dao.IDao;
 import com.sopra.dao.application.TetriminosDaoApplication;
 import com.sopra.model.Rendu;
 import com.sopra.model.Tetrimino;
+import com.sopra.servlet.DataAccessServlet;
 
 /**
  * Servlet implementation class editTetriminosServlet

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import com.sopra.Constantes;
 import com.sopra.dao.IDao;
 import com.sopra.dao.ITetriminosDao;
+import com.sopra.dao.IUtilisateurDao;
 import com.sopra.model.Tetrimino;
 import com.sopra.model.Utilisateur;
 
@@ -17,4 +18,7 @@ public abstract class DataAccessServlet extends HttpServlet {
 	
 	@EJB
 	protected ITetriminosDao tetriminosDao;
+	
+	@EJB
+	protected IUtilisateurDao utilisateurDao;
 }

@@ -13,19 +13,15 @@ import com.sopra.Constantes;
 import com.sopra.dao.IDao;
 import com.sopra.model.Rendu;
 import com.sopra.model.Utilisateur;
+import com.sopra.servlet.DataAccessServlet;
 
 /**
  * Servlet implementation class SubscribeServlet
  */
 @WebServlet("/subscribe")
-public class SubscribeServlet extends HttpServlet {
+public class SubscribeServlet extends DataAccessServlet {
 	private static final long serialVersionUID = 1L;
-	
-       
-	@EJB
-	private IDao<Utilisateur> utilisateurDao;
-	
-	
+		
 	
     /**
      * @see HttpServlet#HttpServlet()

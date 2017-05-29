@@ -1,4 +1,4 @@
-package com.sopra.servlet.action;
+package com.sopra.servlet.view;
 
 import java.io.IOException;
 import java.util.List;
@@ -14,18 +14,15 @@ import com.sopra.Constantes;
 import com.sopra.dao.IUtilisateurDao;
 import com.sopra.model.Rendu;
 import com.sopra.model.Utilisateur;
+import com.sopra.servlet.DataAccessServlet;
 
 /**
  * Servlet implementation class homeServlet
  */
 @WebServlet("/login")
-public class LoginServlet extends HttpServlet {
+public class LoginServlet extends DataAccessServlet {
 	private static final long serialVersionUID = 1L;
        
-	@EJB
-	private IUtilisateurDao utilisateurDao;
-	
-	
     /**
      * @see HttpServlet#HttpServlet()
      */

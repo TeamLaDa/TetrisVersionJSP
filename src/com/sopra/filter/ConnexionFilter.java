@@ -90,8 +90,21 @@ public class ConnexionFilter implements Filter {
 			}
 			
 			else {
-				myAcceptedURIs.add("/accueil");
+				myAcceptedURIs.add("/home");
 				myAcceptedURIs.add("/tetriminos");
+				myAcceptedURIs.add("/");
+			}
+		}
+		
+		//Si on est déjà connecté, lorsqu'on tente d'accéder à la page login on redirige vers la page d'accueil
+		
+		if(request.getSession().getAttribute(Constantes.username) != null){
+			//Test si on essaie d'accéder à login
+			if(request.getRequestURI().equals("/TetrisVersionJSP/login")){
+				
+				//Redirection vers la page d'accueil
+				response.sendRedirect("/TetrisVersionJSP/");
+				return;
 			}
 		}
 

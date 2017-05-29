@@ -5,7 +5,9 @@
 	<h2>Bienvenue, ${ username } !</h2>
 	
 	<form method="POST" action="logout">
-		<input type="submit" value="Déconnexion" />
+	    <button class="btn waves-effect waves-light" type="submit" name="action">Déconnexion
+    		<i class="material-icons right">power_settings_new</i>
+  		</button>
 	</form>
 
 	

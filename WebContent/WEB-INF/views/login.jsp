@@ -1,8 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<form method="POST" action="">
-	<p>Nom d'utilisateur : <input type="text" name="nom_utilisateur"/><p>
-	<p>Mot de Passe : <input type="text" name="motDePasse"/><p>
-	<input type="submit" value="s'identifier" />
-</form>
+  
+<div class="row">    
+	<form class="col s12" method="POST" action="">
+	
+	    <div class="row">
+	      <div class="input-field col s6">
+	      	<i class="material-icons prefix">account_circle</i>
+	        <input placeholder="Nom d'Utilisateur" id="utilisateur" type="text" class="validate" name="nom_utilisateur">
+	      </div>
+	    </div>
+		
+	
+	     <div class="row">
+	      <div class="input-field col s6">
+	      	<i class="material-icons prefix">vpn_key</i>
+     	    <input placeholder="Mot de Passe" id="password" type="password" class="validate" name="motDePasse">
+	      </div>
+	    </div>
+		
+	    <button class="btn waves-effect waves-light" type="submit" name="action">S'identifier
+    		<i class="material-icons right">send</i>
+  		</button>
+	</form>
+</div>

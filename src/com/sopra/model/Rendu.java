@@ -47,6 +47,14 @@ public class Rendu {
 
 		pagePrincipale("Bienvenue", "/WEB-INF/views/home.jsp", context, req, resp);
 	}
+	
+	
+	// Affichage de la page subscribe
+	public static void pageSubscribe(ServletContext context, HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+
+		pagePrincipale("Enregistrement", "/WEB-INF/views/subscribe.jsp", context, req, resp);
+	}
 
 	
 	// Affiche la page des Tetriminos

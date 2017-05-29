@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence"
+							xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+							xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+								http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+
+	<!-- Si TomEE : utiliser JTA | Sinon utiliser RESOURCE_LOCAL -->
+	<persistence-unit name="NomPersistenceUnit" transaction-type="JTA">
+		<!-- Modification du Provider OpenJPA pour utiliser Hibernate -->
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+		<!-- Récupération de la DataSource "Tetris" inscrit dans TomEE -->
+		<jta-data-source>java:openejb/Resource/Tetris</jta-data-source>
+
+
+		<!-- Options d'utilisation Hibernate -->
+		<properties>
+			<!-- A préciser si non-utilisation de la DataSource JNDI -->
+		<!--
+			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/tp_produit" />
+			<property name="hibernate.connection.driver" value="com.mysql.jdbc.Driver" />
+			<property name="hibernate.connection.user" value="user1" />
+			<property name="hibernate.connection.password" value="password" />
+ 		-->
+			<!-- Permet d'exécuter les requêtes DDL pour la génération de la base de données -->
+			<!-- Valeurs possibles : validate, update, create, create-drop -->
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+
+			<!-- On utilise le moteur innoDB -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+
+			<!-- On imprime les requêtes SQL générées par Hibernate dans la console -->
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+
+
+			<!-- Ligne à ajouter si vous rencontrez une exception "Unable to build Hibernate SessionFactory" -->
+			<property name="tomee.jpa.cdi" value="false" />
+		</properties>
+	</persistence-unit>
+</persistence>

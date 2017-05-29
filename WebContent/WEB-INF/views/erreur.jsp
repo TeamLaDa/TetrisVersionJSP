@@ -8,9 +8,13 @@
 </head>
 <body>
 
-	<h2>Vous n'êtes pas connecté pour accéder à la ressource demandée !</h2>
+	<p>Vous n'êtes pas connecté pour accéder à la ressource demandée !</p>
 	
-	<p>Pour vous reconnecter, suivez le <a href="login">lien</a></p>
+	<form method="POST" action="login">
+	    <button class="btn waves-effect waves-light" type="submit" name="action">Se Connecter
+    		<i class="material-icons right">send</i>
+  		</button>
+	</form>
 
 </body>
 </html>

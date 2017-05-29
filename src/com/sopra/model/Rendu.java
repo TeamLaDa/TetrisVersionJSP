@@ -48,6 +48,12 @@ public class Rendu {
 		pagePrincipale("Bienvenue", "/WEB-INF/views/home.jsp", context, req, resp);
 	}
 	
+	// Affichage de la page erreur
+	
+	public static void pageErreur(ServletContext context, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		pagePrincipale("Non connecté", "/WEB-INF/views/erreur.jsp", context, req, resp);
+	}
 	
 	// Affichage de la page subscribe
 	public static void pageSubscribe(ServletContext context, HttpServletRequest req, HttpServletResponse resp)

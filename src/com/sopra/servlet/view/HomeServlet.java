@@ -12,7 +12,7 @@ import com.sopra.model.Rendu;
 /**
  * Servlet implementation class accueil
  */
-@WebServlet("/home")
+@WebServlet(urlPatterns = {"/", "/home"})
 public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

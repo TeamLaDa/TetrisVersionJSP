@@ -68,6 +68,7 @@ public class ConnexionFilter implements Filter {
 		myAcceptedURIs.add("/subscribe");
 		myAcceptedURIs.add("/Materialize/css");
 		myAcceptedURIs.add("/Materialize/js");
+		myAcceptedURIs.add("/js");
 		myAcceptedURIs.add("/Materialize/fonts/roboto");
 		
 		

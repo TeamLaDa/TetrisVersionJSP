@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
     
+
     
 <div class="row">    
 	<form class="col s12" method="POST" action="">
@@ -39,8 +40,10 @@
      	    <input placeholder="Prénom" id="prenom" type="text" class="validate" name="prenom">
 	      </div>
 	    </div>
+	    
+       	<input type="hidden" value=${ utilisateur_id } name="utilisateur_new_id"/>
 		
-	    <button class="btn waves-effect waves-light" type="submit" name="action">S'identifier
+	    <button class="btn waves-effect waves-light" type="submit" name="action">S'authentifier
     		<i class="material-icons right">send</i>
   		</button>
 	</form>

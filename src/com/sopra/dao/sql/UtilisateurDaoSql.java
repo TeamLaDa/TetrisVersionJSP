@@ -8,7 +8,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.sopra.dao.IUtilisateurDao;
-import com.sopra.model.Tetrimino;
 import com.sopra.model.Utilisateur;
 
 

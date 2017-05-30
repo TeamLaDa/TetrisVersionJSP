@@ -56,40 +56,22 @@ public class LoginServlet extends DataAccessServlet {
 		// récupérer tous les utilisateurs de la base de données
 		Utilisateur utilisateurAVerifier = utilisateurDao.findByUsername(myUserName);
 		
-		// Condition permettant de savoir si l'utilisateur est déjà enregistré
-		if (utilisateurAVerifier == null) {
-			response.sendRedirect("subscribe");
-
+		// Condition vérifiant que l'utilisateur n'existe pas dans la BDD
+		if ((utilisateurAVerifier == null)) {
+			response.sendRedirect("login");
 		} else {
+			// Condition permettant de savoir si l'utilisateur est déjà enregistré
 			if ((myUserName.equals(utilisateurAVerifier.getUsername())) && (myPassword.equals(utilisateurAVerifier.getPassword()))) {
-				request.getSession().setAttribute(Constantes.username,myUserName);
-				request.getSession().setAttribute(Constantes.password,myPassword);
-				
-				response.sendRedirect("home");
-
-			} else {
-				response.sendRedirect("login");
+					request.getSession().setAttribute(Constantes.username,myUserName);
+					request.getSession().setAttribute(Constantes.password,myPassword);
+					
+					response.sendRedirect("home");
+	
+				} else {
+					response.sendRedirect("login");
+				}
 			}
+		
 		}
-		
-
-		
-		/*
-		if ((myUserName == "") || (myPassword == "")) {
-			Rendu.pageLogin(this.getServletContext(), request, response);
-
-		} else {
-			// Attribut à la session les paramètres
-			request.getSession().setAttribute(Constantes.username,myUserName);
-			request.getSession().setAttribute(Constantes.password,myPassword);
-			
-			// redirection vers la page accueil
-			response.sendRedirect("home");
-		}
-		*/
-
-		
-
-	}
 
 }

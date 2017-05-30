@@ -48,7 +48,15 @@ public class SubscribeServlet extends DataAccessServlet {
 			String monPrenom = request.getParameter("prenom");
 			
 			
-			if (!myPassword.equals(myPasswordValidation)) {
+			// Condition vérifiant que l'utilisateur n'existe pas
+			if (myUsername.equals(utilisateurDao.findByUsername(myUsername))) {
+				String message = "Veuillez choisir un autre nom d'utilisateur !";
+				
+				request.getAttribute(message);
+	
+				Rendu.pageSubscribe(this.getServletContext(), request, response);
+			}
+			else if (!myPassword.equals(myPasswordValidation)) {
 				
 				String message = "Veuillez vérifier le mot de passe !";
 				

@@ -26,5 +26,6 @@
 	</div>
 	
   <script type="text/javascript" src="Materialize/js/materialize.min.js"></script>		
+  <script type="text/javascript" src="js/verifEnregistrement.js"></script>		
 </body>
 </html>

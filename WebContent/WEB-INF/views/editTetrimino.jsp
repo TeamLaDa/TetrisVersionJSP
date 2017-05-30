@@ -1,31 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Edition du Tetrimino</title>
-</head>
-<body>
-	<form method="POST" action="">
-	
-		<p>Nom du tetrimino : 			
-			<input type="text" 
-			name="tetrimino_new_nom"
-			placeholder="Entrez un nom"/>
-		</p>
-		<p>Couleur du tetrimino : 
-			<input type="text" 
-			name="tetrimino_new_couleur"
-			placeholder="Entrez une couleur"/><p>
-			<input type="submit" value="Modifier">
-		</p>
-		
-		<input type="hidden"
-		value=${ tetrimino_old.id}
-		name="tetrimino_new_id"/>
-	</form>
 
-</body>
-</html>
+<br>
+<div class="row">    
+	<form class="col s12" method="POST" action="">
+	
+	    <div class="row">
+	      <div class="input-field col s12">
+	        <input value="${tetrimino_old.nom }" id="nom_tetrimino" type="text" name="tetrimino_new_nom">
+          	<label for="nom_tetrimino">Nom</label>
+	      </div>
+	    </div>
+			
+	    <div class="row">
+	      <div class="input-field col s12">
+	        <input value="${tetrimino_old.couleur }" id="couleur_tetrimino" type="text" name="tetrimino_new_couleur">
+     	    <label for="couleur_tetrimino">Couleur</label>
+	        
+	      </div>
+	    </div>
+	    
+    	<input type="hidden" value=${ tetrimino_old.id} name="tetrimino_new_id"/>
+		
+	    <button class="btn waves-effect waves-light" type="submit" name="action">Valider
+	    	<i class="material-icons right">send</i>
+	 	</button>
+	</form>
+</div>

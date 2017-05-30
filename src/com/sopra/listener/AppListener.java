@@ -1,13 +1,13 @@
 package com.sopra.listener;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
-import com.sopra.dao.TetriminoApplicationDAO;
+import com.sopra.Constantes;
+import com.sopra.dao.ITetriminosDao;
+import com.sopra.dao.application.TetriminosDaoApplication;
+import com.sopra.dao.sql.TetriminosDaoSql;
 import com.sopra.model.Tetrimino;
 
 /**
@@ -30,14 +30,7 @@ public class AppListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent arg0)  { 
     	// Affiche dans la console la création du contexte
     	System.out.println("CREATION DU CONTEXTE");
-    	
-		Tetrimino tetrimino1 = new Tetrimino("A", "#FE0000");
-		Tetrimino tetrimino2 = new Tetrimino("B", "#0800FE");
-		Tetrimino tetrimino3 = new Tetrimino("C", "#08F900");
-		
-		TetriminoApplicationDAO.tetriminos.put(tetrimino1.getId(), tetrimino1);
-		TetriminoApplicationDAO.tetriminos.put(tetrimino2.getId(), tetrimino2);
-		TetriminoApplicationDAO.tetriminos.put(tetrimino3.getId(), tetrimino3);
+    	    	
 	}
 
     

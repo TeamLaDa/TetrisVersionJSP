@@ -1,26 +1,28 @@
-package com.sopra.servlet;
+package com.sopra.servlet.view;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sopra.dao.TetriminoApplicationDAO;
+import com.sopra.model.Rendu;
 import com.sopra.model.Tetrimino;
+import com.sopra.servlet.DataAccessServlet;
 
 /**
  * Servlet implementation class editTetriminosServlet
  */
 @WebServlet("/editTetrimino")
-public class editTetriminosServlet extends HttpServlet {
+public class EditTetriminosServlet extends DataAccessServlet {
 	private static final long serialVersionUID = 1L;
-       
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public editTetriminosServlet() {
+    public EditTetriminosServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,7 +39,7 @@ public class editTetriminosServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-				
+			
 			//Cas où on a pas encore créé/modifié le tetrimino
 			if(request.getParameter("tetrimino_new_id") == null){
 				
@@ -54,8 +56,8 @@ public class editTetriminosServlet extends HttpServlet {
 					 * On le rajoute ensuite a la liste des tetriminos dejà existants
 					 */
 					
-					Tetrimino tetrimino = new Tetrimino("","");
-					TetriminoApplicationDAO.save(tetrimino);
+					Tetrimino tetrimino = new Tetrimino("Pas de nom","000");
+					tetrimino = this.tetriminosDao.save(tetrimino);
 					
 					//On recupere l'id du tetrimino
 					id = tetrimino.getId();
@@ -67,14 +69,10 @@ public class editTetriminosServlet extends HttpServlet {
 					id = request.getParameter("id_editer");
 				}
 
-				
-				//On crée un attribut au scope request qui représente le tetrimino a modifier
-				request.setAttribute("tetrimino_old", TetriminoApplicationDAO.find(id));
-				
-				//On alimente la vue JSP du formulaire d'édition avec l'instance de tetrimino
-				this.getServletContext().getRequestDispatcher("/WEB-INF/views/editTetrimino.jsp").forward(request, response);
-				
+				//On alimente la vue JSP du formulaire d'édition avec l'instance de tetrimino à modifier
+				Rendu.editionTetriminos("Edition Tetrimino", this.tetriminosDao.find(id), true, this.getServletContext(), request, response);
 			}
+			
 			
 			//Cas où on a modifié/créé le tetrimino
 			if(request.getParameter("tetrimino_new_id") != null){
@@ -83,9 +81,15 @@ public class editTetriminosServlet extends HttpServlet {
 				String nom_new = request.getParameter("tetrimino_new_nom");			
 				String couleur_new = request.getParameter("tetrimino_new_couleur");
 				
+				Tetrimino tetrimino_new = this.tetriminosDao.find(id_new);
+				
 				//On applique les changements à l'objet
-				TetriminoApplicationDAO.find(id_new).setNom(nom_new);
-				TetriminoApplicationDAO.find(id_new).setCouleur(couleur_new);
+				tetrimino_new.setNom(nom_new);
+				tetrimino_new.setCouleur(couleur_new);
+				
+				//On sauvegarde le nouvel objet créé
+				
+				tetrimino_new = this.tetriminosDao.save(tetrimino_new);
 				
 				//On redirige vers la page tetriminos
 				response.sendRedirect("tetriminos");

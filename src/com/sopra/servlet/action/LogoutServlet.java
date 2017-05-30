@@ -1,4 +1,4 @@
-package com.sopra.servlet;
+package com.sopra.servlet.action;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,19 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sopra.dao.TetriminoApplicationDAO;
-
 /**
- * Servlet implementation class deleteTetriminosServlet
+ * Servlet implementation class LogoutServlet
  */
-@WebServlet("/deleteTetrimino")
-public class deleteTetriminosServlet extends HttpServlet {
+@WebServlet("/logout")
+public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public deleteTetriminosServlet() {
+    public LogoutServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,7 +27,7 @@ public class deleteTetriminosServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		this.getServletContext().getRequestDispatcher("/WEB-INF/views/tetriminos.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/views/accueil.jsp").forward(request, response);
 
 	}
 
@@ -38,14 +36,11 @@ public class deleteTetriminosServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		//On recupere l'id du tetrimino a supprimer
-		String id = request.getParameter("id_supprimer");
+		// Permet de supprimer la session
+		request.getSession().invalidate();
 		
-		//On envoie l'id a la méthode suppression du DAO
-		TetriminoApplicationDAO.delete(TetriminoApplicationDAO.find(id));
-		
-		//redirection vers la page teriminos
-		response.sendRedirect("tetriminos");
+		// Permet de rediriger vers la page login
+		response.sendRedirect("login");
 	}
 
 }

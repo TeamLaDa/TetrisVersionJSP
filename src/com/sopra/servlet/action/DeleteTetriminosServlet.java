@@ -1,4 +1,4 @@
-package com.sopra.servlet;
+package com.sopra.servlet.action;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,20 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sopra.dao.TetriminoApplicationDAO;
-import com.sopra.model.Tetrimino;
+import com.sopra.servlet.DataAccessServlet;
 
 /**
- * Servlet implementation class TetriminosServlet
+ * Servlet implementation class deleteTetriminosServlet
  */
-@WebServlet("/tetriminos")
-public class TetriminosServlet extends HttpServlet {
+@WebServlet("/deleteTetrimino")
+public class DeleteTetriminosServlet extends DataAccessServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public TetriminosServlet() {
+    public DeleteTetriminosServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,8 +28,7 @@ public class TetriminosServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		this.getServletContext().setAttribute("Tetriminos", TetriminoApplicationDAO.findAll());
+
 		this.getServletContext().getRequestDispatcher("/WEB-INF/views/tetriminos.jsp").forward(request, response);
 
 	}
@@ -40,8 +38,22 @@ public class TetriminosServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		try {
+			
+			//On recupere l'id du tetrimino a supprimer
+			String id = request.getParameter("id_supprimer");
+			
+			//On envoie l'id a la méthode suppression du DAO
+			this.tetriminosDao.delete(this.tetriminosDao.find(id));
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+
 		
-		doGet(request, response);
+		//redirection vers la page teriminos
+		response.sendRedirect("tetriminos");
 	}
 
 }

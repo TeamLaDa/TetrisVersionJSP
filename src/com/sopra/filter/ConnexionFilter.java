@@ -14,6 +14,9 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sopra.Constantes;
+import com.sopra.model.Rendu;
+
 /**
  * Servlet Filter implementation class connexionFilter
  */
@@ -24,7 +27,7 @@ public class ConnexionFilter implements Filter {
      * Default constructor. 
      */
     public ConnexionFilter() {
-        // TODO Auto-generated constructor stub
+
     }
 
 	/**
@@ -62,6 +65,10 @@ public class ConnexionFilter implements Filter {
 		
 		myAcceptedURIs.add("/login");
 		myAcceptedURIs.add("/erreur");
+		myAcceptedURIs.add("/subscribe");
+		myAcceptedURIs.add("/Materialize/css");
+		myAcceptedURIs.add("/Materialize/js");
+		myAcceptedURIs.add("/Materialize/fonts/roboto");
 		
 		
 		for (String forAcceptedURI : myAcceptedURIs) {
@@ -75,16 +82,28 @@ public class ConnexionFilter implements Filter {
 			
 		if (needSecurityCheck) {
 			// On regarde l'obet associé à la clé "username" dans la session de l'utilisateur
-			if (request.getSession().getAttribute("username") == null) {
+			if (request.getSession().getAttribute(Constantes.username) == null) {
 									
 				// accès non autorisé !
-				response.sendRedirect("erreur");
+				Rendu.pageErreur(request.getServletContext(), request, response);
 				return;
 			}
 			
 			else {
-				myAcceptedURIs.add("/accueil");
+				myAcceptedURIs.add("/home");
 				myAcceptedURIs.add("/tetriminos");
+			}
+		}
+		
+		//Si on est déjà connecté, lorsqu'on tente d'accéder à la page login on redirige vers la page d'accueil
+		
+		if(request.getSession().getAttribute(Constantes.username) != null){
+			//Test si on essaie d'accéder à login
+			if(request.getRequestURI().equals("/TetrisVersionJSP/login")){
+				
+				//Redirection vers la page d'accueil
+				response.sendRedirect("/TetrisVersionJSP/home");
+				return;
 			}
 		}
 

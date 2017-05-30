@@ -1,32 +1,72 @@
 package com.sopra.model;
 
-import java.util.UUID;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
+@Table(name="tetrimino")
 public class Tetrimino {
 	
+	
+	/**
+	 * Tous les attributs de la classe Tetrimino
+	 */
+	@Id
+	@GeneratedValue(generator="system-uuid")
+	@GenericGenerator(name="system-uuid", strategy="uuid")
+	@Column(name="TET_ID")
 	private String id;
+	
+	@Column(name="TET_NOM")
+	@NotNull
 	private String nom;
+	
+	@Column(name="TET_COULEUR")
+	@NotNull
 	private String couleur;
+
+
+	
+	
+
+
+
+	/**
+	 * Constructeur par défaut et complet
+	 */
+	
 	/**
 	 * 
 	 */
-
+	public Tetrimino() {
+	}
+	
 	/**
+	 * @param id
 	 * @param nom
 	 * @param couleur
 	 */
 	public Tetrimino(String nom, String couleur) {
 		this.nom = nom;
 		this.couleur = couleur;
-		this.id = UUID.randomUUID().toString();
 	}
-	
+
+
+
+
+
+
+
 	/**
-	 * @return Un tetrimino nommé default de couleur noire
+	 * Getters and Setters
 	 */
-	public Tetrimino() {
-		
-	}
 
 	/**
 	 * @return the id
@@ -34,7 +74,6 @@ public class Tetrimino {
 	public String getId() {
 		return id;
 	}
-
 
 	/**
 	 * @return the nom

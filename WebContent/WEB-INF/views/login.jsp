@@ -19,7 +19,11 @@
 	      </div>
 	    </div>
 		
-	    <button class="btn waves-effect waves-light" type="submit" name="action">S'identifier
+	    <button class="btn waves-effect waves-light" type="submit">S'identifier
+    		<i class="material-icons right">send</i>
+  		</button>	
+
+		<button class="btn waves-effect waves-light" formaction="subscribe" formmethod="POST">S'enregistrer
     		<i class="material-icons right">send</i>
   		</button>
 	</form>

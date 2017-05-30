@@ -59,7 +59,7 @@ public class Rendu {
 	public static void pageSubscribe(ServletContext context, HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
-		pagePrincipale("Enregistrement", "/WEB-INF/views/subscribe.jsp", context, req, resp);
+		pagePrincipale("Création d'un nouvel utilisateur", "/WEB-INF/views/subscribe.jsp", context, req, resp);
 	}
 
 	

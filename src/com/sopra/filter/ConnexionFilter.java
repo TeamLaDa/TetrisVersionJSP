@@ -92,7 +92,6 @@ public class ConnexionFilter implements Filter {
 			else {
 				myAcceptedURIs.add("/home");
 				myAcceptedURIs.add("/tetriminos");
-				myAcceptedURIs.add("/");
 			}
 		}
 		
@@ -103,7 +102,7 @@ public class ConnexionFilter implements Filter {
 			if(request.getRequestURI().equals("/TetrisVersionJSP/login")){
 				
 				//Redirection vers la page d'accueil
-				response.sendRedirect("/TetrisVersionJSP/");
+				response.sendRedirect("/TetrisVersionJSP/home");
 				return;
 			}
 		}

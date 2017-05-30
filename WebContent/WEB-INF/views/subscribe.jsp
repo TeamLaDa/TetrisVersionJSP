@@ -17,7 +17,7 @@
 		<div class="row">
 			<div class="input-field col s6">
 				<i class="material-icons prefix">vpn_key</i>
-				<input id="password" type="password" class="validate">
+				<input id="password" type="password" class="validate" name="motDePasse">
 				<label for="password" data-error="" data-success="">Mot de passe</label>
 			</div>
 		</div>
@@ -35,7 +35,7 @@
 		 <div class="row">
 			<div class="input-field col s6">
 				<i class="material-icons prefix">vpn_key</i>
-				<input id="passwordVerif" type="password" class="validate">
+				<input id="passwordVerif" type="password" class="validate" name="motDePasseValidation">
 				<label for="passwordVerif" data-error="Le mot de passe est différent" data-success="">Taper une nouvelle fois votre mot de passe</label>
 			</div>
 		</div>
@@ -43,7 +43,7 @@
 		<div class="row">
 			<div class="input-field col s6">
 				<i class="material-icons prefix">perm_identity</i>
-				<input id="nom" type="text" class="validate">
+				<input id="nom" type="text" class="validate" name="nom">
 				<label for="passwordVerif" data-error="Le mot de passe est différent" data-success="">Nom</label>
 					
 			</div>
@@ -53,7 +53,7 @@
 	     <div class="row">
 	      <div class="input-field col s6">
 	      	<i class="material-icons prefix">perm_identity</i>
-     	    <input id="prenom" type="text" class="validate">
+     	    <input id="prenom" type="text" class="validate" name="prenom">
      	    <label for="prenom" data-error="" data-success="">Prénom</label>
 	      </div>
 	    </div>

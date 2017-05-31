@@ -35,8 +35,7 @@
 		S'identifier <i class="material-icons right">send</i>
 	</button>
 
-	<button class="btn waves-effect waves-light" formaction="subscribe"
-		formmethod="POST">
+	<a class="btn waves-effect waves-light" href="subscribe">
 		S'enregistrer <i class="material-icons right">send</i>
-	</button>
+	</a>
 </form>

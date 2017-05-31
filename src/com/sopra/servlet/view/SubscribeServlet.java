@@ -33,6 +33,8 @@ public class SubscribeServlet extends DataAccessServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		Rendu.pageSubscribe(this.getServletContext(), request, response);
+
 	}
 
 	/**
@@ -47,12 +49,14 @@ public class SubscribeServlet extends DataAccessServlet {
 			String monNom = request.getParameter("nom");
 			String monPrenom = request.getParameter("prenom");
 			
+			// récupère dans la BDD null ou l'utilisateur ayant le même nom d'utilisateur
+			String usernameBDD = utilisateurDao.findByUsername(myUsername).getUsername();
+
 			
 			// Condition vérifiant que l'utilisateur n'existe pas
-			if (myUsername.equals(utilisateurDao.findByUsername(myUsername))) {
-				String message = "Veuillez choisir un autre nom d'utilisateur !";
-				
-				request.getAttribute(message);
+			if (myUsername.equals(usernameBDD)) {
+
+				request.setAttribute("MessageAlertSubscribe", true);
 	
 				Rendu.pageSubscribe(this.getServletContext(), request, response);
 			}

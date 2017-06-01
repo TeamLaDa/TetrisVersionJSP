@@ -51,8 +51,12 @@
 	     </div>
 	    </div>
 	</c:forEach>
+	<!-- Bouton Ajouter -->
+
+	<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+		<form method="POST" action="editTetrimino">
+	    	<button class="btn-floating btn-large waves-effect waves-light red" type="submit"><i class="material-icons">add</i></button>
+		</form>
+	</div>
 </div>
 
-<form method="POST" action="editTetrimino">
-	<input type="submit" value="Ajouter" />
-</form>

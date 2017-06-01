@@ -41,11 +41,11 @@ public class VerifUsernameSubscribe extends DataAccessServlet {
 			
 			if (username.equals(myUsername)) {
 				
-				return "1";
+				return;
 				
 			} else {
 
-				return "0";
+				return;
 				
 			}
 		}

@@ -49,14 +49,11 @@ public class SubscribeServlet extends DataAccessServlet {
 			String monNom = request.getParameter("nom");
 			String monPrenom = request.getParameter("prenom");
 			
-			// récupère dans la BDD null ou l'utilisateur ayant le même nom d'utilisateur
-			String usernameBDD = utilisateurDao.findByUsername(myUsername).getUsername();
-
 			
 			// Condition vérifiant que l'utilisateur n'existe pas
-			if (myUsername.equals(usernameBDD)) {
-
-				request.setAttribute("MessageAlertSubscribe", true);
+			if (utilisateurDao.findByUsername(myUsername) != null) {
+				
+				request.getSession().setAttribute("MessageAlertSubscribe", true);
 	
 				Rendu.pageSubscribe(this.getServletContext(), request, response);
 			}

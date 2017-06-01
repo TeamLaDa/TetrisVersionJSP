@@ -86,6 +86,14 @@ public class Rendu {
 		// Appel la fonction pagePrincipale
 		pagePrincipale(titrePage, "/WEB-INF/views/editTetrimino.jsp", context, req, resp);
 	}
+	
+	
+	// Affiche la page High-Score
+	public static void pageScore(ServletContext context, HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+
+		pagePrincipale("High-Score", "/WEB-INF/views/score.jsp", context, req, resp);
+	}
 
 	
 

@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sopra.Constantes;
+import com.sopra.model.Joueur;
 import com.sopra.model.Rendu;
+import com.sopra.model.Spectateur;
 import com.sopra.model.Utilisateur;
 import com.sopra.servlet.DataAccessServlet;
 
@@ -48,6 +50,9 @@ public class SubscribeServlet extends DataAccessServlet {
 			String myPasswordValidation = request.getParameter("motDePasseValidation");
 			String monNom = request.getParameter("nom");
 			String monPrenom = request.getParameter("prenom");
+			String joueurSpectateurButton = request.getParameter("joueurSpectateurButton");
+			
+			System.out.println(joueurSpectateurButton);
 			
 			
 			// Condition vérifiant que l'utilisateur n'existe pas
@@ -72,8 +77,17 @@ public class SubscribeServlet extends DataAccessServlet {
 				request.getSession().setAttribute(Constantes.password,myPassword);
 				request.getSession().setAttribute(Constantes.monNom,monNom);
 				request.getSession().setAttribute(Constantes.monPrenom,monPrenom);
+				request.getSession().setAttribute("TYPE_UTILISATEUR",joueurSpectateurButton);
 				
-				Utilisateur new_utilisateur = new Utilisateur();
+				// Crée soit un nouveau joueur ou un nouveau spectateur en fonction de "joueurSpectateurButton"
+				Utilisateur new_utilisateur;
+				if (joueurSpectateurButton.equals("joueur")) {
+					new_utilisateur = new Joueur();
+				} else {
+					new_utilisateur = new Spectateur();
+				}
+				
+				// Attribut les valeurs aux attributs de la classe Utilisateur
 				new_utilisateur.setNom(monNom);
 				new_utilisateur.setPrenom(monPrenom);
 				new_utilisateur.setUsername(myUsername);

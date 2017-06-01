@@ -1,49 +1,25 @@
-package com.sopra.dao.sql;
+package com.sopra.dao.hibernate;
 
-import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.sopra.dao.IUtilisateurDao;
+import com.sopra.dao.IUtilisateurDAO;
 import com.sopra.model.Utilisateur;
 
 
 @Repository
 @Transactional
-public class UtilisateurDaoSql implements IUtilisateurDao{
-
-	@PersistenceContext//(unitName="NomPersistenceUnit")
-	EntityManager em;
+public class UtilisateurHibernateDAO extends DAOHibernate<Utilisateur, String> implements IUtilisateurDAO{
 	
-
-	@Override
-	public List<Utilisateur> findAll() {
-		return (List<Utilisateur>) em.createQuery("from Utilisateur u").getResultList();
+	public UtilisateurHibernateDAO() {
+		this.maClasse= Utilisateur.class;
+		this.maClasseString="Utilisateur";
 	}
 
-	@Override
-	public boolean delete(Utilisateur utilisateur) {
-		em.remove(em.merge(utilisateur));
-		return true;
-	}
-
-	@Override
-	public Utilisateur save(Utilisateur utilisateur) {
-		return this.em.merge(utilisateur);
-	}
-
-	@Override
-	public Utilisateur find(String id) {
-		return em.find(Utilisateur.class, id);
-	}
-
-	@Override
 	public Utilisateur findByUsername(String username) {
+		
 		try {
 			Query myQuery = em.createQuery("from Utilisateur u where u.username = :username");
 			

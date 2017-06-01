@@ -2,17 +2,20 @@ package com.sopra.dao.sql;
 
 import java.util.List;
 
-import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sopra.dao.ITetriminosDao;
 import com.sopra.model.Tetrimino;
 
-@Stateless
+@Repository
+@Transactional
 public class TetriminosDaoSql implements ITetriminosDao{
 
-	@PersistenceContext(unitName="NomPersistenceUnit")
+	@PersistenceContext
 	EntityManager em;
 	
 	

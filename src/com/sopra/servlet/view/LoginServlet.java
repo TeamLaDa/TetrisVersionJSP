@@ -51,10 +51,8 @@ public class LoginServlet extends DataAccessServlet {
 		String myUserName = request.getParameter("nom_utilisateur");
 		String myPassword = request.getParameter("motDePasse");
 		
-		boolean MessageAlertLogin = true;
 		
-		
-		
+		System.out.println(utilisateurDao.findByUsername(myUserName));
 		// récupérer tous les utilisateurs de la base de données
 		Utilisateur utilisateurAVerifier = utilisateurDao.findByUsername(myUserName);
 		
@@ -69,8 +67,8 @@ public class LoginServlet extends DataAccessServlet {
 					
 					response.sendRedirect("home");
 	
-				} else {
-					request.getSession().setAttribute("MessageAlertLogin", MessageAlertLogin);
+				} else if ((myUserName.equals(utilisateurAVerifier.getUsername())) && (!myPassword.equals(utilisateurAVerifier.getPassword()))){
+					request.getSession().setAttribute("MessageAlertLogin", true);
 					response.sendRedirect("login");
 				}
 			}

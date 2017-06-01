@@ -9,7 +9,7 @@
 	<form class="col s12" method="POST" action="">
 
 		<c:if test="${ MessageAlertSubscribe == true }">
-			<p class="red-text text-accent-4">Ce nom d'utilisateur existe déjà, veuillez choisir un autre nom d'utilisateur !</p>
+			<p class="red-text text-accent-4">Ce nom d'utilisateur existe déjà, veuillez en choisir un autre !</p>
 		</c:if>
 
 		<div class="row">

@@ -2,19 +2,22 @@ package com.sopra.dao.sql;
 
 import java.util.List;
 
-import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sopra.dao.IUtilisateurDao;
 import com.sopra.model.Utilisateur;
 
 
-@Stateless
+@Repository
+@Transactional
 public class UtilisateurDaoSql implements IUtilisateurDao{
 
-	@PersistenceContext(unitName="NomPersistenceUnit")
+	@PersistenceContext//(unitName="NomPersistenceUnit")
 	EntityManager em;
 	
 

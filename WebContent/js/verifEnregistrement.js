@@ -37,6 +37,17 @@ $("#prenomSubscribe").on('keyup', verifSubscribe);
 //$("#passwordSubscribeVerif").on('blur', verifSubscribe);
 
 
+/*
+$.ajax({
+	url:"verifusernamesubscribe",
+	method:"GET",
+	data:{"nom_user","val"},
+	success function(result) {
+		
+	}
+})
+}
+*/
 
 
 

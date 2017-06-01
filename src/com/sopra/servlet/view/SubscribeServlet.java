@@ -49,10 +49,11 @@ public class SubscribeServlet extends DataAccessServlet {
 			String monNom = request.getParameter("nom");
 			String monPrenom = request.getParameter("prenom");
 			
+			
 			// Condition vérifiant que l'utilisateur n'existe pas
 			if (utilisateurDao.findByUsername(myUsername) != null) {
-
-				request.setAttribute("MessageAlertSubscribe", true);
+				
+				request.getSession().setAttribute("MessageAlertSubscribe", true);
 	
 				Rendu.pageSubscribe(this.getServletContext(), request, response);
 			}

@@ -8,3 +8,5 @@
 /target/
 
 \.springBeans
+
+\.metadata/WebContent/WEB-INF/faces-config\.pageflow

@@ -35,4 +35,64 @@ public class Figure {
 	@OneToMany(mappedBy="figure")
 	private List<Bloc> blocs;
 
+	/**
+	 * @return the ordre
+	 */
+	public int getOrdre() {
+		return ordre;
+	}
+
+	/**
+	 * @param ordre the ordre to set
+	 */
+	public void setOrdre(int ordre) {
+		this.ordre = ordre;
+	}
+
+	/**
+	 * @return the tetrimino
+	 */
+	public Tetrimino getTetrimino() {
+		return tetrimino;
+	}
+
+	/**
+	 * @param tetrimino the tetrimino to set
+	 */
+	public void setTetrimino(Tetrimino tetrimino) {
+		this.tetrimino = tetrimino;
+	}
+
+	/**
+	 * @return the blocs
+	 */
+	public List<Bloc> getBlocs() {
+		return blocs;
+	}
+
+	/**
+	 * @param blocs the blocs to set
+	 */
+	public void setBlocs(List<Bloc> blocs) {
+		this.blocs = blocs;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * @param ordre
+	 * @param tetrimino
+	 */
+	public Figure(int ordre, Tetrimino tetrimino) {
+		this.ordre = ordre;
+		this.tetrimino = tetrimino;
+	}
+	
+	
+
 }

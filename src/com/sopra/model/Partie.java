@@ -28,26 +28,26 @@ public class Partie {
 	private int id;
 	
 	@Column(name="PAR_DATE")
-	Date date;
+	private Date date;
 	
 	@ManyToOne
 	@JoinColumn(name="PAR_JOUEUR_A")
-	Joueur joueurA;
+	private Joueur joueurA;
 	
 	@ManyToOne
 	@JoinColumn(name="PAR_JOUEUR_B")
-	Joueur joueurB;
+	private Joueur joueurB;
 	
 	@ManyToOne
 	@JoinColumn(name="PAR_JOUEUR_GAGNANT")
-	Joueur joueurGagant;
+	private Joueur joueurGagant;
 	
 	@ManyToMany
 	@JoinTable(
 		name="partiesObservees",
 		joinColumns=@JoinColumn(name="PARO_PAR_ID", referencedColumnName="PAR_ID"),
 		inverseJoinColumns=@JoinColumn(name="PARO_UTI_ID", referencedColumnName="UTI_ID"))
-	List<Spectateur> spectateurs;
+	private List<Spectateur> spectateurs;
 
 	
 	

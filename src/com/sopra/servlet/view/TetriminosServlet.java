@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.sopra.Constantes;
 import com.sopra.dao.ITetriminosDao;
 import com.sopra.model.Rendu;
@@ -21,7 +23,7 @@ import com.sopra.servlet.DataAccessServlet;
 public class TetriminosServlet extends DataAccessServlet {
 	private static final long serialVersionUID = 1L;
 	
-	@EJB
+	@Autowired
 	private ITetriminosDao tetriminoDAO;
        
     /**

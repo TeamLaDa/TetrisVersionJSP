@@ -33,6 +33,8 @@ public class SubscribeServlet extends DataAccessServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		Rendu.pageSubscribe(this.getServletContext(), request, response);
+
 	}
 
 	/**
@@ -49,10 +51,9 @@ public class SubscribeServlet extends DataAccessServlet {
 			
 			
 			// Condition vérifiant que l'utilisateur n'existe pas
-			if (myUsername.equals(utilisateurDao.findByUsername(myUsername))) {
-				String message = "Veuillez choisir un autre nom d'utilisateur !";
+			if (utilisateurDao.findByUsername(myUsername) != null) {
 				
-				request.getAttribute(message);
+				request.getSession().setAttribute("MessageAlertSubscribe", true);
 	
 				Rendu.pageSubscribe(this.getServletContext(), request, response);
 			}

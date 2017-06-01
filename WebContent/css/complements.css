@@ -1,0 +1,40 @@
+@CHARSET "ISO-8859-1";
+
+/* Modification de quelques éléments de materialize pour coller avec l'implementation choisie */
+
+.card .card-action button:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
+  color: #ffab40;
+  margin-right: 24px;
+  transition: color .3s ease;
+  text-transform: uppercase;
+  border: none;
+  background-color: transparent;
+}
+
+.card .card-action button:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover {
+  color: #ffd8a6;
+}
+
+
+.button-container form,
+.button-container form div {
+    display: inline;
+}
+
+.button-container button {
+    display: inline;
+    vertical-align: middle;
+}
+
+#image-tetrimino{
+	height: 250px;	
+}
+
+#texte-image{
+	text-align:center;
+	color:white;
+	position:relative;
+	top:50%;
+	right:0;
+	
+}

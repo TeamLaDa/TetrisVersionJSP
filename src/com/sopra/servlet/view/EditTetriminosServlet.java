@@ -56,7 +56,7 @@ public class EditTetriminosServlet extends DataAccessServlet {
 					 * On le rajoute ensuite a la liste des tetriminos dejà existants
 					 */
 					
-					Tetrimino tetrimino = new Tetrimino("Pas de nom","000");
+					Tetrimino tetrimino = new Tetrimino("Pas de nom","#000");
 					tetrimino = this.tetriminosDao.save(tetrimino);
 					
 					//On recupere l'id du tetrimino
@@ -70,7 +70,7 @@ public class EditTetriminosServlet extends DataAccessServlet {
 				}
 
 				//On alimente la vue JSP du formulaire d'édition avec l'instance de tetrimino à modifier
-				Rendu.editionTetriminos("Edition Tetrimino", this.tetriminosDao.find(id), true, this.getServletContext(), request, response);
+				Rendu.editionTetriminos("Edition Tetrimino", this.tetriminosDao.find(id), this.getServletContext(), request, response);
 			}
 			
 			

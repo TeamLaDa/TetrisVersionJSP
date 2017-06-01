@@ -3,6 +3,7 @@ package com.sopra.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -15,11 +16,10 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name="bloc")
 public class Bloc {
 	
-	@Id
-	@GeneratedValue(generator="system-uuid")
-	@GenericGenerator(name="system-uuid", strategy="uuid")
 	@Column(name="BLO_ID")
-	private String id;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id
+	private int id;
 	
 	@Column(name="BLO_POIDS")
 	@NotNull

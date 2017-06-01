@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -17,11 +18,11 @@ import org.hibernate.annotations.GenericGenerator;
 @Entity
 @Table(name="figure")
 public class Figure {
-	@Id
-	@GeneratedValue(generator="system-uuid")
-	@GenericGenerator(name="system-uuid", strategy="uuid")
+
 	@Column(name="FIG_ID")
-	private String id;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id
+	private int id;
 	
 	@Column(name="FIG_ORDRE")
 	@NotNull

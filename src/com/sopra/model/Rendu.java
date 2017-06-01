@@ -94,6 +94,14 @@ public class Rendu {
 
 		pagePrincipale("High-Score", "/WEB-INF/views/score.jsp", context, req, resp);
 	}
+	
+	
+	// Affiche la page Jouer
+	public static void pageJouer(ServletContext context, HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+
+		pagePrincipale("Jouer", "/WEB-INF/views/jouer.jsp", context, req, resp);
+	}
 
 	
 

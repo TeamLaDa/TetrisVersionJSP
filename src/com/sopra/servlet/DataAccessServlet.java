@@ -6,8 +6,9 @@ import javax.servlet.http.HttpServlet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
-import com.sopra.dao.ITetriminosDao;
-import com.sopra.dao.IUtilisateurDao;
+import com.sopra.dao.IDAO;
+import com.sopra.dao.IUtilisateurDAO;
+import com.sopra.model.Tetrimino;
 
 public abstract class DataAccessServlet extends HttpServlet {
 	/**
@@ -16,10 +17,10 @@ public abstract class DataAccessServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Autowired
-	protected ITetriminosDao tetriminosDao;
+	protected IDAO<Tetrimino, String> tetriminosDao;
 
 	@Autowired
-	protected IUtilisateurDao utilisateurDao;
+	protected IUtilisateurDAO utilisateurDao;
 
 	
 	// surcharge de la méthode init, permettant de faire un pont entre Spring et

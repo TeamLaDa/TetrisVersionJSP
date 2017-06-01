@@ -2,17 +2,14 @@ package com.sopra.servlet.view;
 
 import java.io.IOException;
 
-import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.sopra.Constantes;
-import com.sopra.dao.ITetriminosDao;
 import com.sopra.model.Rendu;
 import com.sopra.servlet.DataAccessServlet;
 
@@ -22,10 +19,7 @@ import com.sopra.servlet.DataAccessServlet;
 @WebServlet("/tetriminos")
 public class TetriminosServlet extends DataAccessServlet {
 	private static final long serialVersionUID = 1L;
-	
-	@Autowired
-	private ITetriminosDao tetriminoDAO;
-       
+	     
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -40,7 +34,7 @@ public class TetriminosServlet extends DataAccessServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 
-		this.getServletContext().setAttribute(Constantes.tetriminos, this.tetriminoDAO.findAll());
+		this.getServletContext().setAttribute(Constantes.tetriminos, this.tetriminosDao.findAll());
 		
 		Rendu.listeTetriminos("Liste des Tetriminos", this.tetriminosDao.findAll(), true, this.getServletContext(), request, response);
 	}

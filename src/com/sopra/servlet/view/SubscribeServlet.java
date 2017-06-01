@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sopra.Constantes;
+import com.sopra.dao.hibernate.UtilisateurHibernateDAO;
 import com.sopra.model.Rendu;
 import com.sopra.model.Utilisateur;
 import com.sopra.servlet.DataAccessServlet;

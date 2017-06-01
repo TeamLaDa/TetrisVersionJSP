@@ -5,10 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.sopra.dao.ITetriminosDao;
+import com.sopra.dao.IDAO;
 import com.sopra.model.Tetrimino;
 
-public class TetriminosDaoApplication implements ITetriminosDao{
+public class TetriminosDaoApplication implements IDAO<Tetrimino, String>{
 
 	private Map<String, Tetrimino> tetriminos = new HashMap<>();
 	public List<Tetrimino> findAll(){

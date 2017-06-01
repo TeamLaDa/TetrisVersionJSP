@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sopra.Constantes;
-import com.sopra.dao.IUtilisateurDao;
+import com.sopra.dao.hibernate.UtilisateurHibernateDAO;
 import com.sopra.model.Rendu;
 import com.sopra.model.Utilisateur;
 import com.sopra.servlet.DataAccessServlet;
@@ -52,7 +52,7 @@ public class LoginServlet extends DataAccessServlet {
 		String myPassword = request.getParameter("motDePasse");
 		
 		
-		System.out.println(utilisateurDao.findByUsername(myUserName));
+		System.out.println(((UtilisateurHibernateDAO) utilisateurDao).findByUsername(myUserName));
 		// récupérer tous les utilisateurs de la base de données
 		Utilisateur utilisateurAVerifier = utilisateurDao.findByUsername(myUserName);
 		

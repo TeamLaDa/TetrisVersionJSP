@@ -23,7 +23,7 @@
 	
 						<li><a href="tetriminos">Tetriminos</a></li>
 	
-						<li><a href="jouer">Jouer</a></li>
+						<li><a href="parties">Jouer</a></li>
 	
 						<li><a href="score">High-Score</a></li>
 					</ul>

@@ -96,11 +96,11 @@ public class Rendu {
 	}
 	
 	
-	// Affiche la page Jouer
-	public static void pageJouer(ServletContext context, HttpServletRequest req, HttpServletResponse resp)
+	// Affiche la page Parties
+	public static void pageParties(ServletContext context, HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
-		pagePrincipale("Jouer", "/WEB-INF/views/jouer.jsp", context, req, resp);
+		pagePrincipale("Liste des parties", "/WEB-INF/views/parties.jsp", context, req, resp);
 	}
 
 	

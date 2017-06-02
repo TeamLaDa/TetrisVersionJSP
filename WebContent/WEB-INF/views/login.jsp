@@ -33,10 +33,10 @@
 
 	<button id="submitLogin" disabled="disabled"
 		class="btn waves-effect waves-light" type="submit">
-		S'identifier <i class="material-icons right">send</i>
+		S'identifier<i class="material-icons right">send</i>
 	</button>
 
 	<a class="btn waves-effect waves-light" href="subscribe">
-		S'enregistrer <i class="material-icons right">send</i>
+	S'enregistrer
 	</a>
 </form>

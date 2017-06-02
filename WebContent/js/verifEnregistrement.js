@@ -10,6 +10,9 @@ function verifSubscribe() {
 	var passwordVerif = document.getElementById("passwordSubscribeVerif").value;
 	var mot = document.getElementById("nomSubscribe").value;
 	var prenom = document.getElementById("prenomSubscribe").value;
+	var joueur = document.getElementById("joueurButton").checked;
+	var spectateur = document.getElementById("spectateurButton").checked;
+	
 	
 	// Condition permettant de vérifier si les MdP sont identiques ou non
 	if (password != passwordVerif) {
@@ -20,8 +23,8 @@ function verifSubscribe() {
 		$("#passwordSubscribeVerif").removeClass("invalid");
 	}
 	
-	// Condition vérifiant si les 2 champs sont pas null ou pas
-	if ((user != "") && (password != "") && (passwordVerif != "") && (mot != "") && (prenom != "") && (password == passwordVerif)) {
+	// Condition vérifiant si tous les champs ne sont pas null
+	if ((user != "") && (password != "") && (passwordVerif != "") && (mot != "") && (prenom != "") && (password == passwordVerif) && ((joueur == true) || (spectateur == true)) ) {
 		$("#submitSubscribe").removeAttr('disabled');
 	} else {
 		$("#submitSubscribe").attr('disabled','disabled');
@@ -34,7 +37,7 @@ $("#passwordSubscribe").on('keyup', verifSubscribe);
 $("#passwordSubscribeVerif").on('keyup', verifSubscribe);
 $("#nomSubscribe").on('keyup', verifSubscribe);
 $("#prenomSubscribe").on('keyup', verifSubscribe);
-//$("#passwordSubscribeVerif").on('blur', verifSubscribe);
+$("input[name='joueurSpectateurButton']").on('change', verifSubscribe);
 
 
 /*

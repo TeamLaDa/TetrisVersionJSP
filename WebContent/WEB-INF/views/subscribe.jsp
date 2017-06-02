@@ -68,20 +68,25 @@
 
 		<!-- Switch entre le choix d'être Joueur ou Spectateur -->
 		<div>Voulez-vous être Joueur ou Spectateur ?</div>
-	    <p>
-	      <input name="joueurSpectateurButton" type="radio" id="joueurButton" value="joueur"/>
-	      <label for="joueurButton">Joueur</label>
-	    </p>
-	    <p>
-	      <input name="joueurSpectateurButton" type="radio" id="spectateurButton" value="spectateur"/>
-	      <label for="spectateurButton">Spectateur</label>
-	    </p>
+		<p>
+			<input name="joueurSpectateurButton" type="radio" id="joueurButton"
+				value="joueur" /> <label for="joueurButton">Joueur</label>
+		</p>
+		<p>
+			<input name="joueurSpectateurButton" type="radio"
+				id="spectateurButton" value="spectateur" /> <label
+				for="spectateurButton">Spectateur</label>
+		</p>
 
 
 		<!-- Bouton permettant l'envoie du formulaire -->
 		<button id=submitSubscribe disabled="disabled"
 			class="btn waves-effect waves-light" type="submit" name="action">
-			S'authentifier <i class="material-icons right">send</i>
+			S'enregistrer<i class="material-icons right">send</i>
 		</button>
+
+		<a class="btn waves-effect waves-light" href="login">
+		S'identifier<i class="material-icons right">replay</i>
+		</a>
 	</form>
 </div>

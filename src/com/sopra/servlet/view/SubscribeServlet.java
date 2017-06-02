@@ -51,9 +51,7 @@ public class SubscribeServlet extends DataAccessServlet {
 			String myPasswordValidation = request.getParameter("motDePasseValidation");
 			String monNom = request.getParameter("nom");
 			String monPrenom = request.getParameter("prenom");
-			String joueurSpectateurButton = request.getParameter("joueurSpectateurButton");
-			
-			System.out.println(joueurSpectateurButton);
+			String typeUtilisateur = request.getParameter("joueurSpectateurButton");
 			
 			
 			// Condition vérifiant que l'utilisateur n'existe pas
@@ -78,11 +76,11 @@ public class SubscribeServlet extends DataAccessServlet {
 				request.getSession().setAttribute(Constantes.password,myPassword);
 				request.getSession().setAttribute(Constantes.monNom,monNom);
 				request.getSession().setAttribute(Constantes.monPrenom,monPrenom);
-				request.getSession().setAttribute("TYPE_UTILISATEUR",joueurSpectateurButton);
+				request.getSession().setAttribute("TYPE_UTILISATEUR",typeUtilisateur);
 				
 				// Crée soit un nouveau joueur ou un nouveau spectateur en fonction de "joueurSpectateurButton"
 				Utilisateur new_utilisateur;
-				if (joueurSpectateurButton.equals("joueur")) {
+				if (typeUtilisateur.equals("joueur")) {
 					new_utilisateur = new Joueur();
 				} else {
 					new_utilisateur = new Spectateur();

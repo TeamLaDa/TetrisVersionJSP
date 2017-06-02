@@ -24,8 +24,10 @@
 	    
     	<input type="hidden" value=${ tetrimino_old.id} name="tetrimino_new_id"/>
 		
-	    <button class="btn waves-effect waves-light" type="submit" name="action">Valider
+	    <button class="btn waves-effect waves-light" type="submit" name="action" id="submitEdition">Valider
 	    	<i class="material-icons right">send</i>
 	 	</button>
 	</form>
 </div>
+
+<script type="text/javascript" src="js/verifEditionTetrimino.js"></script>

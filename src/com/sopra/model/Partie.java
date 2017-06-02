@@ -25,7 +25,7 @@ public class Partie {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="PAR_ID")
-	private int id;
+	private Integer id;
 	
 	@Column(name="PAR_DATE")
 	private Date date;

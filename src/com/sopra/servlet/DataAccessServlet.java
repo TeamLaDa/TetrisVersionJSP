@@ -34,10 +34,10 @@ public abstract class DataAccessServlet extends HttpServlet {
 	protected IUtilisateurDAO utilisateurDao;
 	
 	@Autowired 
-	IScoreDAO scoreDAO;
+	protected IScoreDAO scoreDAO;
 	
 	@Autowired
-	IPartieDAO partieDAO;
+	protected IPartieDAO partieDAO;
 	
 
 	

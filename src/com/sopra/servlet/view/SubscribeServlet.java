@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.hibernate.validator.internal.engine.messageinterpolation.parser.ELState;
-
 import com.sopra.Constantes;
 import com.sopra.model.Administrateur;
 import com.sopra.model.Joueur;

@@ -48,38 +48,19 @@
          <div class="collapsible-body">
           <div class="row">
           
-          <!-- Dessin de la grille -->
-            <div class="col s2">
-            
-            <!-- Premiere ligne -->
-            <div class= "row" style="margin-bottom: 0px;">
-              <div class="square"></div>
-              <div class="square"></div>
-              <div class="square"></div>
-              <div class="square"></div>
-           </div>
-              
-           <div class= "row" style="margin-bottom: 0px;">
-              <div class="square"></div>
-              <div class="square"></div>
-              <div class="square"></div>
-              <div class="square"></div>
-           </div>
-                   
-           <div class= "row" style="margin-bottom: 0px;">
-              <div class="square"></div>
-              <div class="square"></div>
-              <div class="square"></div>
-              <div class="square"></div>
-           </div>
-           
-           <div class= "row" style="margin-bottom: 0px;">
-              <div class="square"></div>
-              <div class="square"></div>
-              <div class="square"></div>
-              <div class="square"></div>
-           </div>
-        </div>
+          <!-- Dessin de la grille 4x4-->
+
+          <div class="col s2">
+            <c:forEach var="y" begin = "0" end="3">
+              <div class= "row" style="margin-bottom: 0px;">
+                <c:forEach var="x" begin = "0" end="3">
+                  <div class="square">
+                  </div>
+                </c:forEach>
+             </div>
+            </c:forEach>
+          </div>
+
             <a class="btn-floating waves-effect waves-light blue" id="boutonForme"><i class="material-icons">mode_edit</i></a>
          </div>
          </div>

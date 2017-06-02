@@ -12,7 +12,7 @@
 			
 			<!-- 1- Choisir le nom -->
 			<li>
-			<div class="collapsible-header #eeeeee grey lighten-3 active"><i class="material-icons">text_fields</i> <b>1. Nom du Tetrimino</b></div>
+			<div class="collapsible-header #eeeeee grey lighten-3"><i class="material-icons">text_fields</i> <b>1. Nom du Tetrimino</b></div>
 				  <div class="collapsible-body">
 				    <div class="row">
 				      <div class="input-field col s6">
@@ -44,23 +44,54 @@
 	    
 	    <!-- 3- Choisir la forme -->
       <li>
-       <div class="collapsible-header #eeeeee grey lighten-3"><i class="fa fa-cubes"></i> <b>3. Forme du Tetrimino</b></div> 
+       <div class="collapsible-header #eeeeee grey lighten-3 active"><i class="fa fa-cubes"></i> <b>3. Forme du Tetrimino</b></div> 
          <div class="collapsible-body">
           <div class="row">
-            <div class="input-field col s6">
-                    
-            </div>
-            <a class="btn-floating waves-effect waves-light blue" id="boutonForme"><i class="material-icons">mode_edit</i></a>
-          </div>
+          
+          <!-- Dessin de la grille -->
+            <div class="col s2">
+            
+            <!-- Premiere ligne -->
+            <div class= "row" style="margin-bottom: 0px;">
+              <div class="square"></div>
+              <div class="square"></div>
+              <div class="square"></div>
+              <div class="square"></div>
+           </div>
+              
+           <div class= "row" style="margin-bottom: 0px;">
+              <div class="square"></div>
+              <div class="square"></div>
+              <div class="square"></div>
+              <div class="square"></div>
+           </div>
+                   
+           <div class= "row" style="margin-bottom: 0px;">
+              <div class="square"></div>
+              <div class="square"></div>
+              <div class="square"></div>
+              <div class="square"></div>
+           </div>
+           
+           <div class= "row" style="margin-bottom: 0px;">
+              <div class="square"></div>
+              <div class="square"></div>
+              <div class="square"></div>
+              <div class="square"></div>
+           </div>
         </div>
+            <a class="btn-floating waves-effect waves-light blue" id="boutonForme"><i class="material-icons">mode_edit</i></a>
+         </div>
+         </div>
       </li>
       
-      <!-- 2- Choisir le pivot de rotation -->
+      <!-- 4- Choisir le pivot de rotation -->
       <li>
        <div class="collapsible-header #eeeeee grey lighten-3"><i class="fa fa-rotate-right"></i> <b>4. Rotation du Tetrimino</b></div> 
          <div class="collapsible-body">
           <div class="row">
-            <div class="input-field col s6">
+            <div class="col s6">
+            
             </div>
             <a class="btn-floating waves-effect waves-light blue" id="boutonRotation"><i class="material-icons">mode_edit</i></a>
           </div>

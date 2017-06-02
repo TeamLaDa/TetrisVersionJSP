@@ -3,6 +3,11 @@
 	
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+
+<!-- Définition d'un constante -->
+<c:set var="administrateur" value="administrateur"/>
+
+
 <!-- On affiche les tetriminos en ligne -->
 <div class = "row">
 
@@ -51,12 +56,16 @@
 	     </div>
 	    </div>
 	</c:forEach>
-	<!-- Bouton Ajouter -->
-
-	<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-		<form method="POST" action="editTetrimino">
-	    	<button class="btn-floating btn-large waves-effect waves-light red" type="submit"><i class="material-icons">add</i></button>
-		</form>
-	</div>
+	
+	
+	
+	<!-- Bouton Ajouter uniquement s'il s'agit de l'administrateur -->
+	<c:if test="${ typeUtilisateur == administrateur }">
+		<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+			<form method="POST" action="editTetrimino">
+		    	<button class="btn-floating btn-large waves-effect waves-light red" type="submit"><i class="material-icons">add</i></button>
+			</form>
+		</div>
+	</c:if>
 </div>
 

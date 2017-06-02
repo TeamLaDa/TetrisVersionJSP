@@ -8,8 +8,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.validator.internal.engine.messageinterpolation.parser.ELState;
+
 import com.sopra.Constantes;
+import com.sopra.model.Administrateur;
+import com.sopra.model.Joueur;
+import com.sopra.dao.hibernate.UtilisateurHibernateDAO;
 import com.sopra.model.Rendu;
+import com.sopra.model.Spectateur;
 import com.sopra.model.Utilisateur;
 import com.sopra.servlet.DataAccessServlet;
 
@@ -48,6 +54,7 @@ public class SubscribeServlet extends DataAccessServlet {
 			String myPasswordValidation = request.getParameter("motDePasseValidation");
 			String monNom = request.getParameter("nom");
 			String monPrenom = request.getParameter("prenom");
+			String typeUtilisateur = request.getParameter("joueurSpectateurButton");
 			
 			
 			// Condition vérifiant que l'utilisateur n'existe pas
@@ -73,7 +80,19 @@ public class SubscribeServlet extends DataAccessServlet {
 				request.getSession().setAttribute(Constantes.monNom,monNom);
 				request.getSession().setAttribute(Constantes.monPrenom,monPrenom);
 				
-				Utilisateur new_utilisateur = new Utilisateur();
+				// Crée soit un nouveau joueur ou un nouveau spectateur en fonction de "joueurSpectateurButton"
+				Utilisateur new_utilisateur = null;
+				if (typeUtilisateur.equals("joueur")) {
+					new_utilisateur = new Joueur();
+				} else if (typeUtilisateur.equals("spectateur")) {
+					new_utilisateur = new Spectateur();
+				} else if (typeUtilisateur.equals("administrateur")) {
+					new_utilisateur = new Administrateur();
+				}
+				// Ajoute le paramètre à la session
+				request.getSession().setAttribute("typeUtilisateur",typeUtilisateur);
+				
+				// Attribut les valeurs aux attributs de la classe Utilisateur
 				new_utilisateur.setNom(monNom);
 				new_utilisateur.setPrenom(monPrenom);
 				new_utilisateur.setUsername(myUsername);

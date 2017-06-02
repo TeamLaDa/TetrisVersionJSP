@@ -4,12 +4,6 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
-import com.sopra.Constantes;
-import com.sopra.dao.ITetriminosDao;
-import com.sopra.dao.application.TetriminosDaoApplication;
-import com.sopra.dao.sql.TetriminosDaoSql;
-import com.sopra.model.Tetrimino;
-
 /**
  * Application Lifecycle Listener implementation class AppListener
  *

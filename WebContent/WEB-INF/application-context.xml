@@ -15,7 +15,7 @@
 	<context:annotation-config />
 
 	<!-- On active les annotations pour ces packages -->
-	<context:component-scan base-package="com.sopra.dao.sql" />
+	<context:component-scan base-package="com.sopra.dao.hibernate" />
 
 	<!-- On crée le DataSource -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">

@@ -93,6 +93,8 @@ public class ConnexionFilter implements Filter {
 			else {
 				myAcceptedURIs.add("/home");
 				myAcceptedURIs.add("/tetriminos");
+				myAcceptedURIs.add("/score");
+				myAcceptedURIs.add("/jouer");
 			}
 		}
 		

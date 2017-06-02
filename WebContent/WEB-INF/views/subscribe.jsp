@@ -77,7 +77,15 @@
 				id="spectateurButton" value="spectateur" /> <label
 				for="spectateurButton">Spectateur</label>
 		</p>
-
+		
+		<!-- Bouton à décommenter si volonté de créer un administrateur -->
+		<!-- 
+		<p>
+			<input name="joueurSpectateurButton" type="radio"
+				id="administrateurButton" value="administrateur" /> <label
+				for="administrateurButton">Administrateur</label>
+		</p>
+ 		-->
 
 		<!-- Bouton permettant l'envoie du formulaire -->
 		<button id=submitSubscribe disabled="disabled"

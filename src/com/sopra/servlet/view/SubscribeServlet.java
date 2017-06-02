@@ -8,7 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.validator.internal.engine.messageinterpolation.parser.ELState;
+
 import com.sopra.Constantes;
+import com.sopra.model.Administrateur;
 import com.sopra.model.Joueur;
 import com.sopra.dao.hibernate.UtilisateurHibernateDAO;
 import com.sopra.model.Rendu;
@@ -76,15 +79,18 @@ public class SubscribeServlet extends DataAccessServlet {
 				request.getSession().setAttribute(Constantes.password,myPassword);
 				request.getSession().setAttribute(Constantes.monNom,monNom);
 				request.getSession().setAttribute(Constantes.monPrenom,monPrenom);
-				request.getSession().setAttribute("TYPE_UTILISATEUR",typeUtilisateur);
 				
 				// Crée soit un nouveau joueur ou un nouveau spectateur en fonction de "joueurSpectateurButton"
-				Utilisateur new_utilisateur;
+				Utilisateur new_utilisateur = null;
 				if (typeUtilisateur.equals("joueur")) {
 					new_utilisateur = new Joueur();
-				} else {
+				} else if (typeUtilisateur.equals("spectateur")) {
 					new_utilisateur = new Spectateur();
+				} else if (typeUtilisateur.equals("administrateur")) {
+					new_utilisateur = new Administrateur();
 				}
+				// Ajoute le paramètre à la session
+				request.getSession().setAttribute("typeUtilisateur",typeUtilisateur);
 				
 				// Attribut les valeurs aux attributs de la classe Utilisateur
 				new_utilisateur.setNom(monNom);

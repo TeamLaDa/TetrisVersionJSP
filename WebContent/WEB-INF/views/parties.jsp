@@ -18,7 +18,7 @@
 				<div>Joueur A : ${ partie.joueurA.username }</div>
 
 				<!-- Bouton permettant de rejoindre une partie -->
-				<c:if test="${ partie.joueurB == null }">
+				<c:if test="${ (partie.joueurB == null) && ( userConnecte != partie.joueurA) }">
 					<div class="float right">
 						<form method="POST" action="newJoueur">
 							<button class="btn waves-effect waves-light" type="submit">Rejoindre

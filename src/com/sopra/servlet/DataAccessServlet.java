@@ -28,7 +28,7 @@ public abstract class DataAccessServlet extends HttpServlet {
 	protected IBlocDAO blocDAO;
 	
 	@Autowired 
-	IFigureDAO figureDAO;
+	protected IFigureDAO figureDAO;
 
 	@Autowired
 	protected IUtilisateurDAO utilisateurDao;

@@ -57,6 +57,7 @@ public class EditTetriminosServlet extends DataAccessServlet {
 					 */
 					
 					Tetrimino tetrimino = new Tetrimino("Pas de nom","#000");
+					
 					tetrimino = this.tetriminosDao.save(tetrimino);
 					
 					//On recupere l'id du tetrimino

@@ -1,43 +1,33 @@
-package com.sopra.servlet.view;
+package com.sopra.servlet.action;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sopra.Constantes;
-import com.sopra.model.Joueur;
-import com.sopra.model.Partie;
-import com.sopra.model.Rendu;
-import com.sopra.servlet.DataAccessServlet;
-
 /**
- * Servlet implementation class PartiesServlet
+ * Servlet implementation class FigureServlet
  */
-@WebServlet("/parties")
-public class PartiesServlet extends DataAccessServlet {
+@WebServlet("/editFigure")
+public class EditFigureServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public EditFigureServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		List<Partie> listeParties = partieDAO.findAll();
-		
-		// Récupère le username de la session en cours
-		String username = (String) request.getSession().getAttribute(Constantes.username);
-		Joueur user = (Joueur) utilisateurDao.findByUsername(username);
-		
-		request.setAttribute("listeParties", listeParties);
-		request.setAttribute("userConnecte", user);
-		
-		Rendu.pageParties(this.getServletContext(), request, response);
-		
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

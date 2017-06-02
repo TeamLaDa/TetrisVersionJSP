@@ -35,8 +35,14 @@ public class TetriminosServlet extends DataAccessServlet {
 		
 
 		this.getServletContext().setAttribute(Constantes.tetriminos, this.tetriminosDao.findAll());
+		String typeUtilisateurAdmin = (String) request.getSession().getAttribute("typeUtilisateur");
 		
-		Rendu.listeTetriminos("Liste des Tetriminos", this.tetriminosDao.findAll(), true, this.getServletContext(), request, response);
+		// Condition pour savoir si l'utilisateur est administrateur ou pas, permettant de savoir s'il peut modifier les tetriminos
+		if (typeUtilisateurAdmin.equals("administrateur")) {
+			Rendu.listeTetriminos("Liste des Tetriminos", this.tetriminosDao.findAll(), true, this.getServletContext(), request, response);
+		} else {
+			Rendu.listeTetriminos("Liste des Tetriminos", this.tetriminosDao.findAll(), false, this.getServletContext(), request, response);
+		}
 	}
 
 	/**

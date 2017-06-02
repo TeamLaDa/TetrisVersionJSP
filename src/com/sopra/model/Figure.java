@@ -88,9 +88,8 @@ public class Figure {
 	 * @param ordre
 	 * @param tetrimino
 	 */
-	public Figure(int ordre, Tetrimino tetrimino) {
-		this.ordre = ordre;
-		this.tetrimino = tetrimino;
+	public Figure(int ordre) {
+		this.ordre=ordre;
 	}
 	
 	

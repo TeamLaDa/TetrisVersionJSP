@@ -1,6 +1,7 @@
 package com.sopra.model;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -62,6 +63,9 @@ public class Tetrimino {
 	public Tetrimino(String nom, String couleur) {
 		this.nom = nom;
 		this.couleur = couleur;
+		
+		this.figures = new ArrayList<>();
+		figures.add(new Figure(1));
 	}
 
 

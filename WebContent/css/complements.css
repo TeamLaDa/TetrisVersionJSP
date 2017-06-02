@@ -45,5 +45,11 @@
   height: 39px; /* = width for a 1:1 aspect ratio */
   float: left;
   border : 1px solid black;
-  padding: 2px;
+}
+
+.square{
+	 background-color: transparent;
+	 border: none;
+	 width : 39px;
+   height: 39px;
 }

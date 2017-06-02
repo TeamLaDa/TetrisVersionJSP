@@ -60,15 +60,10 @@ public class LoginServlet extends DataAccessServlet {
 		// Récupère le type de l'utilisateur
 		if (utilisateurAVerifier instanceof Joueur) {
 			typeUtilisateur = "joueur";
-			System.out.println("Toto1");
-
 		} else if (utilisateurAVerifier instanceof Spectateur) {
 			typeUtilisateur = "spectateur";
-			System.out.println("Toto2");
-
 		} else {
 			typeUtilisateur = "administrateur";
-			System.out.println("Toto3");
 		}
 		
 		

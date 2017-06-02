@@ -114,4 +114,20 @@ public class Tetrimino {
 	}
 	
 	
+	/**
+	 * @return the figures
+	 */
+	public List<Figure> getFigures() {
+		return figures;
+	}
+
+	/**
+	 * @param figures
+	 *            the figures to set
+	 */
+	public void setFigures(List<Figure> figures) {
+		this.figures = figures;
+	}
+	
+	
 }

@@ -77,7 +77,23 @@
             <a class="btn-floating waves-effect waves-light blue" id="boutonRotation"><i class="material-icons">mode_edit</i></a>
           </div>
         </div>
-      </li>     
+      </li>
+
+
+      <!-- 5- Choisir le poids du tetrimino --> 
+      <li> 
+       <div class="collapsible-header #eeeeee grey lighten-3"><i class="fa fa-rotate-right"></i> <b>5. Points du Tetrimino</b></div>  
+         <div class="collapsible-body"> 
+          <div class="row"> 
+      <div class="input-field col s6"> 
+         <p class="range-field"> 
+            <input type="range" id="pointsTetrimino" min="1" max="100" name="pointsTetrimino"/> 
+          </p> 
+      </div> 
+            <a class="btn-floating waves-effect waves-light blue" id="boutonPoints"><i class="material-icons">mode_edit</i></a> 
+          </div> 
+        </div> 
+      </li>   
                	
 	  </ul>
 	  <input type="hidden" value=${ tetrimino_old.id} name="tetrimino_new_id"/>

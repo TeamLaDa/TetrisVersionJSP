@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sopra.Constantes;
+import com.sopra.model.Joueur;
 import com.sopra.model.Partie;
 import com.sopra.model.Rendu;
 import com.sopra.servlet.DataAccessServlet;
@@ -27,7 +29,12 @@ public class PartiesServlet extends DataAccessServlet {
 		
 		List<Partie> listeParties = partieDAO.findAll();
 		
+		// Récupère le username de la session en cours
+		String username = (String) request.getSession().getAttribute(Constantes.username);
+		Joueur user = (Joueur) utilisateurDao.findByUsername(username);
+		
 		request.setAttribute("listeParties", listeParties);
+		request.setAttribute("userConnecte", user);
 		
 		Rendu.pageParties(this.getServletContext(), request, response);
 		

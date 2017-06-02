@@ -70,6 +70,8 @@ function verifLogin() {
 	}
 }
 
+
 // Surveillance de plusieurs évènement
 $("#utilisateurLogin").on('keyup', verifLogin);
 $("#passwordLogin").on('keyup', verifLogin);
+$("#boutonNom").on('click0');

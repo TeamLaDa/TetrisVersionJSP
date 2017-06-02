@@ -15,8 +15,37 @@ function verifEdition() {
 	} else {
 		$("#submitEdition").attr('disabled','disabled');
 	}
+	
+	//Condition vérifiant si le champ nom est vide
+	if((nom !== "")){
+		$("#boutonNom").removeAttr('disabled');
+	} else {
+		$("#boutonNom").attr('disabled','disabled');
+	}
+	
+	//Condition vérifiant si le champ couleur est vide
+	if((couleur !== "")){
+		$("#boutonCouleur").removeAttr('disabled');
+	} else {
+		$("#boutonCouleur").attr('disabled','disabled');
+	}
+	
+
 }
 
 // Surveillance de plusieurs évènement
 $("#nom_tetrimino").on('keyup', verifEdition);
 $("#couleur_tetrimino").on('keyup', verifEdition);
+
+
+$("#boutonNom").on('click', function() {
+	$('.collapsible').collapsible('open', 1);;
+});
+
+$("#boutonCouleur").on('click', function() {
+	$('.collapsible').collapsible('open', 2);;
+});
+
+$("#boutonForme").on('click', function() {
+	$('.collapsible').collapsible('open', 3);;
+});

@@ -33,8 +33,11 @@
 	 	      <div class="row">
 	          <div class="input-field col s6">
 	          
+	          	<!-- 
 	            <input value="${tetrimino_old.couleur }" id="couleur_tetrimino" type="text" name="tetrimino_new_couleur">
 	 	          <label for="couleur_tetrimino">Couleur</label>
+	 	        -->
+	 	        <input value="${tetrimino_old.couleur }" id="couleur_tetrimino" type="color" value="#000" name="tetrimino_new_couleur">
 	 	          
 	   	      </div>
             <a class="btn-floating waves-effect waves-light blue" id="boutonCouleur"><i class="material-icons">mode_edit</i></a>

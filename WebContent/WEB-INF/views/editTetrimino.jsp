@@ -127,6 +127,8 @@
                	
 	  </ul>
 	  <input type="hidden" value=${ tetrimino_old.id} name="tetrimino_new_id"/>
+	  <input type="hidden" value="true" name="editFormIsValid"/>
+
 		  <button class="btn waves-effect waves-light" type="submit" name="action" id="submitEdition">Valider
 		    <i class="material-icons right">send</i>
 		 	</button>

@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sopra.model.Rendu;
+import com.sopra.Rendu;
 
 /**
  * Servlet implementation class accueil

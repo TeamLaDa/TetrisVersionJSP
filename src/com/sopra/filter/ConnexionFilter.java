@@ -70,7 +70,8 @@ public class ConnexionFilter implements Filter {
 		myAcceptedURIs.add("/Materialize/js");
 		myAcceptedURIs.add("/js");
 		myAcceptedURIs.add("/Materialize/fonts/roboto");
-		
+		myAcceptedURIs.add("/verifusernamesubscribe");
+
 		
 		for (String forAcceptedURI : myAcceptedURIs) {
 						

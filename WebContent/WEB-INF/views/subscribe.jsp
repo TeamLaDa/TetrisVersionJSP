@@ -19,7 +19,9 @@
 				<i class="material-icons prefix">account_circle</i> <input
 					id="utilisateurSubscribe" type="text" class="validate"
 					name="nom_utilisateur"> <label for="utilisateurSubscribe"
-					data-error="" data-success="">Nom d'Utilisateur</label>
+					data-error-memenom="Nom d'utilisateur déjà existant, veuillez en choisir un nouveau !"
+					data-error-regex="Le nom d'utilisateur saisi contient un caractère incorrect."
+					data-success="">Nom d'Utilisateur</label>
 			</div>
 		</div>
 
@@ -77,7 +79,7 @@
 				id="spectateurButton" value="spectateur" /> <label
 				for="spectateurButton">Spectateur</label>
 		</p>
-		
+
 		<!-- Bouton à décommenter si volonté de créer un administrateur -->
 		<!-- 
 		<p>
@@ -93,8 +95,8 @@
 			S'enregistrer<i class="material-icons right">send</i>
 		</button>
 
-		<a class="btn waves-effect waves-light" href="login">
-		S'identifier<i class="material-icons right">replay</i>
+		<a class="btn waves-effect waves-light" href="login"> S'identifier<i
+			class="material-icons right">replay</i>
 		</a>
 	</form>
 </div>

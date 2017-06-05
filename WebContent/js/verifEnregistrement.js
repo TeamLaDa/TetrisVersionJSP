@@ -24,10 +24,41 @@ function verifSubscribe() {
 		$("#passwordSubscribeVerif").removeClass("invalid");
 	}
 	
+	// Condition permettant que le nom de l'utilisateur soit uniquement des a-z, A-Z, et 0-9
+	var userRegex = /^[a-zA-Z0-9-.\-]+$/;
+	var usernameWithRegex = $("#utilisateurSubscribe").val().match(userRegex);
+
+	// si le nom d'utilisateur contient au moins un caractère non autorisé
+	if (usernameWithRegex == null) {
+		$("#utilisateurSubscribe").addClass("invalid");
+		$("#utilisateurSubscribe + label").attr("data-error", $("#utilisateurSubscribe + label").data("error-regex"));
+	}
+	
+	// si le nom d'utilisation contient uniquement des caractères autorisés
+	else {
+		$("#utilisateurSubscribe").removeClass("invalid");
+		
+		// Fonction permettant de vérifier si le nom d'utilisateur est déjà pris
+		$.ajax({
+			url:"verifusernamesubscribe",
+			method:"GET",
+			data: {"nom_user": $("#utilisateurSubscribe").val()},
+			success: function(result) {
+				if (result == 1) {
+					$("#utilisateurSubscribe").addClass("invalid");
+					$("#utilisateurSubscribe + label").attr("data-error", $("#utilisateurSubscribe + label").data("error-memenom"));
+				} else {
+					$("#utilisateurSubscribe").removeClass("invalid");
+				}
+			}
+		});
+	}
+	
+	
 	// Condition vérifiant si tous les champs ne sont pas null
 		// décommenter la première ligne si volonté de créer un administrateur
-	// if ((user != "") && (password != "") && (passwordVerif != "") && (mot != "") && (prenom != "") && (password == passwordVerif) && ((joueur == true) || (spectateur == true) || (administrateur == true)) ) {
-	if ((user != "") && (password != "") && (passwordVerif != "") && (mot != "") && (prenom != "") && (password == passwordVerif) && ((joueur == true) || (spectateur == true)) ) {
+	// if ((user != "") && (password != "") && (passwordVerif != "") && (mot != "") && (prenom != "") && (password == passwordVerif) && ((joueur == true) || (spectateur == true) || (administrateur == true)) && (usernameWithRegex != null) ) {
+	if ((user != "") && (password != "") && (passwordVerif != "") && (mot != "") && (prenom != "") && (password == passwordVerif) && ((joueur == true) || (spectateur == true)) && (usernameWithRegex != null)) {
 		$("#submitSubscribe").removeAttr('disabled');
 	} else {
 		$("#submitSubscribe").attr('disabled','disabled');
@@ -35,25 +66,18 @@ function verifSubscribe() {
 }
 
 // Surveillance de plusieurs évènement
-$("#utilisateurSubscribe").on('keyup', verifSubscribe);
-$("#passwordSubscribe").on('keyup', verifSubscribe);
+$("#utilisateurSubscribe").on('blur', verifSubscribe);
+$("#passwordSubscribe").on('blur', verifSubscribe);
 $("#passwordSubscribeVerif").on('keyup', verifSubscribe);
 $("#nomSubscribe").on('keyup', verifSubscribe);
 $("#prenomSubscribe").on('keyup', verifSubscribe);
 $("input[name='joueurSpectateurButton']").on('change', verifSubscribe);
 
 
-/*
-$.ajax({
-	url:"verifusernamesubscribe",
-	method:"GET",
-	data:{"nom_user","val"},
-	success function(result) {
-		
-	}
-})
-}
-*/
+
+
+
+
 
 
 

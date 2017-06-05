@@ -19,12 +19,6 @@ import com.sopra.servlet.DataAccessServlet;
 public class VerifUsernameSubscribe extends DataAccessServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public VerifUsernameSubscribe() {
-        super();
-    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -32,23 +26,22 @@ public class VerifUsernameSubscribe extends DataAccessServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// Je récupère le nom d'utilisateur renseigné
-		String myUsername = request.getParameter("nom_utilisateur");
+		String myUsername = request.getParameter("nom_user").toLowerCase();
 
-		List<Utilisateur> listutilisateurs = utilisateurDao.findAll();
+		List<Utilisateur> listUtilisateurs = utilisateurDao.findAll();
 
-		for (Utilisateur utilisateur : listutilisateurs) {
-			String username = utilisateur.getUsername();
+		for (Utilisateur utilisateur : listUtilisateurs) {
+			String username = utilisateur.getUsername().toLowerCase();
 			
 			if (username.equals(myUsername)) {
 				
-				return;
-				
-			} else {
-
+				response.getWriter().print(1);
 				return;
 				
 			}
 		}
+		
+		response.getWriter().print(0);
 		
 	}
 

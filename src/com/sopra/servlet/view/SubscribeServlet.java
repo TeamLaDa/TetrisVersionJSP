@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sopra.Constantes;
+import com.sopra.Rendu;
 import com.sopra.model.Administrateur;
 import com.sopra.model.Joueur;
 import com.sopra.dao.hibernate.UtilisateurHibernateDAO;
-import com.sopra.model.Rendu;
 import com.sopra.model.Spectateur;
 import com.sopra.model.Utilisateur;
 import com.sopra.servlet.DataAccessServlet;

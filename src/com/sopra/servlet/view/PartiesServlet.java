@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sopra.Constantes;
+import com.sopra.Rendu;
 import com.sopra.model.Joueur;
 import com.sopra.model.Partie;
-import com.sopra.model.Rendu;
 import com.sopra.servlet.DataAccessServlet;
 
 /**

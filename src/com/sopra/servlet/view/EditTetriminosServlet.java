@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sopra.model.Rendu;
+import com.sopra.Rendu;
 import com.sopra.model.Tetrimino;
 import com.sopra.servlet.DataAccessServlet;
 

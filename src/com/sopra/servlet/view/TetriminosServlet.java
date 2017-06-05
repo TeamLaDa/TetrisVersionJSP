@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import com.sopra.Constantes;
-import com.sopra.model.Rendu;
+import com.sopra.Rendu;
 import com.sopra.servlet.DataAccessServlet;
 
 /**

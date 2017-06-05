@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sopra.Constantes;
-import com.sopra.model.Rendu;
+import com.sopra.Rendu;
 
 /**
  * Servlet Filter implementation class connexionFilter

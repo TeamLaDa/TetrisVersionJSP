@@ -35,7 +35,7 @@ public class Bloc {
 	
 	@ManyToOne
 	@JoinColumn(name="BLO_FIGURE_ID")
-	Figure figure;
+	private Figure figure;
 
 	/**
 	 * @return the poids
@@ -95,6 +95,12 @@ public class Bloc {
 		this.poids = poids;
 		this.positionX = positionX;
 		this.positionY = positionY;
+	}
+
+	/**
+	 * 
+	 */
+	public Bloc() {
 	}
 	
 	

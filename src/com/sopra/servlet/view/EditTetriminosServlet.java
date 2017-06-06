@@ -1,6 +1,7 @@
 package com.sopra.servlet.view;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sopra.Rendu;
+import com.sopra.model.Bloc;
+import com.sopra.model.Figure;
 import com.sopra.model.Tetrimino;
 import com.sopra.servlet.DataAccessServlet;
 
@@ -54,7 +57,6 @@ public class EditTetriminosServlet extends DataAccessServlet {
 					 */
 					
 					Tetrimino tetrimino = new Tetrimino("Pas de nom","#000000");
-					System.out.println(tetrimino.getId());
 					
 					
 					//On alimente la vue JSP du formulaire d'édition avec l'instance de tetrimino à modifier
@@ -67,8 +69,23 @@ public class EditTetriminosServlet extends DataAccessServlet {
 					//On recupere l'id du tetrimino à modifier
 					String id = request.getParameter("id_editer");
 					
+					
+					//On récupère le tetrimino dans la BDD
+					Tetrimino tetrimino = this.tetriminosDao.find(id);
+					
+					//On récupère la liste des figures correspondantes la BDD
+					List<Figure> figures = this.figureDAO.findWithTetrimino(id);
+					
+					//On récupère les blocs de la premiere figure (principale) dans la BDD
+					List<Bloc> blocs = this.blocDAO.findWithFigure(figures.get(0).getId());
+					
+					//On intègre les éléments récupéres à l'instance de tetrimino
+					figures.get(0).setBlocs(blocs);
+					tetrimino.setFigures(figures);
+					
+										
 					//On alimente la vue JSP du formulaire d'édition avec l'instance de tetrimino à modifier
-					Rendu.editionTetriminos("Edition Tetrimino", this.tetriminosDao.find(id), this.getServletContext(), request, response);
+					Rendu.editionTetriminos("Edition Tetrimino", tetrimino, this.getServletContext(), request, response);
 				}
 
 			}

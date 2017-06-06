@@ -54,10 +54,10 @@
           <!-- Dessin de la grille 4x4-->
 
           <div class="col s3">
-            <c:set var="isEmpty" value="true"/>
             <c:forEach var="y" begin = "0" end="3">
               <div class= "row" style="margin-bottom: 0px;">
                 <c:forEach var="x" begin = "0" end="3">
+                  <c:set var="isEmpty" value="true"/>
                 
                 <%--Pour chaque case de la grille, on envoie trois paramètres à la servlet editBloc: --%>
                 <%-- x et y les coordonnées de la case --%>
@@ -67,23 +67,19 @@
                    <%--S'il n'existe pas encore de blocs (cas de création), on ne rentre même pas dans la boucle --%>
                    <c:forEach items="${tetrimino_old.figures[0].blocs}" var="bloc">
 
-                     <c:if test="${tetrimino_old.figures[0].bloc.positionX == x && tetrimino_old.figures[0].bloc.positionY == y }">
+                     <c:if test="${bloc.positionX == x && bloc.positionY == y }">
                        <%--Dans le cas ou il existe un bloc, on l'affiche sur la grille, avec la couleur du tetrimino--%>
                        <c:set var="isEmpty" value="false"/>
-                       <a href="editBloc?x=${x}&y=${y}?isEmpty=${isEmpty})">
                          <div class="bloc" style="background-color: ${tetrimino_old.couleur};">
-                         </div>  
-                       </a>                   
+                         </div>                
                      </c:if>
                      
                    </c:forEach>
                    
                    <%--Cas ou après parcours de la liste des blocs il n'y en a aucun à l'emplacement x,y : on affiche une case vide --%>                    
                    <c:if test="${isEmpty eq true}">
-                     <a href="editBloc?x=${x}&y=${y}&isEmpty=${isEmpty})">
                        <div class="bloc">
                        </div>
-                     </a>
                    </c:if>
                 </c:forEach>
              </div>

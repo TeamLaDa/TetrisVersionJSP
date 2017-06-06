@@ -2,6 +2,7 @@
  * Page subscribe
  */
 
+var usernameUnique = false;
 // Fonction permettant de vérifier si tous les champs de mon formulaire "Login" sont remplis
 function verifSubscribe() {
 	// Je récupère les éléments de mon fichier HTML
@@ -47,8 +48,10 @@ function verifSubscribe() {
 				if (result == 1) {
 					$("#utilisateurSubscribe").addClass("invalid");
 					$("#utilisateurSubscribe + label").attr("data-error", $("#utilisateurSubscribe + label").data("error-memenom"));
+					usernameUnique = false;
 				} else {
 					$("#utilisateurSubscribe").removeClass("invalid");
+					usernameUnique = true;
 				}
 			}
 		});
@@ -57,8 +60,8 @@ function verifSubscribe() {
 	
 	// Condition vérifiant si tous les champs ne sont pas null
 		// décommenter la première ligne si volonté de créer un administrateur
-	// if ((user != "") && (password != "") && (passwordVerif != "") && (mot != "") && (prenom != "") && (password == passwordVerif) && ((joueur == true) || (spectateur == true) || (administrateur == true)) && (usernameWithRegex != null) ) {
-	if ((user != "") && (password != "") && (passwordVerif != "") && (mot != "") && (prenom != "") && (password == passwordVerif) && ((joueur == true) || (spectateur == true)) && (usernameWithRegex != null)) {
+	// if ((user != "") && (password != "") && (passwordVerif != "") && (mot != "") && (prenom != "") && (password == passwordVerif) && ((joueur == true) || (spectateur == true) || (administrateur == true)) && (usernameWithRegex != null) && (usernameUnique == true) ) {
+	if ((user != "") && (password != "") && (passwordVerif != "") && (mot != "") && (prenom != "") && (password == passwordVerif) && ((joueur == true) || (spectateur == true)) && (usernameWithRegex != null) && (usernameUnique == true)) {
 		$("#submitSubscribe").removeAttr('disabled');
 	} else {
 		$("#submitSubscribe").attr('disabled','disabled');

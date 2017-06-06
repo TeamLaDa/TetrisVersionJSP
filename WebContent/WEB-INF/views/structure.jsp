@@ -32,6 +32,7 @@
   <script type="text/javascript" src="Materialize/js/materialize.min.js"></script>		
   <script type="text/javascript" src="js/verifEnregistrement.js"></script>		
   <script type="text/javascript" src="js/verifEditionTetrimino.js"></script>
+  <script type="text/javascript" src="js/editBloc.js"></script>
   
 </body>
 </html>

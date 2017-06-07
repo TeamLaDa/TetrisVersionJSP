@@ -54,9 +54,9 @@
           <!-- Dessin de la grille 4x4-->
 
           <div class="col s3">
-            <c:forEach var="y" begin = "0" end="3">
+            <c:forEach var="y" begin = "0" end="2">
               <div class= "row" style="margin-bottom: 0px;">
-                <c:forEach var="x" begin = "0" end="3">
+                <c:forEach var="x" begin = "0" end="2">
                   <c:set var="isEmpty" value="true"/>
                 
                 <%--Pour chaque case de la grille, on envoie trois paramètres à la servlet editBloc: --%>

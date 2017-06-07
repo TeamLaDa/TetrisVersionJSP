@@ -12,7 +12,7 @@
 			
 			<!-- 1- Choisir le nom -->
 			<li>
-			<div class="collapsible-header #eeeeee grey lighten-3"><i class="material-icons">text_fields</i> <b>1. Nom du Tetrimino</b></div>
+			<div class="collapsible-header #eeeeee grey lighten-3" id="choixNom"><i class="material-icons">text_fields</i> <b>1. Nom du Tetrimino</b></div>
 				  <div class="collapsible-body">
 				    <div class="row">
 				      <div class="input-field col s6">
@@ -28,7 +28,7 @@
 			
 			<!-- 2- Choisir la couleur -->
 	    <li>
-		   <div class="collapsible-header #eeeeee grey lighten-3"><i class="material-icons">color_lens</i> <b>2. Couleur du Tetrimino</b></div>	
+		   <div class="collapsible-header #eeeeee grey lighten-3" id="choixCouleur"><i class="material-icons">color_lens</i> <b>2. Couleur du Tetrimino</b></div>	
 	 		   <div class="collapsible-body">
 	 	      <div class="row">
 	          <div class="input-field col s6">
@@ -47,11 +47,10 @@
 	    
 	    <!-- 3- Choisir la forme -->
       <li>
-       <div class="collapsible-header #eeeeee grey lighten-3 active"><i class="fa fa-cubes"></i> <b>3. Forme du Tetrimino</b></div> 
+       <div class="collapsible-header #eeeeee grey lighten-3 active" id="choixForme"><i class="fa fa-cubes"></i> <b>3. Forme du Tetrimino</b></div> 
          <div class="collapsible-body">
           <div class="row">
           
-          <!-- Dessin de la grille 4x4-->
           <!-- Dessin de la grille 3x3-->
 
           <div class="col s3">
@@ -102,7 +101,7 @@
       
       <!-- 4- Choisir le pivot de rotation -->
       <li>
-       <div class="collapsible-header #eeeeee grey lighten-3"><i class="fa fa-rotate-right"></i> <b>4. Rotation du Tetrimino</b></div> 
+       <div class="collapsible-header #eeeeee grey lighten-3" id="choixRotation"><i class="fa fa-rotate-right"></i> <b>4. Rotation du Tetrimino</b></div> 
          <div class="collapsible-body">
           <div class="row">
             <div class="col s6">
@@ -116,7 +115,7 @@
 
       <!-- 5- Choisir le poids du tetrimino --> 
       <li> 
-       <div class="collapsible-header #eeeeee grey lighten-3"><i class="fa fa-rotate-right"></i> <b>5. Points du Tetrimino</b></div>  
+       <div class="collapsible-header #eeeeee grey lighten-3" id="choixPoids"><i class="fa fa-rotate-right"></i> <b>5. Points du Tetrimino</b></div>  
          <div class="collapsible-body"> 
           <div class="row"> 
       <div class="input-field col s6"> 

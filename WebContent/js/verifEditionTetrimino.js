@@ -43,6 +43,9 @@ $("#boutonNom").on('click', function() {
 });
 
 $("#boutonCouleur").on('click', function() {
+	//On actualise la couleur des blocs
+	$(".bloc").css("background-color", $("#couleur_tetrimino").val());
+	
 	$('.collapsible').collapsible('open', 2);;
 });
 

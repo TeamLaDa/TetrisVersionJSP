@@ -52,6 +52,7 @@
           <div class="row">
           
           <!-- Dessin de la grille 4x4-->
+          <!-- Dessin de la grille 3x3-->
 
           <div class="col s3">
             <c:forEach var="y" begin = "0" end="2">
@@ -70,12 +71,10 @@
                      <c:if test="${bloc.positionX == x && bloc.positionY == y }">
                        <%--Dans le cas ou il existe un bloc, on l'affiche sur la grille, avec la couleur du tetrimino--%>
                        <c:set var="isEmpty" value="false"/>
-                       <div class="bloc" style="background-color: ${tetrimino_old.couleur};">
+                       <div class="case bloc" style="background-color:${tetrimino_old.couleur};">
                          <%--Elements à envoyer au script JS --%>                       
                          <input type="hidden" name="x" value="${x}"/>
                          <input type="hidden" name="y" value="${y}"/>
-                         <input type="hidden" name="isEmpty" value="${isEmpty}"/>
-                         <input type="hidden" name="blocCouleur" value="${tetrimino_old.couleur}"/>
                        </div>        
                      </c:if>
                      
@@ -83,12 +82,10 @@
                    
                    <%--Cas ou après parcours de la liste des blocs il n'y en a aucun à l'emplacement x,y : on affiche une case vide --%>                    
                    <c:if test="${isEmpty eq true}">
-                       <div class="bloc">
+                       <div class="case">
                          <%--Elements à envoyer au script JS --%>                       
                          <input type="hidden" name="x" value="${x}"/>
                          <input type="hidden" name="y" value="${y}"/>
-                         <input type="hidden" name="isEmpty" value="${isEmpty}"/>
-                         <input type="hidden" name="blocCouleur" value="${tetrimino_old.couleur}"/>
                        </div>
                    </c:if>
                 </c:forEach>
@@ -96,7 +93,8 @@
             </c:forEach>
           </div>
 
-            <a class="btn-floating waves-effect waves-light blue" id="boutonForme"><i class="material-icons">mode_edit</i></a>
+            <a class="btn-floating waves-effect waves-light green" id="boutonForme"><i class="material-icons">done</i></a>
+            <a class="btn-floating waves-effect waves-light red" id="boutonFormeDelete"><i class="material-icons">delete</i></a>            
             
          </div>
          </div>

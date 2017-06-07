@@ -14,7 +14,7 @@
 	<!-- On parcourt la liste des tetriminos -->
 	
 	
-	<c:forEach items="${ tetriminos }" var="tetrimino">	
+	<c:forEach items="${ tetri }" var="tetrimino">	
 	
     <!--------------------- Affichage du Tetrimino ----------------------->
 
@@ -32,7 +32,6 @@
    	      <!-- Bandeau d'information supplementaires -->
 		  <div class="card-reveal">
 	        <span class="card-title grey-text text-darken-4">${ tetrimino.nom }<i class="material-icons right">close</i></span>
-		    <p>Here is some more information about this product that is only revealed once clicked on.</p>
 		  </div>
 	    
 	    <!-- Affichage des boutons retirer et editer -->

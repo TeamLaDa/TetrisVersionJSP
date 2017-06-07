@@ -15,7 +15,7 @@ import com.sopra.servlet.DataAccessServlet;
 /**
  * Servlet implementation class NewJoueur
  */
-@WebServlet("/newJoueur")
+//@WebServlet("/newJoueur")
 public class NewJoueurServlet extends DataAccessServlet {
 	private static final long serialVersionUID = 1L;
        

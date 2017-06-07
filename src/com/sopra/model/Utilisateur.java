@@ -9,9 +9,9 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="utilisateur", uniqueConstraints = { @UniqueConstraint(columnNames = "UTI_USERNAME") })
@@ -29,19 +29,19 @@ public class Utilisateur {
 	private String id;
 	
 	@Column(name="UTI_NOM")
-	@NotNull
+	@NotEmpty
 	private String nom;
 	
 	@Column(name="UTI_PRENOM")
-	@NotNull
+	@NotEmpty
 	private String prenom;
 	
 	@Column(name="UTI_USERNAME")
-	@NotNull
+	@NotEmpty
 	private String username;
 	
 	@Column(name="UTI_PASSWORD")
-	@NotNull
+	@NotEmpty
 	private String password;
 
 	

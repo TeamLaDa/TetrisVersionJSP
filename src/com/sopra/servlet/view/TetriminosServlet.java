@@ -16,7 +16,7 @@ import com.sopra.servlet.DataAccessServlet;
 /**
  * Servlet implementation class TetriminosServlet
  */
-@WebServlet("/tetriminos")
+//@WebServlet("/tetriminos")
 public class TetriminosServlet extends DataAccessServlet {
 	private static final long serialVersionUID = 1L;
 	     

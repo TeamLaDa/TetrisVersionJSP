@@ -38,7 +38,7 @@
 	
 						<li><a href="${ pageContext.request.contextPath }/tetriminos">Tetriminos</a></li>
 	
-						<li><a href="${ pageContext.request.contextPath }/jouer">Regarder une partie</a></li>
+						<li><a href="${ pageContext.request.contextPath }/parties">Regarder une partie</a></li>
 					</ul>
 				</c:when>
  				

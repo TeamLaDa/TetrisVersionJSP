@@ -40,7 +40,7 @@
 	  		<div class="card-action">		  
 			    <!-- On passe les id des tetriminos pour les actions d'edition et suppression. Les id des formulaires servent a lier les boutons sur l'affichage-->
 			    <div class="button-container">
-			      <form method="POST" action="deleteTetrimino" id="formSupprimer">
+			      <form method="POST" action="tetriminos/delete" id="formSupprimer">
 				    <input type ="hidden" name="id_supprimer" value="${ tetrimino.id }" >
    		            <button  type="submit">RETIRER</button>
 				  </form>

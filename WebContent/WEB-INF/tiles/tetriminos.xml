@@ -10,4 +10,10 @@
 		<put-attribute name="body" value="/WEB-INF/views/jsp/tetriminos.jsp" />
 	</definition>
 	
+	<!-- Configuration de la vue "editTetrimino" -->
+	<definition name="editTetrimino" extends="base.definition">
+		<put-attribute name="title" value="Tetris - Edition d'un Tetrimino" cascade="true" />
+		<put-attribute name="body" value="/WEB-INF/views/jsp/editTetrimino.jsp" />
+	</definition>
+	
 </tiles-definitions>

@@ -44,6 +44,20 @@
   width : 39px;
   height: 39px; /* = width for a 1:1 aspect ratio */
   float: left;
-  border : 1px solid black;
+
+}
+
+.case:not(.test){
+	border : 1px solid black;
   cursor :pointer;
+}
+
+.vide{
+	width : 39px;
+  height: 39px;
+  float: left;
+}
+
+.rot:not(#pivot){
+	opacity: 0.5;
 }

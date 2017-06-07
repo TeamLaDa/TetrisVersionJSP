@@ -2,7 +2,9 @@
  * Script permettant d'ajouter/supprimer des blocs sur la grille lors de l'edition d'un tetrimino
  */
 
-$(".case").click(function() {
+
+//Action de clic sur la grille lors de l'étape 4.Forme du tetrimino
+$(".case").not($(".rot")).not($(".test")).click(function() {
 	if($(this).hasClass("bloc")){
 		$(this).removeClass("bloc");
 		$(this).css("background-color", "white");
@@ -15,12 +17,89 @@ $(".case").click(function() {
 	}
 });
 
+
+//Action de clic sur le bouton supprimer lors de l'étape 4.Forme du tetrimino
 $("#boutonFormeDelete").click(function(){
-	$(".case").removeClass("bloc")
-	$(".case").css("background-color", "white")
+	$(".case").not($(".rot")).not($(".test")).removeClass("bloc")
+	$(".case").not($(".rot")).not($(".test")).css("background-color", "white")
 })
 
 
-
+//Action de clic sur le bouton valider lors de l'étape 4.Forme du tetrimino
 $("#boutonForme").click(function(){
-})
+});
+
+//Action de clic sur la figure lors de l'étape 5.Rotation
+
+//Action de clic sur le bouton tourner à droite lors de l'étape 5.Forme du tetrimino
+$("#rotateRight").click(function(){
+	//On récupère les coordonées du pivot
+	var x_pivot = parseInt($("#pivot").children("input[name='x']").val(), 10); 
+	var y_pivot = parseInt($("#pivot").children("input[name='y']").val(), 10);
+	
+	x_pivot+=3;
+	y_pivot+=3;
+	
+	//Pour chaque bloc autre que le pivot dans la grille de test, on applique le changement
+	$(".bloc.test").not($("#pivot")).each(function(){
+		var x = parseInt($(this).children("input[name='x']").val(),10);
+		var y = parseInt($(this).children("input[name='y']").val(),10);
+		
+		//On applique la rotation sur tous les autres points autre que le pivot
+		if(!(x==x_pivot && y==y_pivot)){
+			
+			//On calcule les nouvelles positions
+			var x_r = -y + y_pivot + x_pivot;
+			var y_r = x - x_pivot + y_pivot;
+			
+			//On parcourt la liste des blocs vides
+			$(".case.test").filter(function(index){
+				return ($(this).children("input[name='x']").val() == x_r && $(this).children("input[name='y']").val() == y_r)
+			})
+			  .css("background-color", $("#couleur_tetrimino").val())
+			  .addClass("bloc");
+			
+			
+			$(this).removeClass("bloc");
+			$(this).css("background-color", "white");
+		}
+	});
+});
+
+//Action de clic sur le bouton tourner à gauche lors de l'étape 5.Forme du tetrimino
+$("#rotateLeft").click(function(){
+	//On récupère les coordonées du pivot
+	var x_pivot = parseInt($("#pivot").children("input[name='x']").val(), 10); 
+	var y_pivot = parseInt($("#pivot").children("input[name='y']").val(), 10);
+	
+	x_pivot+=3;
+	y_pivot+=3;
+	
+	//Pour chaque bloc autre que le pivot dans la grille de test, on applique le changement
+	$(".bloc.test").not($("#pivot")).each(function(){
+		var x = parseInt($(this).children("input[name='x']").val(),10);
+		var y = parseInt($(this).children("input[name='y']").val(),10);
+		
+		//On applique la rotation sur tous les autres points autre que le pivot
+		if(!(x==x_pivot && y==y_pivot)){
+			
+			//On calcule les nouvelles positions
+			var x_r = y - y_pivot + x_pivot;
+			var y_r = -x + x_pivot + y_pivot;
+			
+			//On parcourt la liste des blocs vides
+			$(".case.test").filter(function(index){
+				return ($(this).children("input[name='x']").val() == x_r && $(this).children("input[name='y']").val() == y_r)
+			})
+			  .css("background-color", $("#couleur_tetrimino").val())
+			  .addClass("bloc");
+			
+			
+			$(this).removeClass("bloc");
+			$(this).css("background-color", "white");
+		}
+	});
+});
+//Action de clic sur le bouton supprimer lors de l'étape 5.Forme du tetrimino
+
+//Action de clic sur le bouton valider lors de l'étape 5.Forme du tetrimino

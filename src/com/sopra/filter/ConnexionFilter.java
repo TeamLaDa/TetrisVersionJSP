@@ -72,6 +72,8 @@ public class ConnexionFilter implements Filter {
 		myAcceptedURIs.add("/erreur");
 		myAcceptedURIs.add("/account/login");
 		myAcceptedURIs.add("/account/subscribe");
+		myAcceptedURIs.add("/account/userVerif");
+		myAcceptedURIs.add("/API/account/userVerif");
 		
 		// Ressources autorisées
 		myAcceptedURIs.add("/Materialize/css");

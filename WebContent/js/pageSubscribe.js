@@ -6,7 +6,6 @@ var usernameUnique = false;
 // Fonction permettant de vérifier si tous les champs de mon formulaire "Subscribe" sont remplis
 function verifSubscribe() {
 	// Je récupère les éléments de mon fichier HTML
-	console.log("toto")
 	var user = $("#username").val();
 	var password = $("#password").val();
 	var passwordVerif = $("#passwordVerif").val();
@@ -36,18 +35,20 @@ function verifSubscribe() {
 		$("#username").addClass("invalid");
 		$("#username + label").attr("data-error", $("#username + label").data("error-regex"));
 	}
-/*	
+	
+	
+	
 	// si le nom d'utilisation contient uniquement des caractères autorisés
 	else {
 		$("#username").removeClass("invalid");
 		
 		// Fonction permettant de vérifier si le nom d'utilisateur est déjà pris
 		$.ajax({
-			url:"verifusernamesubscribe",
+			url:"/TetrisVersionJSP/API/account/userVerif",
 			method:"GET",
 			data: {"nom_user": $("#username").val()},
 			success: function(result) {
-				if (result == 1) {
+				if (result == true) {
 					$("#username").addClass("invalid");
 					$("#username + label").attr("data-error", $("#username + label").data("error-memenom"));
 					usernameUnique = false;
@@ -58,7 +59,7 @@ function verifSubscribe() {
 			}
 		});
 	}
-*/	
+	
 	
 	// Condition vérifiant si tous les champs ne sont pas null
 		// décommenter la première ligne si volonté de créer un administrateur

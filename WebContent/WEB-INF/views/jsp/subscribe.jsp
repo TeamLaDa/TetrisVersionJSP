@@ -33,7 +33,7 @@
 				<i class="material-icons prefix">vpn_key</i>
 				<form:input class="validate" type="password" path="password" />
 				<form:label path="password"
-					data-error="" data-success="">Mot de passe</form:label>
+					data-error="" data-success=""><spring:message code="subscribe.password" /></form:label>
 			</div>
 		</div>
 
@@ -43,8 +43,7 @@
 				<i class="material-icons prefix">vpn_key</i>
 				<input class="validate" type="password" name="passwordVerif" id="passwordVerif" />
 				<label for="passwordVerif"
-					data-error="Le mot de passe est différent" data-success="">Taper
-					une nouvelle fois votre mot de passe</label>
+					data-error="Le mot de passe est différent" data-success=""><spring:message code="subscribe.password.verif" /></label>
 			</div>
 		</div>
 
@@ -54,7 +53,7 @@
 				<i class="material-icons prefix">perm_identity</i>
 				<form:input class="validate" path="nom" />
 				<form:label path="nom" data-error="Le mot de passe est différent"
-					data-success="">Nom</form:label>
+					data-success=""><spring:message code="subscribe.nom" /></form:label>
 
 			</div>
 		</div>
@@ -64,22 +63,22 @@
 			<div class="input-field col s6">
 				<i class="material-icons prefix">perm_identity</i>
 				<form:input class="validate" path="prenom" />
-				<form:label path="prenom" data-error="" data-success="">Prénom</form:label>
+				<form:label path="prenom" data-error="" data-success=""><spring:message code="subscribe.prenom" /></form:label>
 			</div>
 		</div>
 
 
 		<!-- Switch entre le choix d'être Joueur ou Spectateur -->
-		<div>Voulez-vous être Joueur ou Spectateur ?</div>
+		<div><spring:message code="subscribe.player.spectator" /></div>
 		<p>
 			<input name="joueurSpectateurButton" type="radio" id="joueurButton"
 				value="joueur" />
-			<label for="joueurButton">Joueur</label>
+			<label for="joueurButton"><spring:message code="subscribe.joueur" /></label>
 		</p>
 		<p>
 			<input name="joueurSpectateurButton" type="radio"
 				id="spectateurButton" value="spectateur" />
-			<label for="spectateurButton">Spectateur</label>
+			<label for="spectateurButton"><spring:message code="subscribe.spectateur" /></label>
 		</p>
 
 		<!-- Bouton à décommenter si volonté de créer un administrateur -->
@@ -87,17 +86,17 @@
 		<p>
 			<input name="joueurSpectateurButton" type="radio"
 				id="administrateurButton" value="administrateur" /> <label
-				for="administrateurButton">Administrateur</label>
+				for="administrateurButton"><spring:message code="subscribe.administrateur" /></label>
 		</p>
  		-->
 
 		<!-- Bouton permettant l'envoie du formulaire -->
 		<button id=submitSubscribe disabled="disabled"
 			class="btn waves-effect waves-light" type="submit" name="action">
-			S'enregistrer<i class="material-icons right">send</i>
+			<spring:message code="subscribe.subscribe" /><i class="material-icons right">send</i>
 		</button>
 
-		<a class="btn waves-effect waves-light" href="login"> S'identifier<i
+		<a class="btn waves-effect waves-light" href="login"><spring:message code="subscribe.login" /><i
 			class="material-icons right">replay</i>
 		</a>
 	</form:form>

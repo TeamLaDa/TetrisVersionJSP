@@ -92,6 +92,19 @@
 					</ul>
 
 				</c:when>
+
+				<%-- Pas d'utilisateur authentifié --%>
+				<c:when test="${ typeUtilisateur == null }">
+					<ul id="nav-mobile" class="right hide-on-med-and-down">
+
+						<!-- Dropdown Trigger -->
+						<li><a class="dropdown-button" href="#!"
+							data-activates="dropdownLang"><spring:message
+									code="nav.langue" /><i
+								class="material-icons right">arrow_drop_down</i></a></li>
+					</ul>
+
+				</c:when>
 			</c:choose>
 
 

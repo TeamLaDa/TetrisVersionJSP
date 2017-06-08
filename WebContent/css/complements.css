@@ -39,17 +39,28 @@
 	
 }
 
-.square{
-	background-color: white;
-	width : 39px;
+.case{
+  background-color: white;
+  width : 39px;
   height: 39px; /* = width for a 1:1 aspect ratio */
   float: left;
-  border : 1px solid black;
+
 }
 
-.square{
-	 background-color: transparent;
-	 border: none;
-	 width : 39px;
-   height: 39px;
+.case:not(.test){
+	border : 1px solid black;
+}
+
+.case:not(.test):not(.rot){
+	  cursor :pointer;
+}
+
+.vide{
+	width : 39px;
+  height: 39px;
+  float: left;
+}
+
+.rot:not(#pivot){
+	opacity: 0.5;
 }

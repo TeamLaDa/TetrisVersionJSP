@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sopra.model;
+package com.sopra;
 
 import java.io.IOException;
 import java.util.List;
@@ -11,6 +11,8 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.sopra.model.Tetrimino;
 
 /**
  * @author ajc

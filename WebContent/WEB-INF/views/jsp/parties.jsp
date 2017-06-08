@@ -47,7 +47,7 @@
 
 
 <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-	<form method="POST" action="newPartie">
+	<form method="POST" action="parties/newPartie">
 		<button class="btn-floating btn-large waves-effect waves-light red"
 			type="submit">
 			<i class="material-icons">add</i>

@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sopra.Constantes;
-import com.sopra.model.Rendu;
+import com.sopra.Rendu;
 
 /**
  * Servlet Filter implementation class connexionFilter
@@ -63,14 +63,25 @@ public class ConnexionFilter implements Filter {
 		Set<String> myAcceptedURIs = new HashSet<>();
 		boolean needSecurityCheck = true;
 		
+		
+		// URL autorisées
 		myAcceptedURIs.add("/login");
-		myAcceptedURIs.add("/erreur");
 		myAcceptedURIs.add("/subscribe");
+		myAcceptedURIs.add("/verifusernamesubscribe");
+
+		myAcceptedURIs.add("/erreur");
+		myAcceptedURIs.add("/account/login");
+		myAcceptedURIs.add("/account/subscribe");
+		myAcceptedURIs.add("/account/userVerif");
+		myAcceptedURIs.add("/API/account/userVerif");
+		
+		// Ressources autorisées
 		myAcceptedURIs.add("/Materialize/css");
 		myAcceptedURIs.add("/Materialize/js");
-		myAcceptedURIs.add("/js");
 		myAcceptedURIs.add("/Materialize/fonts/roboto");
-		
+		myAcceptedURIs.add("/js");
+		myAcceptedURIs.add("/css");
+
 		
 		for (String forAcceptedURI : myAcceptedURIs) {
 						
@@ -85,16 +96,22 @@ public class ConnexionFilter implements Filter {
 			// On regarde l'obet associé à la clé "username" dans la session de l'utilisateur
 			if (request.getSession().getAttribute(Constantes.username) == null) {
 									
-				// accès non autorisé !
-				Rendu.pageErreur(request.getServletContext(), request, response);
+				// accès non autorisé, renvoie vers page d'erreur
+				response.sendRedirect("/TetrisVersionJSP/erreur");
 				return;
 			}
 			
 			else {
+				
+				// Accès autorisé aux pages suivantes
 				myAcceptedURIs.add("/home");
+				myAcceptedURIs.add("/account/home");
 				myAcceptedURIs.add("/tetriminos");
+				myAcceptedURIs.add("/tetriminos/editTetrimino");
 				myAcceptedURIs.add("/score");
+				myAcceptedURIs.add("/account/score");
 				myAcceptedURIs.add("/jouer");
+				myAcceptedURIs.add("/account/jouer");
 			}
 		}
 		
@@ -102,10 +119,10 @@ public class ConnexionFilter implements Filter {
 		
 		if(request.getSession().getAttribute(Constantes.username) != null){
 			//Test si on essaie d'accéder à login
-			if(request.getRequestURI().equals("/TetrisVersionJSP/login")){
+			if(request.getRequestURI().equals("/TetrisVersionJSP/account/login")){
 				
 				//Redirection vers la page d'accueil
-				response.sendRedirect("/TetrisVersionJSP/home");
+				response.sendRedirect("/TetrisVersionJSP/account/home");
 				return;
 			}
 		}

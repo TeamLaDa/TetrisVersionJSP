@@ -34,6 +34,16 @@ public class Figure {
 	
 	@OneToMany(mappedBy="figure")
 	private List<Bloc> blocs;
+	
+	
+	
+
+	/**
+	 * 
+	 */
+	public Figure() {
+		super();
+	}
 
 	/**
 	 * @return the ordre

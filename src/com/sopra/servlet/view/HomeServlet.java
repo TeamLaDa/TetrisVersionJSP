@@ -7,12 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sopra.model.Rendu;
+import com.sopra.Rendu;
 
 /**
  * Servlet implementation class accueil
  */
-@WebServlet("/home")
+// @WebServlet("/home")
 public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

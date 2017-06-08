@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sopra.Constantes;
+import com.sopra.Rendu;
 import com.sopra.model.Administrateur;
 import com.sopra.model.Joueur;
-import com.sopra.model.Rendu;
 import com.sopra.model.Spectateur;
 import com.sopra.model.Utilisateur;
 import com.sopra.servlet.DataAccessServlet;
@@ -19,7 +19,7 @@ import com.sopra.servlet.DataAccessServlet;
 /**
  * Servlet implementation class homeServlet
  */
-@WebServlet("/login")
+// @WebServlet("/login")
 public class LoginServlet extends DataAccessServlet {
 	private static final long serialVersionUID = 1L;
        

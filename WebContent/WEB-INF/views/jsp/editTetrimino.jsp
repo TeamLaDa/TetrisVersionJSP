@@ -137,7 +137,11 @@
                     </c:if>
                   </c:forEach>
                   <c:if test="${isEmpty eq true}">
-                     <div class="vide"></div>
+                     <div class="case rot">
+                       <%--Elements à envoyer au script JS --%>  
+                       <input type="hidden" name="x" value="${x}"/>
+                       <input type="hidden" name="y" value="${y}"/>
+                     </div>
                   </c:if>
                 </c:forEach>
                </div>

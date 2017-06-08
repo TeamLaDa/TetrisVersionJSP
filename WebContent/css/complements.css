@@ -47,20 +47,11 @@
 
 }
 
-.case:not(.test){
-	border : 1px solid black;
-}
-
 .case:not(.test):not(.rot){
-	  cursor :pointer;
+  border : 1px solid black;
 }
 
-.vide{
-	width : 39px;
-  height: 39px;
-  float: left;
-}
-
-.rot:not(#pivot){
+.bloc.rot:not(#pivot){
 	opacity: 0.5;
+	border : 1px solid black;
 }

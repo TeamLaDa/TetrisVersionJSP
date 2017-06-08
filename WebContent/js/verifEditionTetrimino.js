@@ -9,33 +9,45 @@ function verifEdition() {
 	var nom = document.getElementById("nom_tetrimino").value;
 	var couleur = document.getElementById("couleur_tetrimino").value;
 	
-	// Condition vérifiant si les 2 champs sont pas null ou pas
-	if ((nom != "") && (couleur != "") && ($("#pivot").length)) {
+	//Condition vérifiant si les champs sont remplis ou pas
+	if ((nom != "") && (couleur != "") && $(".case.bloc:not(.test,.rot)").length && ($("#pivot").length)) {
 		$("#submitEdition").removeAttr('disabled');
 	} else {
 		$("#submitEdition").attr('disabled','disabled');
 	}
 	
-	//Condition vérifiant si le champ nom est vide
+	//1.Condition vérifiant si le champ nom est vide
 	if((nom !== "")){
 		$("#boutonNom").removeAttr('disabled');
 	} else {
 		$("#boutonNom").attr('disabled','disabled');
 	}
 	
-	//Condition vérifiant si le champ couleur est vide
+	//2. Condition vérifiant si le champ couleur est vide
 	if((couleur !== "")){
 		$("#boutonCouleur").removeAttr('disabled');
 	} else {
 		$("#boutonCouleur").attr('disabled','disabled');
 	}
 	
-	//Condition vérifiant si le pivot est bien choisi
+	//3. Condition vérifiant si au moins un bloc existe
+	if($(".case.bloc:not(.test,.rot)").length){
+		$("#boutonForme").removeAttr('disabled');
+	} else {
+		$("#boutonForme").attr('disabled','disabled');
+	}
+	
+	
+	//4. Condition vérifiant si le pivot est bien choisi
 	
 	if(($("#pivot").length)){
 		$("#boutonRotation").removeAttr('disabled');
+		$("#rotateLeft").removeAttr('disabled');
+		$("#rotateRight").removeAttr('disabled');
 	} else {
 		$("#boutonRotation").attr('disabled','disabled');
+		$("#rotateLeft").attr('disabled','disabled');
+		$("#rotateRight").attr('disabled','disabled');
 	}
 
 }
@@ -43,7 +55,6 @@ function verifEdition() {
 // Surveillance de plusieurs évènement
 $("#nom_tetrimino").on('keyup', verifEdition);
 $("#couleur_tetrimino").on('keyup', verifEdition);
-$("#boutonRotationDelete").on('click', verifEdition);
 
 
 $("#boutonNom").on('click', function() {

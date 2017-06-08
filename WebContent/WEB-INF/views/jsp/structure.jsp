@@ -39,17 +39,11 @@
 			<tiles:insertAttribute name="body" />
 		</div>
 	
-		<%-- 
-		<jsp:include page="navigation.jsp" />
-		
-		<div class="container">
-			<jsp:include page="${ contentJsp }" />
-		</div>
-		--%>
 		
 	  <script type="text/javascript" src="/TetrisVersionJSP/Materialize/js/materialize.min.js"></script>	
 	  <script <tiles:insertAttribute name="js" /> ></script>		
 	  <script type="text/javascript" src="/TetrisVersionJSP/js/verifEditionTetrimino.js"></script>
+	  <script type="text/javascript" src="/TetrisVersionJSP/js/editBloc.js"></script>
 	  
 	</body>
 </html>

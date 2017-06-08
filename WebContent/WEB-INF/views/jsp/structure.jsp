@@ -7,6 +7,7 @@
 
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
 
 <html>
@@ -25,7 +26,12 @@
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 		
 		<!-- <title>${ pageTitle }</title>  -->
-		<title><tiles:insertAttribute name="title" /></title>
+		
+		<c:set var="titreCode" scope="request">
+			<tiles:insertAttribute name="title" ignore="true" />
+		</c:set>
+		
+		<title><spring:message code="${ titreCode }"></spring:message></title>
 	</head>
 	
 	

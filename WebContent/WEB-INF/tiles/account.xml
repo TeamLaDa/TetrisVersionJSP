@@ -6,20 +6,20 @@
 
 	<!-- Configuration de la vue "home" -->
 	<definition name="home" extends="base.definition">
-		<put-attribute name="title" value="Tetris - Bienvenue" cascade="true" />
+		<put-attribute name="title" value="tetris.welcome" cascade="true" />
 		<put-attribute name="body" value="/WEB-INF/views/jsp/home.jsp" />
 	</definition>
 
 	<!-- Configuration de la vue "login" -->
 	<definition name="login" extends="base.definition">
-		<put-attribute name="title" value="Tetris - Authentification" cascade="true" />
+		<put-attribute name="title" value="tetris.auth" cascade="true" />
 		<put-attribute name="body" value="/WEB-INF/views/jsp/login.jsp" />
 		<put-attribute name="js" value="type='text/javascript' src='/TetrisVersionJSP/js/pageLogin.js'" />
 	</definition>
 
 	<!-- Configuration de la vue "subscribe" -->
 	<definition name="subscribe" extends="base.definition">
-		<put-attribute name="title" value="Tetris - S'enregistrer" cascade="true" />
+		<put-attribute name="title" value="tetris.subscribe" cascade="true" />
 		<put-attribute name="body" value="/WEB-INF/views/jsp/subscribe.jsp" />
 		<put-attribute name="js" value="type='text/javascript' src='/TetrisVersionJSP/js/pageSubscribe.js'" />
 	</definition>

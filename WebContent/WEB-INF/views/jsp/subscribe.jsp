@@ -23,7 +23,7 @@
 				<form:label path="username"
 					data-error-memenom="Nom d'utilisateur déjà existant, veuillez en choisir un nouveau !"
 					data-error-regex="Le nom d'utilisateur saisi contient un caractère incorrect."
-					data-success="">Nom d'Utilisateur</form:label>
+					data-success=""><spring:message code="subscribe.username" /></form:label>
 			</div>
 		</div>
 

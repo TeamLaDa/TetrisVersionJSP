@@ -6,7 +6,7 @@
 
 	<!-- Configuration de la vue "Tetriminos" -->
 	<definition name="tetriminos" extends="base.definition">
-		<put-attribute name="title" value="Tetris - Tetriminos" cascade="true" />
+		<put-attribute name="title" value="tetris.tetriminos" cascade="true" />
 		<put-attribute name="body" value="/WEB-INF/views/jsp/tetriminos.jsp" />
 	</definition>
 	

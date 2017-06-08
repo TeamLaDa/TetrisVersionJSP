@@ -17,7 +17,7 @@
 				    <div class="row">
 				      <div class="input-field col s6">
 				 
-				        <input value="${tetrimino_old.nom }" id="nom_tetrimino" type="text" name="tetrimino_new_nom">
+				        <input value="${ tetrimino.nom }" id="nom_tetrimino" type="text" name="tetrimino_new_nom">
 			          <label for="nom_tetrimino">Nom</label>
 			          
 				      </div>
@@ -37,7 +37,7 @@
 	            <input value="${tetrimino_old.couleur }" id="couleur_tetrimino" type="text" name="tetrimino_new_couleur">
 	 	          <label for="couleur_tetrimino">Couleur</label>
 	 	        -->
-	 	        <input value="${tetrimino_old.couleur }" id="couleur_tetrimino" type="color" value="#000" name="tetrimino_new_couleur">
+	 	        <input value="${tetrimino.couleur }" id="couleur_tetrimino" type="color" value="#000" name="tetrimino_new_couleur">
 	 	          
 	   	      </div>
             <a class="btn-floating waves-effect waves-light blue" id="boutonCouleur"><i class="material-icons">mode_edit</i></a>
@@ -65,7 +65,7 @@
               
                    <%--On parcourt la liste des blocs pour voir s'il en existe un sur l'emplacement x,y sélectionné--%>
                    <%--S'il n'existe pas encore de blocs (cas de création), on ne rentre même pas dans la boucle --%>
-                   <c:forEach items="${tetrimino_old.figures[0].blocs}" var="bloc">
+                   <c:forEach items="${tetrimino.figures[0].blocs}" var="bloc">
 
                      <c:if test="${bloc.positionX == x && bloc.positionY == y }">
                        <%--Dans le cas ou il existe un bloc, on l'affiche sur la grille, avec la couleur du tetrimino--%>
@@ -122,7 +122,7 @@
       </li>   
                	
 	  </ul>
-	  <input type="hidden" value=${ tetrimino_old.id} name="tetrimino_new_id"/>
+	  <input type="hidden" value=${ tetrimino.id} name="tetrimino_new_id"/>
 	  <input type="hidden" value="true" name="editFormIsValid"/>
 
 		  <button class="btn waves-effect waves-light" type="submit" name="action" id="submitEdition">Valider

@@ -105,6 +105,7 @@ public class ConnexionFilter implements Filter {
 				myAcceptedURIs.add("/home");
 				myAcceptedURIs.add("/account/home");
 				myAcceptedURIs.add("/tetriminos");
+				myAcceptedURIs.add("/tetriminos/editTetrimino");
 				myAcceptedURIs.add("/score");
 				myAcceptedURIs.add("/account/score");
 				myAcceptedURIs.add("/jouer");

@@ -45,7 +45,7 @@
    		            <button  type="submit">RETIRER</button>
 				  </form>
 			    
-			      <form method="POST" action="editTetrimino" id="formEditer">
+			      <form method="POST" action="tetriminos/editTetrimino" id="formEditer">
 				    <input type ="hidden" name="id_editer" value="${ tetrimino.id }" >
   				    <button type="submit">EDITER</button>
 				  </form>
@@ -61,7 +61,7 @@
 	<!-- Bouton Ajouter uniquement s'il s'agit de l'administrateur -->
 	<c:if test="${ typeUtilisateur == administrateur }">
 		<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-			<form method="POST" action="editTetrimino">
+			<form method="POST" action="tetriminos/newTetrimino">
 		    	<button class="btn-floating btn-large waves-effect waves-light red" type="submit"><i class="material-icons">add</i></button>
 			</form>
 		</div>

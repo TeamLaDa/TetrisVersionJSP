@@ -33,6 +33,24 @@ public class Bloc {
 	@NotNull
 	private int positionY;
 	
+	@Column(name="BLO_PIVOT")
+	@NotNull
+	private boolean pivot;
+	
+	/**
+	 * @return the pivot
+	 */
+	public boolean isPivot() {
+		return pivot;
+	}
+
+	/**
+	 * @param pivot the pivot to set
+	 */
+	public void setPivot(boolean pivot) {
+		this.pivot = pivot;
+	}
+
 	@ManyToOne
 	@JoinColumn(name="BLO_FIGURE_ID")
 	private Figure figure;

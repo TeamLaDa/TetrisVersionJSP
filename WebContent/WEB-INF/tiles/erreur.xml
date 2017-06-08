@@ -6,7 +6,7 @@
 
 	<!-- Configuration de la vue "home" -->
 	<definition name="erreur" extends="base.definition">
-		<put-attribute name="title" value="Tetris - Erreur" cascade="true" />
+		<put-attribute name="title" value="tetris.erreur" cascade="true" />
 		<put-attribute name="body" value="/WEB-INF/views/jsp/erreur.jsp" />
 	</definition>
 	

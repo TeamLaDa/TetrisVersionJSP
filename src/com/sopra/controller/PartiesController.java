@@ -34,7 +34,7 @@ public class PartiesController extends DataAccessController {
 		session.setAttribute("listeParties", listeParties);
 		session.setAttribute("userConnecte", user);
 		
-		// Permet de rediriger vers la page login
+		// Permet de rediriger vers la page parties
 		return "parties";
 	}
 	
@@ -54,7 +54,7 @@ public class PartiesController extends DataAccessController {
 		
 		partieDAO.save(newPartie);
 		
-		// Permet de rediriger vers la page login
+		// Permet de rediriger vers la page parties
 		return "redirect:/parties";
 	}
 	

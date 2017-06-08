@@ -49,7 +49,10 @@
 
 .case:not(.test){
 	border : 1px solid black;
-  cursor :pointer;
+}
+
+.case:not(.test):not(.rot){
+	  cursor :pointer;
 }
 
 .vide{

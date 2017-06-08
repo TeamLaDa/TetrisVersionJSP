@@ -128,6 +128,9 @@
                       
                       <c:if test="${bloc.pivot eq false }">
                         <div class="case bloc rot" style="background-color:${tetrimino_old.couleur};">
+                        <%--Elements à envoyer au script JS --%>  
+                           <input type="hidden" name="x" value="${x}"/>
+                           <input type="hidden" name="y" value="${y}"/>
                         </div>
                       </c:if>
                       
@@ -157,7 +160,7 @@
 
 
 													<c:set var="isEmpty" value="false" />
-														<div class="case bloc test"
+														<div class="case test bloc"
 															style="background-color:${tetrimino_old.couleur};">
 															<%--Elements à envoyer au script JS --%>                       
                               <input type="hidden" name="x" value="${x}"/>

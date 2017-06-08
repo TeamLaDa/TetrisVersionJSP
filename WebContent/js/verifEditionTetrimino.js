@@ -10,7 +10,7 @@ function verifEdition() {
 	var couleur = document.getElementById("couleur_tetrimino").value;
 	
 	// Condition vérifiant si les 2 champs sont pas null ou pas
-	if ((nom != "") && (couleur != "")) {
+	if ((nom != "") && (couleur != "") && ($("#pivot").length)) {
 		$("#submitEdition").removeAttr('disabled');
 	} else {
 		$("#submitEdition").attr('disabled','disabled');
@@ -30,12 +30,20 @@ function verifEdition() {
 		$("#boutonCouleur").attr('disabled','disabled');
 	}
 	
+	//Condition vérifiant si le pivot est bien choisi
+	
+	if(($("#pivot").length)){
+		$("#boutonRotation").removeAttr('disabled');
+	} else {
+		$("#boutonRotation").attr('disabled','disabled');
+	}
 
 }
 
 // Surveillance de plusieurs évènement
 $("#nom_tetrimino").on('keyup', verifEdition);
 $("#couleur_tetrimino").on('keyup', verifEdition);
+$("#boutonRotationDelete").on('click', verifEdition);
 
 
 $("#boutonNom").on('click', function() {

@@ -12,13 +12,13 @@
 	
 	<!-- Configuration de la vue "editTetrimino" -->
 	<definition name="editTetrimino" extends="base.definition">
-		<put-attribute name="title" value="Tetris - Edition d'un Tetrimino" cascade="true" />
+		<put-attribute name="title" value="tetris.editTetrimino" cascade="true" />
 		<put-attribute name="body" value="/WEB-INF/views/jsp/editTetrimino.jsp" />
 	</definition>
 	
 	<!-- Configuration de la vue "newTetrimino" -->
 	<definition name="newTetrimino" extends="base.definition">
-		<put-attribute name="title" value="Tetris - Nouveau Tetrimino" cascade="true" />
+		<put-attribute name="title" value="tetris.newTetrimino" cascade="true" />
 		<put-attribute name="body" value="/WEB-INF/views/jsp/editTetrimino.jsp" />
 	</definition>
 	

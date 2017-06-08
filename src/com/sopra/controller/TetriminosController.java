@@ -94,7 +94,7 @@ public class TetriminosController extends DataAccessController {
 			tetrimino.setFigures(figures);
 			
 			//
-			model.addAttribute("tetrimino",tetrimino);
+			model.addAttribute("tetrimino_old",tetrimino);
 								
 			//On alimente la vue JSP du formulaire d'édition avec l'instance de tetrimino à modifier
 			return "editTetrimino";

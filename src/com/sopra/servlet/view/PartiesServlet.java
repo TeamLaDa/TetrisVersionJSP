@@ -18,7 +18,7 @@ import com.sopra.servlet.DataAccessServlet;
 /**
  * Servlet implementation class PartiesServlet
  */
-@WebServlet("/parties")
+//@WebServlet("/parties")
 public class PartiesServlet extends DataAccessServlet {
 	private static final long serialVersionUID = 1L;
 

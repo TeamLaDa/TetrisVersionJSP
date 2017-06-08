@@ -12,7 +12,7 @@ import com.sopra.Rendu;
 /**
  * Servlet implementation class ScoreServlet
  */
-@WebServlet("/score")
+//@WebServlet("/score")
 public class ScoreServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

@@ -19,7 +19,7 @@ import com.sopra.servlet.DataAccessServlet;
 /**
  * Servlet implementation class homeServlet
  */
-@WebServlet("/login")
+// @WebServlet("/login")
 public class LoginServlet extends DataAccessServlet {
 	private static final long serialVersionUID = 1L;
        

@@ -15,7 +15,7 @@ import com.sopra.servlet.DataAccessServlet;
 /**
  * Servlet implementation class VerifUsernameSubscribe
  */
-@WebServlet("/verifusernamesubscribe")
+//@WebServlet("/verifusernamesubscribe")
 public class VerifUsernameSubscribe extends DataAccessServlet {
 	private static final long serialVersionUID = 1L;
        

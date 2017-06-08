@@ -20,7 +20,7 @@ import com.sopra.servlet.DataAccessServlet;
 /**
  * Servlet implementation class SubscribeServlet
  */
-@WebServlet("/subscribe")
+// @WebServlet("/subscribe")
 public class SubscribeServlet extends DataAccessServlet {
 	private static final long serialVersionUID = 1L;
 		

@@ -12,7 +12,7 @@ import com.sopra.servlet.DataAccessServlet;
 /**
  * Servlet implementation class deleteTetriminosServlet
  */
-@WebServlet("/deleteTetrimino")
+//@WebServlet("/deleteTetrimino")
 public class DeleteTetriminosServlet extends DataAccessServlet {
 	private static final long serialVersionUID = 1L;
        

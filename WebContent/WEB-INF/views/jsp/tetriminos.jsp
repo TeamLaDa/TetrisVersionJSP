@@ -14,7 +14,7 @@
 	<!-- On parcourt la liste des tetriminos -->
 	
 	
-	<c:forEach items="${ tetriminos }" var="tetrimino">	
+	<c:forEach items="${ tetri }" var="tetrimino">	
 	
     <!--------------------- Affichage du Tetrimino ----------------------->
 
@@ -32,7 +32,6 @@
    	      <!-- Bandeau d'information supplementaires -->
 		  <div class="card-reveal">
 	        <span class="card-title grey-text text-darken-4">${ tetrimino.nom }<i class="material-icons right">close</i></span>
-		    <p>Here is some more information about this product that is only revealed once clicked on.</p>
 		  </div>
 	    
 	    <!-- Affichage des boutons retirer et editer -->
@@ -41,12 +40,12 @@
 	  		<div class="card-action">		  
 			    <!-- On passe les id des tetriminos pour les actions d'edition et suppression. Les id des formulaires servent a lier les boutons sur l'affichage-->
 			    <div class="button-container">
-			      <form method="POST" action="deleteTetrimino" id="formSupprimer">
+			      <form method="POST" action="tetriminos/delete" id="formSupprimer">
 				    <input type ="hidden" name="id_supprimer" value="${ tetrimino.id }" >
    		            <button  type="submit">RETIRER</button>
 				  </form>
 			    
-			      <form method="POST" action="editTetrimino" id="formEditer">
+			      <form method="POST" action="tetriminos/editTetrimino" id="formEditer">
 				    <input type ="hidden" name="id_editer" value="${ tetrimino.id }" >
   				    <button type="submit">EDITER</button>
 				  </form>
@@ -62,7 +61,7 @@
 	<!-- Bouton Ajouter uniquement s'il s'agit de l'administrateur -->
 	<c:if test="${ typeUtilisateur == administrateur }">
 		<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-			<form method="POST" action="editTetrimino">
+			<form method="POST" action="tetriminos/newTetrimino">
 		    	<button class="btn-floating btn-large waves-effect waves-light red" type="submit"><i class="material-icons">add</i></button>
 			</form>
 		</div>

@@ -27,7 +27,7 @@
 	
 						<li><a href="${ pageContext.request.contextPath }/parties">Jouer</a></li>
 	
-						<li><a href="${ pageContext.request.contextPath }/score">High-Score</a></li>
+						<li><a href="${ pageContext.request.contextPath }/scores">High-Score</a></li>
 					</ul>
  				</c:when>
  				

@@ -38,6 +38,8 @@
 				<value>/WEB-INF/tiles/account.xml</value>
 				<value>/WEB-INF/tiles/erreur.xml</value>
 				<value>/WEB-INF/tiles/tetriminos.xml</value>
+				<value>/WEB-INF/tiles/parties.xml</value>
+				<value>/WEB-INF/tiles/scores.xml</value>
 			</list>
 		</property>
 	</bean>

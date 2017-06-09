@@ -155,7 +155,6 @@ $("#boutonForme").click(function(){
 //5.1 Action de clic sur la figure lors de l'étape de rotation
 $(document).on('click', '.bloc.rot', function() {
 	
-	alert("coucou")
 	//Aucune action s'il existe déjà un pivot
 	if(!($("#pivot").length)){
 	 

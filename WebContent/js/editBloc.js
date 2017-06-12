@@ -1,5 +1,7 @@
 /**
- * Script permettant d'ajouter/supprimer des blocs sur la grille lors de l'edition d'un tetrimino
+ * Script permettant :
+ *  1. d'ajouter/supprimer des blocs sur la grille lors de l'edition d'un tetrimino
+ *  2. de gérer la rotation des tetriminos
  */
 
 
@@ -21,12 +23,42 @@ function removeBloc(el) {
 	el.removeClass("bloc");
 }
 
+
+//Fonction permettant de donner un id unique à chaque bloc et d'envoyer ses coordonnées à la servlet de persistance
+//el représente les blocs de la grille
+function saveBlocs(el){
+
+	//On supprime le précédent jeu de blocs sélectionnés à envoyer
+	$(".bdata").remove();
+	
+	var id=0;
+	//Pour chaque bloc, on envoie ses coordonnées dans un champ input caché avec un identifiant unique
+	el.each(function(){
+		$(this).append("<input type=hidden class=data name=bx" + id + " value=" + getCoord($(this)).x + "></input>")
+		$(this).append("<input type=hidden class=data name=by" + id + " value=" + getCoord($(this)).y + "></input>")
+		
+		id++;
+	})
+}
+
+
 //Fonction de retrait du pivot
 function removePivot() {
+	//On efface les données du précedent pivot sélectionné
+	$(".rdata").remove();
+	
 	$("#pivot").css("opacity", "0.5");
 	$("#pivot").removeAttr("id");
 	$(".bloc.rot").css("cursor","pointer");
 	removeBloc($(".bloc.test"));
+}
+
+//Fonction permettant d'envoyer les coordonnées du pivot à la servlet de persistance
+function savePivot(){
+	
+	//On envoie les coordonées dans un champ input caché
+	$("#pivot").append("<input type=hidden class=rdata name=rx value=" + getCoord($("#pivot")).x + "></input>")
+	$("#pivot").append("<input type=hidden class=rdata name=ry value=" + getCoord($("#pivot")).y + "></input>")
 }
 
 //Fonction permettant de dessiner le bloc à l'emplacement x,y sur une grille el
@@ -121,6 +153,7 @@ $("#boutonFormeDelete").click(function(){
 //4.2.2 Action de clic sur le bouton valider lors de l'étape 4.Forme du tetrimino
 $("#boutonForme").click(function(){
 	//Envoi des coordonnées du bloc dans un formulaire
+	saveBlocs($(".case.bloc:not(.test,.rot)"))
 	
 	//On enleve le pivot (cas d'édition)
 	removePivot();
@@ -155,7 +188,6 @@ $("#boutonForme").click(function(){
 //5.1 Action de clic sur la figure lors de l'étape de rotation
 $(document).on('click', '.bloc.rot', function() {
 	
-	alert("coucou")
 	//Aucune action s'il existe déjà un pivot
 	if(!($("#pivot").length)){
 	 
@@ -201,3 +233,10 @@ $("#boutonRotationDelete").click(function(){
 
 
 //5.3.2Action de clic sur le bouton valider lors de l'étape 5.Forme du tetrimino
+$("#boutonRotation").click(function(){
+	//On sauvegarde les données du pivot sélectionné
+	savePivot();
+	
+	//On met a jour la validation
+	verifEdition();
+});

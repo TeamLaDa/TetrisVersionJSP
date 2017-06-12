@@ -12,7 +12,7 @@
 
       <!-- 1- Choisir le nom -->
       <li>
-      <div class="collapsible-header #eeeeee grey lighten-3 locked active" id="choixNom"><i class="material-icons">text_fields</i> <b>1. Nom du Tetrimino</b></div>
+      <div class="collapsible-header #eeeeee grey lighten-3 locked" id="choixNom"><i class="material-icons">text_fields</i> <b>1. Nom du Tetrimino</b></div>
           <div class="collapsible-body">
             <div class="row">
               <div class="input-field col s6">
@@ -76,8 +76,8 @@
                          
                          <%--Elements à envoyer au controleur --%>
 
-                         <input type="hidden" class="data" name="bx${num_bloc}" value="${x}"/>
-                         <input type="hidden" class="data" name="by${num_bloc}" value="${y}"/>
+                         <input type="hidden" class="bdata" name="bx${num_bloc}" value="${x}"/>
+                         <input type="hidden" class="bdata" name="by${num_bloc}" value="${y}"/>
 
                          <c:set var="num_bloc" value="${num_bloc + 1}"/>
                          
@@ -109,7 +109,7 @@
       <!-- 4- Choix du pivot de rotation -->
       <!-- Dessin de la grille 3x3 (selection du pivot)-->
       <li>
-       <div class="collapsible-header #eeeeee grey lighten-3 locked" id="choixRotation"><i class="fa fa-rotate-right"></i> <b>4. Rotation du Tetrimino</b></div>
+       <div class="collapsible-header #eeeeee grey lighten-3 locked active" id="choixRotation"><i class="fa fa-rotate-right"></i> <b>4. Rotation du Tetrimino</b></div>
          <div class="collapsible-body">
          <div class="row">
 
@@ -131,6 +131,10 @@
                            <input type="hidden" name="x" value="${x}"/>
                            <input type="hidden" name="y" value="${y}"/>
                            
+                         <%--Elements à envoyer au controleur --%>
+
+                         <input type="hidden" class="rdata" name="rx" value="${x}"/>
+                         <input type="hidden" class="rdata" name="ry" value="${y}"/>
                         </div>
                       </c:if>
 
@@ -149,6 +153,8 @@
                        <%--Elements à envoyer au script JS --%>
                        <input type="hidden" name="x" value="${x}"/>
                        <input type="hidden" name="y" value="${y}"/>
+                       
+                       
                      </div>
                   </c:if>
                 </c:forEach>

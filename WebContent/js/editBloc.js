@@ -29,10 +29,10 @@ function removeBloc(el) {
 function saveBlocs(el){
 
 	//On supprime le précédent jeu de blocs sélectionnés à envoyer
-	$(".data").remove();
+	$(".bdata").remove();
 	
 	var id=0;
-	//Pour chaque bloc, on envoie ses coordonnées avec un identifiant unique
+	//Pour chaque bloc, on envoie ses coordonnées dans un champ input caché avec un identifiant unique
 	el.each(function(){
 		$(this).append("<input type=hidden class=data name=bx" + id + " value=" + getCoord($(this)).x + "></input>")
 		$(this).append("<input type=hidden class=data name=by" + id + " value=" + getCoord($(this)).y + "></input>")
@@ -48,6 +48,16 @@ function removePivot() {
 	$("#pivot").removeAttr("id");
 	$(".bloc.rot").css("cursor","pointer");
 	removeBloc($(".bloc.test"));
+}
+
+//Fonction permettant d'envoyer les coordonnées du pivot à la servlet de persistance
+function savePivot(){
+	//On efface les données du précedent pivot sélectionné
+	$(".rdata").remove();
+	
+	//On envoie les coordonées dans un champ input caché
+	$("#pivot").append("<input type=hidden class=rdata name=rx value=" + getCoord($("#pivot")).x + "></input>")
+	$("#pivot").append("<input type=hidden class=rdata name=ry value=" + getCoord($("#pivot")).y + "></input>")
 }
 
 //Fonction permettant de dessiner le bloc à l'emplacement x,y sur une grille el
@@ -222,3 +232,7 @@ $("#boutonRotationDelete").click(function(){
 
 
 //5.3.2Action de clic sur le bouton valider lors de l'étape 5.Forme du tetrimino
+$("#boutonRotation").click(function(){
+	//On sauvegarde les données du pivot sélectionné
+	savePivot();
+});

@@ -44,6 +44,9 @@ function saveBlocs(el){
 
 //Fonction de retrait du pivot
 function removePivot() {
+	//On efface les données du précedent pivot sélectionné
+	$(".rdata").remove();
+	
 	$("#pivot").css("opacity", "0.5");
 	$("#pivot").removeAttr("id");
 	$(".bloc.rot").css("cursor","pointer");
@@ -52,8 +55,6 @@ function removePivot() {
 
 //Fonction permettant d'envoyer les coordonnées du pivot à la servlet de persistance
 function savePivot(){
-	//On efface les données du précedent pivot sélectionné
-	$(".rdata").remove();
 	
 	//On envoie les coordonées dans un champ input caché
 	$("#pivot").append("<input type=hidden class=rdata name=rx value=" + getCoord($("#pivot")).x + "></input>")
@@ -235,4 +236,7 @@ $("#boutonRotationDelete").click(function(){
 $("#boutonRotation").click(function(){
 	//On sauvegarde les données du pivot sélectionné
 	savePivot();
+	
+	//On met a jour la validation
+	verifEdition();
 });

@@ -169,7 +169,7 @@
 
           <!-- Dessin de la grille de test -->
 
-            <div class="col s4 center.align">
+            <div class="col s5 center.align">
               <div class="row z-depth-2">
                 <c:forEach var="y" begin="0" end="8">
                   <div class="row" style="margin-bottom: 0px;">

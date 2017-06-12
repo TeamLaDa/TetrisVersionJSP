@@ -2,10 +2,11 @@
 
 //Fonction permettant de vérifier si tous les champs de mon formulaire "Edition Tetrimino" ou "Nouveau Tetrimino" sont remplis
 function verifEdition() {
-	// Je récupère les éléments de mon fichier HTML
-
+	
+	/*****  FONCTIONS *****/
+	
 	//Condition vérifiant si les champs sont remplis ou pas
-	if (($("#nom_tetrimino").val() !== "") && ($("#couleur_tetrimino").val() !== "") && $(".case.bloc:not(.test,.rot)").length && ($("#pivot").length)) {
+	if (($("#nom_tetrimino").val() !== "") && ($("#couleur_tetrimino").val() !== "") && $(".case.bloc:not(.test,.rot)").length && ($(".rdata").length)) {
 		$("#submitEdition").removeAttr('disabled');
 	} else {
 		$("#submitEdition").attr('disabled','disabled');
@@ -59,8 +60,8 @@ function unlock(el) {
 	el.off('click.locked');
 }
 
-// Surveillance de plusieurs évènement
 
+/******** EVENEMENTS *******/
 
 //Initialisation du formulaire
 $(document).ready(function(){
@@ -103,4 +104,15 @@ $("#boutonForme").on('click', function() {
 	$('.collapsible').collapsible('open', 3);
 	unlock($("#choixRotation"));
 });
+
+$("#boutonRotation").on('click', function() {
+	$('.collapsible').collapsible('close', 3);
+});
+
+//On désactive la validation du formulaire par la touche entree
+$(document).keypress(function(e){
+	if(e.which == 13){
+		return false;
+	}
+})
         

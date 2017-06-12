@@ -7,12 +7,16 @@
 
 <div class="row">
 <!-- Formulaire d'édition du Tetrimino -->
-  <form class="col s12" method="POST" action="">
+  <form class="col s12 tetriminoform" method="POST" action="">
+      <!-- On envoie au script JS verifEditionTetrimino la variable indiquant si on est face à un cas d'édition ou création !-->
+      <input type="hidden" name="isNew" value='${isNew}'>
+
+      
       <ul class="collapsible" data-collapsible="accordion">
 
       <!-- 1- Choisir le nom -->
       <li>
-      <div class="collapsible-header #eeeeee grey lighten-3 locked" id="choixNom"><i class="material-icons">text_fields</i> <b>1. Nom du Tetrimino</b></div>
+      <div class="collapsible-header #eeeeee grey lighten-3" id="choixNom"><i class="material-icons">text_fields</i> <b>1. Nom du Tetrimino</b></div>
           <div class="collapsible-body">
             <div class="row">
               <div class="input-field col s6">
@@ -21,40 +25,40 @@
                 <label for="nom_tetrimino">Nom</label>
 
               </div>
-            <button class="btn-floating waves-effect waves-light blue" type="button" id="boutonNom" disabled="disabled"><i class="material-icons">mode_edit</i></button>
+            <button class="btn-floating waves-effect waves-light blue" type="button" id="boutonNom"><i class="material-icons">mode_edit</i></button>
            </div>
           </div>
         </li>
 
       <!-- 2- Choisir la couleur -->
       <li>
-       <div class="collapsible-header #eeeeee grey lighten-3 locked" id="choixCouleur" disabled="disabled"><i class="material-icons">color_lens</i> <b>2. Couleur du Tetrimino</b></div>
+       <div class="collapsible-header #eeeeee grey lighten-3" id="choixCouleur"><i class="material-icons">color_lens</i> <b>2. Couleur du Tetrimino</b></div>
          <div class="collapsible-body">
           <div class="row">
             <div class="input-field col s6">
 
-            <input value="${tetrimino_old.couleur }" id="couleur_tetrimino" type="color" value="#000" name="tetrimino_new_couleur">
+            <input value="${tetrimino_old.couleur }" id="couleur_tetrimino" type="color" value="#000000" name="tetrimino_new_couleur">
 
             </div>
-            <a class="btn-floating waves-effect waves-light blue" id="boutonCouleur" disabled="disabled"><i class="material-icons">mode_edit</i></a>
+            <a class="btn-floating waves-effect waves-light blue" id="boutonCouleur"><i class="material-icons">mode_edit</i></a>
           </div>
         </div>
       </li>
 
       <!-- 3- Choisir la forme -->
       <li>
-       <div class="collapsible-header #eeeeee grey lighten-3 locked" id="choixForme"><i class="fa fa-cubes"></i> <b>3. Forme du Tetrimino</b></div>
+       <div class="collapsible-header #eeeeee grey lighten-3" id="choixForme"><i class="fa fa-cubes"></i> <b>3. Forme du Tetrimino</b></div>
          <div class="collapsible-body">
           <div class="row">
 
           <!-- Dessin de la grille 3x3-->
 
           <div class="col s3">
-            <c:set var="num_bloc" value="0" scope="page"/>
+            <c:set var="num_bloc" value="0" />
             <c:forEach var="y" begin = "0" end="2">
               <div class= "row" style="margin-bottom: 0px;">
                 <c:forEach var="x" begin = "0" end="2">
-                  <c:set var="isEmpty" value="true"/>
+                  <c:set var="isEmpty" value="true" scope="page"/>
                 <%--Pour chaque case de la grille, on definit les paramètres suivants --%>
                 <%-- x et y les coordonnées de la case --%>
                 <%-- isEmpty (booléen) : true si la case est vide, false si un bloc est présent --%>
@@ -99,7 +103,7 @@
             </c:forEach>
           </div>
 
-            <a class="btn-floating waves-effect waves-light green" id="boutonForme" disabled="disabled"><i class="material-icons">done</i></a>
+            <a class="btn-floating waves-effect waves-light green" id="boutonForme"><i class="material-icons">done</i></a>
             <a class="btn-floating waves-effect waves-light red" id="boutonFormeDelete"><i class="material-icons">delete</i></a>
 
          </div>
@@ -109,7 +113,7 @@
       <!-- 4- Choix du pivot de rotation -->
       <!-- Dessin de la grille 3x3 (selection du pivot)-->
       <li>
-       <div class="collapsible-header #eeeeee grey lighten-3 locked active" id="choixRotation"><i class="fa fa-rotate-right"></i> <b>4. Rotation du Tetrimino</b></div>
+       <div class="collapsible-header #eeeeee grey lighten-3" id="choixRotation"><i class="fa fa-rotate-right"></i> <b>4. Rotation du Tetrimino</b></div>
          <div class="collapsible-body">
          <div class="row">
 
@@ -209,7 +213,7 @@
               </div>
             </div>
 
-            <a class="btn-floating waves-effect waves-light green" id="boutonRotation" disabled="disabled"><i class="material-icons">done</i></a>
+            <a class="btn-floating waves-effect waves-light green" id="boutonRotation"><i class="material-icons">done</i></a>
             <a class="btn-floating waves-effect waves-light red" id="boutonRotationDelete"><i class="material-icons">delete</i></a>
           </div>
         </div>
@@ -237,7 +241,7 @@
     <input type="hidden" value=${ tetrimino_old.id} name="tetrimino_new_id"/>
     <input type="hidden" value="true" name="editFormIsValid"/>
 
-      <button class="btn waves-effect waves-light" type="button" name="action" id="submitEdition" disabled="disabled">Valider
+      <button class="btn waves-effect waves-light" type="button" name="action" id="submitEdition">Valider
         <i class="material-icons right">send</i>
       </button>
   </form>

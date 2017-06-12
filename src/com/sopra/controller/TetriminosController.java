@@ -95,6 +95,7 @@ public class TetriminosController extends DataAccessController {
 			
 			//
 			model.addAttribute("tetrimino_old",tetrimino);
+			model.addAttribute("isNew", false);
 								
 			//On alimente la vue JSP du formulaire d'édition avec l'instance de tetrimino à modifier
 			return "editTetrimino";
@@ -147,15 +148,8 @@ public class TetriminosController extends DataAccessController {
 		
 		//Cas où on a pas encore créé/modifié le tetrimino
 		if(editFormIsValid == null){
-				
-			/* 
-			 * Cas ou on a cliqué sur ajouter:
-			 * On crée une instance de Tetrimino avec des champs par défaut.
-			 * L'objet est temporaire : la persistance se fait une fois le formulaire d'édition validé.
-			 */
-			
-			Tetrimino tetrimino = new Tetrimino("Pas de nom","#000000");
-			
+							
+			model.addAttribute("isNew", true);
 			
 			//On alimente la vue JSP du formulaire d'édition avec l'instance de tetrimino à modifier
 			return "newTetrimino";

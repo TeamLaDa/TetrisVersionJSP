@@ -1,5 +1,7 @@
 /**
- * Script permettant d'ajouter/supprimer des blocs sur la grille lors de l'edition d'un tetrimino
+ * Script permettant :
+ *  1. d'ajouter/supprimer des blocs sur la grille lors de l'edition d'un tetrimino
+ *  2. de gérer la rotation des tetriminos
  */
 
 
@@ -20,6 +22,25 @@ function removeBloc(el) {
 	el.css("background-color", "white");
 	el.removeClass("bloc");
 }
+
+
+//Fonction permettant de donner un id unique à chaque bloc et d'envoyer ses coordonnées à la servlet de persistance
+//el représente les blocs de la grille
+function saveBlocs(el){
+
+	//On supprime le précédent jeu de blocs sélectionnés à envoyer
+	$(".data").remove();
+	
+	var id=0;
+	//Pour chaque bloc, on envoie ses coordonnées avec un identifiant unique
+	el.each(function(){
+		$(this).append("<input type=hidden class=data name=bx" + id + " value=" + getCoord($(this)).x + "></input>")
+		$(this).append("<input type=hidden class=data name=by" + id + " value=" + getCoord($(this)).y + "></input>")
+		
+		id++;
+	})
+}
+
 
 //Fonction de retrait du pivot
 function removePivot() {
@@ -121,6 +142,7 @@ $("#boutonFormeDelete").click(function(){
 //4.2.2 Action de clic sur le bouton valider lors de l'étape 4.Forme du tetrimino
 $("#boutonForme").click(function(){
 	//Envoi des coordonnées du bloc dans un formulaire
+	saveBlocs($(".case.bloc:not(.test,.rot)"))
 	
 	//On enleve le pivot (cas d'édition)
 	removePivot();

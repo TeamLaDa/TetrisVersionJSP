@@ -33,10 +33,6 @@
           <div class="row">
             <div class="input-field col s6">
 
-              <!--
-              <input value="${tetrimino_old.couleur }" id="couleur_tetrimino" type="text" name="tetrimino_new_couleur">
-              <label for="couleur_tetrimino">Couleur</label>
-            -->
             <input value="${tetrimino_old.couleur }" id="couleur_tetrimino" type="color" value="#000" name="tetrimino_new_couleur">
 
             </div>
@@ -54,14 +50,17 @@
           <!-- Dessin de la grille 3x3-->
 
           <div class="col s3">
+            <c:set var="num_bloc" value="0" scope="page"/>
             <c:forEach var="y" begin = "0" end="2">
               <div class= "row" style="margin-bottom: 0px;">
                 <c:forEach var="x" begin = "0" end="2">
                   <c:set var="isEmpty" value="true"/>
-
-                <%--Pour chaque case de la grille, on envoie trois paramètres à la servlet editBloc: --%>
+                <%--Pour chaque case de la grille, on definit les paramètres suivants --%>
                 <%-- x et y les coordonnées de la case --%>
                 <%-- isEmpty (booléen) : true si la case est vide, false si un bloc est présent --%>
+                <%-- idBloc : permet de différencier chaque bloc que l'on va envoyer en requete, afin
+                de les persister par la suite. C'est un id temporaire (ne correspond pas à la PK), que l'on incrémente 
+                à chaque bloc que l'on crée sur la grille--%>
 
                    <%--On parcourt la liste des blocs pour voir s'il en existe un sur l'emplacement x,y sélectionné--%>
                    <%--S'il n'existe pas encore de blocs (cas de création), on ne rentre même pas dans la boucle --%>
@@ -69,11 +68,19 @@
 
                      <c:if test="${bloc.positionX == x && bloc.positionY == y }">
                        <%--Dans le cas ou il existe un bloc, on l'affiche sur la grille, avec la couleur du tetrimino--%>
-                       <c:set var="isEmpty" value="false"/>
+                       <c:set var="isEmpty" value="false" scope="page"/>
                        <div class="case bloc" style="background-color:${tetrimino_old.couleur};">
                          <%--Elements à envoyer au script JS --%>
                          <input type="hidden" name="x" value="${x}"/>
                          <input type="hidden" name="y" value="${y}"/>
+                         
+                         <%--Elements à envoyer au controleur --%>
+
+                         <input type="hidden" class="data" name="bx${num_bloc}" value="${x}"/>
+                         <input type="hidden" class="data" name="by${num_bloc}" value="${y}"/>
+
+                         <c:set var="num_bloc" value="${num_bloc + 1}"/>
+                         
                        </div>
                      </c:if>
 
@@ -123,6 +130,7 @@
                          <%--Elements à envoyer au script JS --%>
                            <input type="hidden" name="x" value="${x}"/>
                            <input type="hidden" name="y" value="${y}"/>
+                           
                         </div>
                       </c:if>
 

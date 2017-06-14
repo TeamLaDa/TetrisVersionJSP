@@ -1,9 +1,10 @@
 package com.sopra.datamanager;
 
+import java.rmi.UnexpectedException;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import com.sopra.Constantes;
 import com.sopra.model.Bloc;
 import com.sopra.model.Figure;
 
@@ -11,7 +12,7 @@ import com.sopra.model.Figure;
 public class DataFigureManager {
 
 	public List<Figure> extractFigureFromBlocs(List<Bloc> blocs){
-		List<Figure> figures = new ArrayList<>();
+		List<Figure> figures = new ArrayList<>();	
 		Figure figure = new Figure();
 		figure.setBlocs(blocs);
 		figure.setOrdre(0);
@@ -38,9 +39,8 @@ public class DataFigureManager {
 			figures.add(figureRot);
 		}
 		
-		System.out.println(figures.get(1).getOrdre());
-		System.out.println(figures.get(1).getBlocs().size());
-		
+		//On normalise la position des blocs dans les figures
+		this.normalisation(figures);
 		return figures;
 	}
 	
@@ -55,6 +55,8 @@ public class DataFigureManager {
 			figures.add(figure);
 		}
 		
+		//On normalise la position des blocs dans les figures
+		this.normalisation(figures);
 		return figures;
 	}
 	
@@ -69,4 +71,39 @@ public class DataFigureManager {
 
 		return null;
 	}
+	
+	//Cette methode permet de normaliser la liste des 4 figures, afin de placer le pixel le plus en haut à gauche à (0,0)
+	private void normalisation(List<Figure> figures){
+		
+		int minX = Constantes.tailleMaxTetrimino + 1;
+		int minY = Constantes.tailleMaxTetrimino + 1;
+		
+		for (Figure figure : figures) {
+			//On parcourt la liste de tous les blocs pour trouver le plus en haut à gauche
+			for (Bloc bloc : figure.getBlocs()) {
+				if(minX > bloc.getPositionX()){
+					minX = bloc.getPositionX();
+				}
+				
+				if(minY > bloc.getPositionY()){
+					minY = bloc.getPositionY();
+				}
+			}
+		}
+
+	
+	//Une fois les positions minimales définies, on applique l'offset à chaque bloc
+	for (Figure figure : figures) {
+		//On parcourt la liste de tous les blocs pour trouver le plus en haut à gauche
+		for (Bloc bloc : figure.getBlocs()) {
+			int positionX_norm = bloc.getPositionX() - minX;
+			int positionY_norm = bloc.getPositionY() - minY;
+			
+			bloc.setPositionX(positionX_norm);
+			bloc.setPositionY(positionY_norm);
+		}
+		
+		}
+	}
+	
 }

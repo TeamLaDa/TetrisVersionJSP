@@ -32,4 +32,7 @@ public interface Constantes {
 	
 	// La liste des tetriminos
 	public static final String tetriminos = "Tetriminos";
+	
+	//La taille de la grille de definition des tetriminos
+	public static final int tailleMaxTetrimino = 3;
 }

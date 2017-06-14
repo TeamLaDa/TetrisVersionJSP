@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sopra.controller.DataAccessController;
-import com.sopra.model.Partie;
 import com.sopra.model.Score;
 
 @RestController

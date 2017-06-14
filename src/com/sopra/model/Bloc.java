@@ -12,6 +12,8 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="bloc")
 public class Bloc {
@@ -51,6 +53,7 @@ public class Bloc {
 		this.pivot = pivot;
 	}
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="BLO_FIGURE_ID")
 	private Figure figure;

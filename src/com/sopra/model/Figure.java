@@ -15,6 +15,8 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="figure")
 public class Figure {
@@ -28,6 +30,7 @@ public class Figure {
 	@NotNull
 	private int ordre;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="FIG_TETRIMINO_ID")
 	private Tetrimino tetrimino;

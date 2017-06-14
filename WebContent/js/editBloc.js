@@ -33,7 +33,7 @@ function saveBlocs(el){
 	
 	//Pour chaque bloc, on envoie ses coordonnées dans un champ input caché avec un identifiant unique
 	el.each(function(){
-		$(this).append("<input type=hidden class=data name=bcoord value=" + getCoord($(this)).x + "," + getCoord($(this)).y + "></input>")
+		$(this).append("<input type=hidden class=data name=bcoord value=" + getCoord($(this)).x + "--" + getCoord($(this)).y + "></input>")
 	})
 }
 
@@ -53,7 +53,7 @@ function removePivot() {
 function savePivot(){
 	
 	//On envoie les coordonées dans un champ input caché
-	$("#pivot").append("<input type=hidden class=rdata name=rcoord value=" + getCoord($("#pivot")).x +","+getCoord($("#pivot")).y + "></input>")
+	$("#pivot").append("<input type=hidden class=rdata name=rcoord value=" + getCoord($("#pivot")).x +"--"+getCoord($("#pivot")).y + "></input>")
 }
 
 //Fonction permettant de dessiner le bloc à l'emplacement x,y sur une grille el

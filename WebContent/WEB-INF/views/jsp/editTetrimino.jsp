@@ -77,7 +77,7 @@
                          
                          <%--Elements à envoyer au controleur --%>
 
-                         <input type="hidden" class="bdata" name="bcoord" value="${x},${y}"/>                    
+                         <input type="hidden" class="bdata" name="bcoord" value="${x}--${y}"/>                    
                        </div>
                      </c:if>
 
@@ -130,7 +130,7 @@
                            
                          <%--Elements à envoyer au controleur --%>
 
-                         <input type="hidden" class="rdata" name="rcoord" value="${x},${y}"/>
+                         <input type="hidden" class="rdata" name="rcoord" value="${x}--${y}"/>
                         </div>
                       </c:if>
 

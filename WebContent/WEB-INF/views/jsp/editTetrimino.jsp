@@ -54,7 +54,6 @@
           <!-- Dessin de la grille 3x3-->
 
           <div class="col s3">
-            <c:set var="num_bloc" value="0" />
             <c:forEach var="y" begin = "0" end="2">
               <div class= "row" style="margin-bottom: 0px;">
                 <c:forEach var="x" begin = "0" end="2">
@@ -62,9 +61,7 @@
                 <%--Pour chaque case de la grille, on definit les paramètres suivants --%>
                 <%-- x et y les coordonnées de la case --%>
                 <%-- isEmpty (booléen) : true si la case est vide, false si un bloc est présent --%>
-                <%-- idBloc : permet de différencier chaque bloc que l'on va envoyer en requete, afin
-                de les persister par la suite. C'est un id temporaire (ne correspond pas à la PK), que l'on incrémente 
-                à chaque bloc que l'on crée sur la grille--%>
+
 
                    <%--On parcourt la liste des blocs pour voir s'il en existe un sur l'emplacement x,y sélectionné--%>
                    <%--S'il n'existe pas encore de blocs (cas de création), on ne rentre même pas dans la boucle --%>
@@ -80,11 +77,7 @@
                          
                          <%--Elements à envoyer au controleur --%>
 
-                         <input type="hidden" class="bdata" name="bx${num_bloc}" value="${x}"/>
-                         <input type="hidden" class="bdata" name="by${num_bloc}" value="${y}"/>
-
-                         <c:set var="num_bloc" value="${num_bloc + 1}"/>
-                         
+                         <input type="hidden" class="bdata" name="bcoord" value="${x}--${y}"/>                    
                        </div>
                      </c:if>
 
@@ -137,8 +130,7 @@
                            
                          <%--Elements à envoyer au controleur --%>
 
-                         <input type="hidden" class="rdata" name="rx" value="${x}"/>
-                         <input type="hidden" class="rdata" name="ry" value="${y}"/>
+                         <input type="hidden" class="rdata" name="rcoord" value="${x}--${y}"/>
                         </div>
                       </c:if>
 
@@ -241,7 +233,7 @@
     <input type="hidden" value=${ tetrimino_old.id} name="tetrimino_new_id"/>
     <input type="hidden" value="true" name="editFormIsValid"/>
 
-      <button class="btn waves-effect waves-light" type="button" name="action" id="submitEdition">Valider
+      <button class="btn waves-effect waves-light" type="submit" name="action" id="submitEdition">Valider
         <i class="material-icons right">send</i>
       </button>
   </form>

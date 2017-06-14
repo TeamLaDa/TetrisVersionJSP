@@ -1,5 +1,6 @@
 package com.sopra.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sopra.Constantes;
 import com.sopra.Rendu;
+import com.sopra.datamanager.DataBlocManager;
+import com.sopra.datamanager.DataFigureManager;
 import com.sopra.model.Bloc;
 import com.sopra.model.Figure;
 import com.sopra.model.Tetrimino;
@@ -52,13 +55,17 @@ public class TetriminosController extends DataAccessController {
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String deleteTetriminoPOST(@RequestParam(value = "id_supprimer") String id, HttpSession session,
 			Model model) {
+			
+			Tetrimino tetrimino = this.tetriminosDao.find(id);
+			List<Figure> figures = this.figureDAO.findWithTetrimino(id);
+			
+			this.deleteFigures(figures);	
+			
+			try{
+			//On efface le tetrimino		
+			this.tetriminosDao.delete(tetrimino);
 
-		try {
-
-			// On envoie l'id a la méthode suppression du DAO
-			this.tetriminosDao.delete(this.tetriminosDao.find(id));
-
-		} catch (Exception e) {
+			} catch (Exception e) {
 			e.printStackTrace();
 		}
 
@@ -70,21 +77,25 @@ public class TetriminosController extends DataAccessController {
 	 * Page EDITION D UN TETRIMINO
 	 */
 	@RequestMapping(value = "/editTetrimino", method = RequestMethod.POST)
-	public String editTetriminoPOST(@RequestParam(value="id_editer", required=false) String id, @RequestParam(value="editFormIsValid", required=false) String editFormIsValid,
-			@RequestParam(value="tetrimino_new_id", required=false) String tetrimino_new_id, @RequestParam(value="tetrimino_new_nom", required=false) String tetrimino_new_nom,
-			@RequestParam(value="tetrimino_new_couleur", required=false) String tetrimino_new_couleur, HttpSession session, Model model){
+	public String editTetriminoPOST(
+			@RequestParam(value="id_editer", required=false) String id, 
+			@RequestParam(value="editFormIsValid", required=false) String editFormIsValid,
+			@RequestParam(value="tetrimino_new_id", required=false) String tetrimino_new_id, 
+			@RequestParam(value="tetrimino_new_nom", required=false) String tetrimino_new_nom,
+			@RequestParam(value="tetrimino_new_couleur", required=false) String tetrimino_new_couleur, 
+			@RequestParam(value="bcoord", required=false) String[] bcoord, 
+			@RequestParam(value="rcoord", required=false) String rcoord,
+			HttpSession session, Model model){
 		
 		//Cas où on a pas encore créé/modifié le tetrimino
 		if(editFormIsValid == null){
-			
-			// Cas ou on a cliqué sur editer:				
-			
+					
 			// On récupère le tetrimino dans la BDD
 			Tetrimino tetrimino = this.tetriminosDao.find(id);
-			System.out.println(id);
-			
 			// On récupère la liste des figures correspondantes la BDD
 			List<Figure> figures = this.figureDAO.findWithTetrimino(id);
+			
+			
 			
 			// On récupère les blocs de la premiere figure (principale) dans la BDD
 			List<Bloc> blocs = this.blocDAO.findWithFigure(figures.get(0).getId());
@@ -109,26 +120,39 @@ public class TetriminosController extends DataAccessController {
 			String nom_new = tetrimino_new_nom;			
 			String couleur_new = tetrimino_new_couleur;
 			
-			Tetrimino tetrimino_new;
+			DataBlocManager dataBlocManager = new DataBlocManager();
+			DataFigureManager dataFigureManager = new DataFigureManager();
 			
-			//Cas de création : le tetrimino n'existe pas encore dans la BDD, il faut le créer
-			if(id_new == null){
-				tetrimino_new = new Tetrimino();
-			}
+			Tetrimino tetrimino_new = this.tetriminosDao.find(id_new);
+			List<Figure> figures = this.figureDAO.findWithTetrimino(id_new);
 			
-			//Cas d'édition : le tetrimino existe, on fait appel au DAO pour le trouver dans la BDD
-			else{
-				tetrimino_new = this.tetriminosDao.find(id_new);
-			}
+			//On supprime les figures du tetrimino ainsi que les blocs associés
+			this.deleteFigures(figures);
+			
+			
+			//On crée le nouveau jeu de blocs avec les données récupérées
+			List<Bloc> blocs_new = dataBlocManager.extractBlocsFromCoordinates(bcoord, rcoord);
+			List<Figure> figures_new = dataFigureManager.extractFigureFromBlocs(blocs_new);
 			
 			//On applique les changements à l'objet
 			tetrimino_new.setNom(nom_new);
 			tetrimino_new.setCouleur(couleur_new);
 			
-			//On sauvegarde le nouvel objet créé
-			
 			tetrimino_new = this.tetriminosDao.save(tetrimino_new);
-		
+			
+			
+			for (Figure figure : figures_new) {
+				List<Bloc> blocs = figure.getBlocs();
+				figure.setTetrimino(tetrimino_new);
+				figure = this.figureDAO.save(figure);
+				
+				for (Bloc bloc : blocs) {
+					bloc.setFigure(figure);
+					bloc = this.blocDAO.save(bloc);
+				}
+			}
+			
+					
 			// Permet de rediriger vers la page tetriminos
 			return "redirect:/tetriminos";
 		}
@@ -141,9 +165,14 @@ public class TetriminosController extends DataAccessController {
 	 * Page NOUVEAU TETRIMINO
 	 */
 	@RequestMapping(value = "/newTetrimino", method = RequestMethod.POST)
-	public String editTetriminoPOST(@RequestParam(value="editFormIsValid", required=false) String editFormIsValid,
-			@RequestParam(value="tetrimino_new_id", required=false) String tetrimino_new_id, @RequestParam(value="tetrimino_new_nom", required=false) String tetrimino_new_nom,
-			@RequestParam(value="tetrimino_new_couleur", required=false) String tetrimino_new_couleur, HttpSession session, Model model){
+	public String editTetriminoPOST(
+			@RequestParam(value="editFormIsValid", required=false) String editFormIsValid,
+			@RequestParam(value="tetrimino_new_id", required=false) String tetrimino_new_id, 
+			@RequestParam(value="tetrimino_new_nom", required=false) String tetrimino_new_nom,
+			@RequestParam(value="tetrimino_new_couleur", required=false) String tetrimino_new_couleur, 
+			@RequestParam(value="bcoord", required=false) String[] bcoord, 
+			@RequestParam(value="rcoord", required=false) String rcoord,
+			HttpSession session, Model model){
 		
 		
 		//Cas où on a pas encore créé/modifié le tetrimino
@@ -159,34 +188,60 @@ public class TetriminosController extends DataAccessController {
 		//Cas où on a modifié/créé le tetrimino
 		else {
 			//On recupere l'id, le nom et la couleur du tetrimino a modifier
-			String id_new = tetrimino_new_id;
 			String nom_new = tetrimino_new_nom;			
 			String couleur_new = tetrimino_new_couleur;
+			DataBlocManager dataBlocManager = new DataBlocManager();
+			DataFigureManager dataFigureManager = new DataFigureManager();
 			
-			Tetrimino tetrimino_new;
+			Tetrimino tetrimino_new = new Tetrimino();
 			
-			//Cas de création : le tetrimino n'existe pas encore dans la BDD, il faut le créer
-			if(id_new == null){
-				tetrimino_new = new Tetrimino();
-			}
+
+					
+			//On crée le nouveau jeu de blocs avec les données récupérées
+			List<Bloc> blocs_new = dataBlocManager.extractBlocsFromCoordinates(bcoord, rcoord);
+			List<Figure> figures_new = dataFigureManager.extractFigureFromBlocs(blocs_new);
 			
-			//Cas d'édition : le tetrimino existe, on fait appel au DAO pour le trouver dans la BDD
-			else{
-				tetrimino_new = this.tetriminosDao.find(id_new);
-			}
 			
 			//On applique les changements à l'objet
 			tetrimino_new.setNom(nom_new);
 			tetrimino_new.setCouleur(couleur_new);
 			
-			//On sauvegarde le nouvel objet créé
-			
 			tetrimino_new = this.tetriminosDao.save(tetrimino_new);
-		
-			// Permet de rediriger vers la page tetriminos
+			
+			
+			for (Figure figure : figures_new) {
+				List<Bloc> blocs = figure.getBlocs();
+				figure.setTetrimino(tetrimino_new);
+				figure = this.figureDAO.save(figure);
+				
+				for (Bloc bloc : blocs) {
+					bloc.setFigure(figure);
+					bloc = this.blocDAO.save(bloc);
+				}
+			}
 			return "redirect:/tetriminos";
+		
 		}
 		
+	}
+	
+	private void deleteFigures(List<Figure> figures){
+		try {			
+			for (Figure figure : figures) {
+				System.out.println("coucou");
+				List<Bloc> blocs = this.blocDAO.findWithFigure(figure.getId());
+				//On efface les blocs de la figure
+				for (Bloc bloc : blocs) {
+					this.blocDAO.delete(bloc);
+				}
+				
+				//On efface les figures
+				this.figureDAO.delete(figure);
+			}
+
+		  } catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

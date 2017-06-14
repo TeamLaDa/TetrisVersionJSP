@@ -1,6 +1,5 @@
 package com.sopra.datamanager;
 
-import java.rmi.UnexpectedException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,13 +20,11 @@ public class DataFigureManager {
 		//On cherche le pivot
 		Bloc pivot = this.findPivot(blocs);
 		
-		System.out.println(pivot.getPositionX() +"," +pivot.getPositionY());
-		
 		//On applique la rotation sur tous les blocs des figures suivantes
 		for(int i=1; i<4; ++i){
 			Figure figureRot = new Figure();
 			figureRot.setOrdre(i);
-			figureRot.setBlocs(figures.get(i-1).getBlocs());
+			figureRot.setBlocs(this.cloneBlocs(figures.get(i-1).getBlocs()));
 			for (Bloc bloc : figureRot.getBlocs()) {
 				int x_rot = -bloc.getPositionY() + pivot.getPositionY() + pivot.getPositionX();
 				int y_rot = bloc.getPositionX() - pivot.getPositionY() + pivot.getPositionY();
@@ -106,4 +103,19 @@ public class DataFigureManager {
 		}
 	}
 	
+	private List<Bloc> cloneBlocs(List<Bloc> blocs){
+		List<Bloc> blocs_cloned = new ArrayList<>();
+		
+		for (Bloc bloc : blocs) {
+			Bloc bloc_cloned = new Bloc();
+			bloc_cloned.setPositionX(bloc.getPositionX());
+			bloc_cloned.setPositionY(bloc.getPositionY());
+			bloc_cloned.setPoids(bloc.getPoids());
+			bloc_cloned.setPivot(bloc.isPivot());
+			
+			blocs_cloned.add(bloc_cloned);
+		}
+		
+		return blocs_cloned;
+	}
 }

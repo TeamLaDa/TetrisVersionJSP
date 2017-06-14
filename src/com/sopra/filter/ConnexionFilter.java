@@ -68,6 +68,7 @@ public class ConnexionFilter implements Filter {
 		myAcceptedURIs.add("/login");
 		myAcceptedURIs.add("/subscribe");
 		myAcceptedURIs.add("/verifusernamesubscribe");
+		myAcceptedURIs.add("/API/");
 
 		myAcceptedURIs.add("/erreur");
 		myAcceptedURIs.add("/account/login");

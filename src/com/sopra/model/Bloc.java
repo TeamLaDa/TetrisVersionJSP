@@ -77,6 +77,13 @@ public class Bloc {
 	}
 
 	/**
+	 * @param figure the figure to set
+	 */
+	public void setFigure(Figure figure) {
+		this.figure = figure;
+	}
+
+	/**
 	 * @param positionX the positionX to set
 	 */
 	public void setPositionX(int positionX) {

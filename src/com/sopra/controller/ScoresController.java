@@ -1,6 +1,8 @@
 package com.sopra.controller;
 
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -26,6 +28,8 @@ public class ScoresController extends DataAccessController {
 		// Récupère la liste des scores
 		List<Score> listScores = scoreDAO.findAll();
 		
+		
+		model.addAttribute("scores", listScores);
 		
 	
 		// Permet de rediriger vers la page scores
